@@ -1,294 +1,188 @@
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+@extends('layouts.main')
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Boxsteps" />
-        <meta name="author" content="Boxsteps" />
-        <link rel="shortcut icon" type="image/x-icon" href="assets/images/boxsteps/favicon.ico"  />
+@section('title')
+    Boxsteps
+@stop
 
-        <title>Boxsteps</title>
+@section('custom-css')
+    <link rel="stylesheet" href="assets/js/fullcalendar/fullcalendar.min.css">
+    <link rel="stylesheet" href="assets/css/fonts/meteocons/css/meteocons.css">
+@stop
 
-        <link rel="stylesheet" href="assets/css/fonts.css">
-        <link rel="stylesheet" href="assets/css/fonts/linecons/css/linecons.css">
-        <link rel="stylesheet" href="assets/css/fonts/fontawesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="assets/css/bootstrap.css">
-        <link rel="stylesheet" href="assets/css/xenon-core.css">
-        <link rel="stylesheet" href="assets/css/xenon-forms.css">
-        <link rel="stylesheet" href="assets/css/xenon-components.css">
-        <link rel="stylesheet" href="assets/css/xenon-skins.css">
-        <link rel="stylesheet" href="assets/css/custom.css">
+@section('content')
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            bsCalendar('#calendar');
 
-        <script src="assets/js/jquery-1.11.1.min.js"></script>
+            var degrees = [
+                { time: new Date('August 05, 2016 07:00:00'), degree: 15 },
+                { time: new Date('August 10, 2016 07:00:00'), degree: 10 },
+                { time: new Date('August 11, 2016 07:00:00'), degree: 11 },
+                { time: new Date('August 12, 2016 07:00:00'), degree: 20 },
+                { time: new Date('August 17, 2016 07:00:00'), degree: 18 },
+                { time: new Date('August 18, 2016 07:00:00'), degree: 14 },
+                { time: new Date('August 20, 2016 07:00:00'), degree: 13 },
+                { time: new Date('August 21, 2016 07:00:00'), degree: 10 },
+                { time: new Date('August 22, 2016 07:00:00'), degree: 8 },
+            ];
 
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-        	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
+            $("#califications").dxChart({
+                dataSource: degrees,
+                commonPaneSettings: {
+                    border: {
+                        visible: true,
+                        color: '#f5f5f5'
+                    }
+                },
+                commonSeriesSettings: {
+                    type: "area",
+                    argumentField: "time",
+                    border: {
+                        color: '#40bbea',
+                        width: 1,
+                        visible: true
+                    }
+                },
+                series: [
+                    { valueField: "degree", name: "Calificaciones", color: '#40bbea', opacity: .5 },
+                ],
+                commonAxisSettings: {
+                    label: {
+                        visible: true
+                    },
+                    grid: {
+                        visible: true,
+                        color: '#f5f5f5'
+                    }
+                },
+                argumentAxis: {
+                    valueMarginsEnabled: false,
+                    label: {
+                        customizeText: function (arg) {
+                            return date('d/m', arg.value);
+                        }
+                    }
+                },
+                legend: {
+                    visible: false
+                }
+            });
+        });
+    </script>
 
-    <body class="page-body">
+    <section class="calendar-env">
+        <div class="col-sm-12 col-md-6 calendar-left">
+            <div class="calendar-main">
+                <div id="calendar"></div>
+            </div>
+        </div>
 
-        <nav class="navbar horizontal-menu navbar-fixed-top">
+        <div class="shortcuts col-sm-12 col-md-6 calendar-right">
 
-    		<div class="navbar-inner">
+            <div class="col-sm-12 col-md-6">
+                <a href="#">
+                    <div class="xe-widget xe-counter xe-counter-green" data-count=".num" data-from="0" data-to="2" data-duration="2">
+                        <div class="xe-icon">
+                            <i class="fa-envelope-o"></i>
+                        </div>
+                        <div class="xe-label">
+                            <strong class="num">2</strong>
+                            <span>Mensajes</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
 
-    			<!-- Navbar Brand -->
-    			<div class="navbar-brand">
-    				<a href="#" class="logo">
-    					<img src="assets/images/boxsteps/boxsteps-logo.png" width="120" alt="" class="hidden-xs" />
-    					<img src="assets/images/boxsteps/boxsteps-logo-dark.png" width="120" alt="" class="visible-xs" />
-    				</a>
-    			</div>
-                <!-- Navbar Brand -->
+            <div class="col-sm-12 col-md-6">
+                <a href="#">
+                    <div class="xe-widget xe-counter xe-counter-purple" data-count=".num" data-from="0" data-to="6" data-duration="2">
+                        <div class="xe-icon">
+                            <i class="fa-bell-o"></i>
+                        </div>
+                        <div class="xe-label">
+                            <strong class="num">6</strong>
+                            <span>Notificaciones</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
 
-    			<!-- Mobile Toggles Links -->
-    			<div class="nav navbar-mobile">
-    				<div class="mobile-menu-toggle">
-    					<a href="#" data-toggle="user-info-menu-horizontal">
-    						<i class="fa-bell-o"></i>
-    					</a>
-    					<a href="#" data-toggle="mobile-menu-horizontal">
-    						<i class="fa-bars"></i>
-    					</a>
+            <div class="col-sm-12 col-md-6">
+                <a href="#">
+                    <div class="xe-widget xe-counter xe-counter-yellow">
+                        <div class="xe-icon">
+                            <i class="fa-check-square-o"></i>
+                        </div>
+                        <div class="xe-label">
+                            <strong class="num">1</strong>
+                            <span>Evaluaciones</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <a href="#">
+                    <div class="xe-widget xe-counter xe-counter-blue">
+                        <div class="xe-icon">
+                            <i class="fa-group"></i>
+                        </div>
+                        <div class="xe-label">
+                            <strong class="num">1</strong>
+                            <span>Cursos</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <div class="panel panel-default" style="height: 256px;">
+                    <div class="panel-heading" style="text-align: center">TAREAS</div>
+                    <div class="panel-body">
+                        <div class="vertical-top">
+                            <button class="btn btn-red btn-icon btn-block btn-icon-standalone btn-icon-standalone-right">
+                                <i class="linecons-pencil"></i>
+                                <span>Nueva planificación</span>
+                            </button>
+                            <button class="btn btn-warning btn-icon btn-block btn-icon-standalone btn-icon-standalone-right">
+                                <i class="linecons-note"></i>
+                                <span>Nueva evaluación</span>
+                            </button>
+                            <button class="btn btn-purple btn-icon btn-block btn-icon-standalone btn-icon-standalone-right">
+                                <i class="linecons-lightbulb"></i>
+                                <span>Estadísticas generales</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <div class="panel panel-default">
+    				<div class="panel-heading" style="text-align: center">
+    					CALIFICACIONES
     				</div>
-    			</div>
-    			<div class="navbar-mobile-clear"></div>
-                <!-- Mobile Toggles Links -->
+                    <div class="panel-body">
+                        <div id="califications" style="height: 155px;"></div>
+                    </div>
+            </div>
 
-    			<!-- Main menu -->
-    			<ul class="navbar-nav">
-    				<li>
-    					<a href="#">
-    						<i class="linecons-pencil"></i>
-    						<span class="title">Planificación</span>
-    					</a>
-    				</li>
-                    <li>
-    					<a href="#">
-    						<i class="fa fa-check-square-o"></i>
-    						<span class="title">Evaluación</span>
-    					</a>
-    				</li>
-                    <li>
-    					<a href="#">
-    						<i class="fa-bar-chart-o"></i>
-    						<span class="title">Estadísticas</span>
-    					</a>
-    				</li>
-    			</ul>
-                <!-- Main menu -->
+        </div>
+    </section>
 
-    			<!-- Notifications - Messages - Profile -->
-    			<ul class="nav nav-userinfo navbar-right">
+@stop
 
-    				<li class="dropdown xs-left">
+@section('custom-js-footer')
+    <script src="assets/js/fullcalendar/fullcalendar.min.js"></script>
+    <script src="assets/js/fullcalendar/lang/es.js"></script>
+    <script src="assets/js/jquery-ui/jquery-ui.min.js"></script>
+    <script src="js/bs-calendar.js"></script>
 
-    					<a href="#" data-toggle="dropdown" class="notification-icon">
-    						<i class="fa-envelope-o"></i>
-    					</a>
+    <script src="assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+	<script src="assets/js/jvectormap/regions/jquery-jvectormap-world-mill-en.js"></script>
+	<script src="assets/js/xenon-widgets.js"></script>
 
-    					<ul class="dropdown-menu messages">
-                            <li>
-        						<ul class="dropdown-menu-list list-unstyled ps-scrollbar">
-        							<li class="active">
-        								<a href="#">
-        									<span class="line">
-        										<strong>Luc Chartier</strong>
-        										<span class="light small">- yesterday</span>
-        									</span>
-
-        									<span class="line desc small">
-        										This ain’t our first item, it is the best of the rest.
-        									</span>
-        								</a>
-        							</li>
-        							<li>
-        								<a href="#">
-        									<span class="line">
-        										Hayden Cartwright
-        										<span class="light small">- a week ago</span>
-        									</span>
-
-        									<span class="line desc small">
-        										Whose her enjoy chief new young. Felicity if ye required likewise so doubtful.
-        									</span>
-        								</a>
-        							</li>
-        						</ul>
-    					    </li>
-        					<li class="external">
-        						<a href="mailbox-main.html">
-        							<span>Todos los mensajes</span>
-        							<i class="fa-link-ext"></i>
-        						</a>
-        					</li>
-    					</ul>
-
-    				</li>
-
-    				<li class="dropdown xs-left">
-
-    					<a href="#" data-toggle="dropdown" class="notification-icon notification-icon-messages">
-    						<i class="fa-bell-o"></i>
-    					</a>
-
-    					<ul class="dropdown-menu notifications">
-
-        					<li class="top">
-        						<p class="small">
-        							<a href="#" class="pull-right">Marcar como leídas</a>
-        							Tienes <strong>6</strong> nuevas notificaciones.
-        						</p>
-        					</li>
-
-        					<li>
-        						<ul class="dropdown-menu-list list-unstyled ps-scrollbar">
-        							<li class="active notification-success">
-        								<a href="#">
-        									<i class="fa-user"></i>
-
-        									<span class="line">
-        										<strong>Nuevo usuario registrados</strong>
-        									</span>
-
-        									<span class="line small time">
-        										Hace 30 segundos
-        									</span>
-        								</a>
-        							</li>
-        							<li class="active notification-secondary">
-        								<a href="#">
-        									<i class="fa-lock"></i>
-
-        									<span class="line">
-        										<strong>Las opciones de privacidad han cambiado</strong>
-        									</span>
-
-        									<span class="line small time">
-        										Hace 3 horas
-        									</span>
-        								</a>
-        							</li>
-        							<li class="notification-primary">
-        								<a href="#">
-        									<i class="fa-thumbs-up"></i>
-
-        									<span class="line">
-        										<strong>Aprobación de planificación</strong>
-        									</span>
-
-        									<span class="line small time">
-        										Hace 2 minutos
-        									</span>
-        								</a>
-        							</li>
-        							<li class="notification-danger">
-        								<a href="#">
-        									<i class="fa-calendar"></i>
-
-        									<span class="line">
-        										El evento previsto fue cancelado
-        									</span>
-
-        									<span class="line small time">
-        										Hace 9 horas
-        									</span>
-        								</a>
-        							</li>
-        							<li class="notification-info">
-        								<a href="#">
-        									<i class="fa-database"></i>
-
-        									<span class="line">
-        										Servidor estable
-        									</span>
-
-        									<span class="line small time">
-        										Ayer a las 10:30 PM
-        									</span>
-        								</a>
-        							</li>
-        							<li class="notification-warning">
-        								<a href="#">
-        									<i class="fa-envelope-o"></i>
-
-        									<span class="line">
-        										Planificación esperando aprobación
-        									</span>
-
-        									<span class="line small time">
-        										Hace 1 semana
-        									</span>
-        								</a>
-        							</li>
-        						</ul>
-        					</li>
-
-        					<li class="external">
-        						<a href="#">
-        							<span>Todas las notificaciones</span>
-        							<i class="fa-link-ext"></i>
-        						</a>
-        					</li>
-
-    					</ul>
-
-    				</li>
-
-    				<li class="dropdown user-profile">
-
-    					<a href="#" data-toggle="dropdown">
-    						<img src="assets/images/user-1.png" alt="user-image" class="img-circle img-inline userpic-32" width="28" />
-    						<span>
-    							Wolfgang Dielingen
-    							<i class="fa-angle-down"></i>
-    						</span>
-    					</a>
-
-    					<ul class="dropdown-menu user-profile-menu list-unstyled">
-    						<li>
-    							<a href="#">
-    								<i class="fa-user"></i>
-    								Perfil
-    							</a>
-    						</li>
-                            <li>
-    							<a href="#">
-    								<i class="fa-wrench"></i>
-    								Configuración
-    							</a>
-    						</li>
-    						<li class="last">
-    							<a href="#">
-    								<i class="fa-lock"></i>
-    								Salir
-    							</a>
-    						</li>
-    					</ul>
-
-    				</li>
-
-    			</ul>
-                <!-- Notifications - Messages - Profile -->
-
-    		</div>
-
-    	</nav>
-
-        <!-- Xenon & Bootstrap core scripts -->
-    	<script src="assets/js/bootstrap.min.js"></script>
-    	<script src="assets/js/tweenmax.min.js"></script>
-    	<script src="assets/js/resizeable.js"></script>
-    	<script src="assets/js/joinable.js"></script>
-    	<script src="assets/js/xenon-api.js"></script>
-    	<script src="assets/js/xenon-toggles.js"></script>
-
-    	<!-- Xenon custom scripts -->
-    	<script src="assets/js/xenon-custom.js"></script>
-
-    </body>
-</html>
+    <script src="assets/js/devexpress-web-14.1/js/knockout-3.1.0.js"></script>
+	<script src="assets/js/devexpress-web-14.1/js/globalize.min.js"></script>
+	<script src="assets/js/devexpress-web-14.1/js/dx.chartjs.js"></script>
+@stop
