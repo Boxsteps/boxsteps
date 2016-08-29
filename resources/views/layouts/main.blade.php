@@ -302,6 +302,8 @@
             <!-- Main container -->
             <div class="main-content">
 
+                @yield('breadcrumbs')
+
                 @yield('content')
 
                 <!-- Footer section -->
