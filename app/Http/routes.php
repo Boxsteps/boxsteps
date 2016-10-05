@@ -22,3 +22,8 @@ Route::get('/dashboard', function () {
 Route::get('/planificacion', function () {
     return view('planificacion');
 });
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+    Route::get('/home', 'HomeController@index');
+});
