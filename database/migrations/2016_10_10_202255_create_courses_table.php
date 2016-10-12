@@ -20,13 +20,13 @@ class CreateCoursesTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->integer('periods_id')->unsigned();
-            $table->foreign('periods_id', 'fk_courses_periods')->references('id')->on('periods');
-            $table->integer('students_id')->unsigned();
-            $table->foreign('students_id', 'fk_courses_students')->references('id')->on('students');
+            $table->integer('period_id')->unsigned();
+            $table->foreign('period_id', 'fk_courses_periods')->references('id')->on('periods');
+            $table->integer('student_id')->unsigned();
+            $table->foreign('student_id', 'fk_courses_students')->references('id')->on('students');
 
-            $table->index('periods_id', 'fk_courses_periods_idx');
-            $table->index('students_id', 'fk_courses_students_idx');
+            $table->index('period_id', 'fk_courses_periods_idx');
+            $table->index('student_id', 'fk_courses_students_idx');
 
         });
     }

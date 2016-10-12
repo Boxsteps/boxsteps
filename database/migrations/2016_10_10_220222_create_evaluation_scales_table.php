@@ -21,10 +21,10 @@ class CreateEvaluationScalesTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->integer('evaluation_types_id')->unsigned();
-            $table->foreign('evaluation_types_id', 'fk_eval_scal_eval_type')->references('id')->on('evaluation_types');
+            $table->integer('evaluation_type_id')->unsigned();
+            $table->foreign('evaluation_type_id', 'fk_eval_scal_eval_type')->references('id')->on('evaluation_types');
 
-            $table->index('evaluation_types_id', 'fk_eval_scal_eval_type_idx');
+            $table->index('evaluation_type_id', 'fk_eval_scal_eval_type_idx');
 
         });
     }

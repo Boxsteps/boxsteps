@@ -11,6 +11,37 @@
 |
 */
 
+// Relation routes testing
+
+use App\User as User;
+use App\Role as Role;
+
+Route::get('/usuario/{id}', function ($id) {
+
+    $user = User::find($id);
+    echo 'Nombre: ' . $user->name . '<br />';
+    echo 'Apellido: ' . $user->second_name . '<br />';
+    echo 'Email: ' . $user->email . '<br />';
+
+    echo 'Rol: ' . $user->role->role . '<br />';
+
+});
+
+Route::get('/usuarios', function () {
+
+
+
+});
+
+Route::get('/rol/{id}', function ($id) {
+
+    $role = Role::find($id);
+    echo 'Nombre: ' . $role->role . '<br />';
+
+});
+
+// Basic routes for Xenon theme
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -21,18 +52,6 @@ Route::get('/dashboard', function () {
 
 Route::get('/planificacion', function () {
     return view('planificacion');
-});
-
-use App\User as User;
-use App\Role as Role;
-
-Route::get('/usuario/{id}', function ($id) {
-
-    $user = User::find($id);
-    echo 'Nombre: ' . $user->name . '<br />';
-    echo 'Email: ' . $user->email . '<br />';
-
-    echo 'Rol: ' . $user->role->role . '<br />';
 });
 
 Route::group(['middleware' => 'web'], function () {

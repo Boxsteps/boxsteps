@@ -19,10 +19,10 @@ class CreateConceptualSectionsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->integer('knowledge_areas_id')->unsigned();
-            $table->foreign('knowledge_areas_id', 'fk_conc_sect_know_area')->references('id')->on('knowledge_areas');
+            $table->integer('knowledge_area_id')->unsigned();
+            $table->foreign('knowledge_area_id', 'fk_conc_sect_know_area')->references('id')->on('knowledge_areas');
 
-            $table->index('knowledge_areas_id', 'fk_conc_sect_know_area_idx');
+            $table->index('knowledge_area_id', 'fk_conc_sect_know_area_idx');
 
         });
     }

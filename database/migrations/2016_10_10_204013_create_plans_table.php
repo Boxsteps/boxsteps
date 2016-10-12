@@ -29,16 +29,16 @@ class CreatePlansTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->integer('periods_id')->unsigned();
-            $table->foreign('periods_id', 'fk_plans_periods')->references('id')->on('periods');
-            $table->integer('courses_id')->unsigned();
-            $table->foreign('courses_id', 'fk_plans_courses')->references('id')->on('courses');
-            $table->integer('conceptual_sections_id')->unsigned();
-            $table->foreign('conceptual_sections_id', 'fk_plans_conc_sect')->references('id')->on('conceptual_sections');
+            $table->integer('period_id')->unsigned();
+            $table->foreign('period_id', 'fk_plans_periods')->references('id')->on('periods');
+            $table->integer('course_id')->unsigned();
+            $table->foreign('course_id', 'fk_plans_courses')->references('id')->on('courses');
+            $table->integer('conceptual_section_id')->unsigned();
+            $table->foreign('conceptual_section_id', 'fk_plans_conc_sect')->references('id')->on('conceptual_sections');
 
-            $table->index('periods_id', 'fk_plans_periods_idx');
-            $table->index('courses_id', 'fk_plans_courses_idx');
-            $table->index('conceptual_sections_id', 'fk_plans_conc_sect_idx');
+            $table->index('period_id', 'fk_plans_periods_idx');
+            $table->index('course_id', 'fk_plans_courses_idx');
+            $table->index('conceptual_section_id', 'fk_plans_conc_sect_idx');
 
         });
     }

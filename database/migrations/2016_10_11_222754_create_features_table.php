@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNotificationsTable extends Migration
+class CreateFeaturesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,19 @@ class CreateNotificationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('notifications', function (Blueprint $table) {
+        Schema::create('features', function (Blueprint $table) {
 
             $table->increments('id');
-            $table->text('notification');
-            $table->text('url')->nullable();
+            $table->string('feature');
             $table->string('icon')->nullable();
+            $table->text('url');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->integer('feature_id')->unsigned()->nullable();
+            $table->foreign('feature_id', 'fk_features_features')->references('id')->on('features');
+
+            $table->index('feature_id', 'fk_features_features_idx');
 
         });
     }
@@ -31,6 +36,6 @@ class CreateNotificationsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('notifications');
+        Schema::drop('features');
     }
 }

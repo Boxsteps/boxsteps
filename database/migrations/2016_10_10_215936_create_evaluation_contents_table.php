@@ -18,13 +18,13 @@ class CreateEvaluationContentsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->integer('evaluations_id')->unsigned();
-            $table->foreign('evaluations_id', 'fk_eval_cont_evaluations')->references('id')->on('evaluations');
-            $table->integer('conceptual_sections_id')->unsigned();
-            $table->foreign('conceptual_sections_id', 'fk_eval_cont_conc_sect')->references('id')->on('conceptual_sections');
+            $table->integer('evaluation_id')->unsigned();
+            $table->foreign('evaluation_id', 'fk_eval_cont_evaluations')->references('id')->on('evaluations');
+            $table->integer('conceptual_section_id')->unsigned();
+            $table->foreign('conceptual_section_id', 'fk_eval_cont_conc_sect')->references('id')->on('conceptual_sections');
 
-            $table->index('evaluations_id', 'fk_eval_cont_evaluations_idx');
-            $table->index('conceptual_sections_id', 'fk_eval_cont_conc_sect_idx');
+            $table->index('evaluation_id', 'fk_eval_cont_evaluations_idx');
+            $table->index('conceptual_section_id', 'fk_eval_cont_conc_sect_idx');
 
         });
     }

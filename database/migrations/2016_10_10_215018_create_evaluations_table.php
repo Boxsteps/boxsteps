@@ -22,13 +22,13 @@ class CreateEvaluationsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->integer('courses_id')->unsigned();
-            $table->foreign('courses_id', 'fk_evaluations_courses')->references('id')->on('courses');
-            $table->integer('evaluation_types_id')->unsigned();
-            $table->foreign('evaluation_types_id', 'fk_evaluations_eval_type')->references('id')->on('evaluation_types');
+            $table->integer('course_id')->unsigned();
+            $table->foreign('course_id', 'fk_evaluations_courses')->references('id')->on('courses');
+            $table->integer('evaluation_type_id')->unsigned();
+            $table->foreign('evaluation_type_id', 'fk_evaluations_eval_type')->references('id')->on('evaluation_types');
 
-            $table->index('courses_id', 'fk_evaluations_courses_idx');
-            $table->index('evaluation_types_id', 'fk_evaluations_eval_type_idx');
+            $table->index('course_id', 'fk_evaluations_courses_idx');
+            $table->index('evaluation_type_id', 'fk_evaluations_eval_type_idx');
 
         });
     }

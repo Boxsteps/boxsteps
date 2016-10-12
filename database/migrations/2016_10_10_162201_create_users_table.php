@@ -25,13 +25,13 @@ class CreateUsersTable extends Migration
 
             $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id', 'fk_users_users')->references('id')->on('users');
-            $table->integer('roles_id')->unsigned();
-            $table->foreign('roles_id', 'fk_users_roles')->references('id')->on('roles');
+            $table->integer('role_id')->unsigned();
+            $table->foreign('role_id', 'fk_users_roles')->references('id')->on('roles');
 
             $table->unique('email', 'uq_email');
 
             $table->index('user_id', 'fk_users_users_idx');
-            $table->index('roles_id', 'fk_users_roles_idx');
+            $table->index('role_id', 'fk_users_roles_idx');
 
         });
     }
