@@ -15,6 +15,7 @@
 
 use App\User as User;
 use App\Role as Role;
+use App\Feature as Feature;
 
 Route::get('/usuario/{id}', function ($id) {
 
@@ -27,16 +28,25 @@ Route::get('/usuario/{id}', function ($id) {
 
 });
 
-Route::get('/usuarios', function () {
+Route::get('/funcionalidad/{id}', function ($id) {
 
+    $feature = App\Feature::find($id);
 
+    foreach ($feature->roles as $role) {
+        echo $role->role . '<br />';
+    }
 
 });
 
 Route::get('/rol/{id}', function ($id) {
 
     $role = Role::find($id);
-    echo 'Nombre: ' . $role->role . '<br />';
+
+    echo 'Nombre: ' . $role->role . '<br /><br />';
+
+    foreach ($role->features as $feature) {
+        echo $feature->feature . '<br />';
+    }
 
 });
 

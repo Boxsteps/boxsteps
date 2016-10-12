@@ -11,11 +11,13 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        $roles = array(
-            ['id' => 1, 'role' => 'Administrador'],
-            ['id' => 2, 'role' => 'Coordinador'],
-            ['id' => 3, 'role' => 'Docente']
+        $dt = new DateTime;
+        
+        $inserts = array(
+            ['role' => 'Administrador', 'created_at' => $dt->format('d-m-y H:i:s')],
+            ['role' => 'Coordinador', 'created_at' => $dt->format('d-m-y H:i:s')],
+            ['role' => 'Docente', 'created_at' => $dt->format('d-m-y H:i:s')]
         );
-        DB::table('roles')->insert( $roles );
+        DB::table('roles')->insert( $inserts );
     }
 }
