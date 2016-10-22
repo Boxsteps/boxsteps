@@ -11,59 +11,6 @@
 |
 */
 
-// Relation routes testing
-
-use App\User as User;
-use App\Role as Role;
-use App\Feature as Feature;
-
-Route::get('/usuario/{id}', function ($id) {
-
-    $user = User::find($id);
-    echo 'Nombre: ' . $user->name . '<br />';
-    echo 'Apellido: ' . $user->second_name . '<br />';
-    echo 'Email: ' . $user->email . '<br />';
-
-    echo 'Rol: ' . $user->role->role . '<br />';
-
-});
-
-Route::get('/funcionalidad/{id}', function ($id) {
-
-    $feature = App\Feature::find($id);
-
-    foreach ($feature->roles as $role) {
-        echo $role->role . '<br />';
-    }
-
-});
-
-Route::get('/rol/{id}', function ($id) {
-
-    $role = Role::find($id);
-
-    echo 'Nombre: ' . $role->role . '<br /><br />';
-
-    foreach ($role->features as $feature) {
-        echo $feature->feature . '<br />';
-    }
-
-});
-
-// Basic routes for Xenon theme
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
-
-Route::get('/planificacion', function () {
-    return view('planificacion');
-});
-
 Route::group(['middleware' => 'web'], function () {
 
     // Authentication routes
@@ -82,5 +29,24 @@ Route::group(['middleware' => 'web'], function () {
 
     // Dashboard route
     Route::get('/home', 'HomeController@index');
+
+    // Relation routes testing
+    Route::get('/usuario/{id}', 'UserController@show');
+    Route::get('/funcionalidad/{id}', 'FeatureController@show');
+    Route::get('/rol/{id}', 'RoleController@show');
+
+    // Basic routes for Xenon theme
+
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    });
+
+    Route::get('/planificacion', function () {
+        return view('planificacion');
+    });
 
 });

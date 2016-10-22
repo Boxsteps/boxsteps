@@ -15,4 +15,11 @@ class Permission extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'permissions';
 }

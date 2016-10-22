@@ -12,7 +12,7 @@ class Role extends Model
     /**
      * The Users that has a Role.
      */
-    public function user()
+    public function users()
     {
         return $this->hasMany('App\User', 'role_id', 'id');
     }
@@ -31,4 +31,11 @@ class Role extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'roles';
 }

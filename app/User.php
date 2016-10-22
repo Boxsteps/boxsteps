@@ -43,4 +43,10 @@ class User extends Authenticatable
      */
     protected $dates = ['deleted_at'];
 
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
 }

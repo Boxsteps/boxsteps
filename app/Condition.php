@@ -5,17 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Feature extends Model
+class Condition extends Model
 {
     use SoftDeletes;
-
-    /**
-     * The Roles that belong to the Feature.
-     */
-    public function roles()
-    {
-        return $this->belongsToMany('App\Role', 'permissions', 'feature_id', 'role_id');
-    }
 
     /**
      * The attributes that should be mutated to dates.
@@ -29,5 +21,5 @@ class Feature extends Model
      *
      * @var string
      */
-    protected $table = 'features';
+    protected $table = 'conditions';
 }
