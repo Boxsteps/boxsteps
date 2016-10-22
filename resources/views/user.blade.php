@@ -12,6 +12,12 @@
                     <p>Apellido: {{ $user->second_name }}</p>
                     <p>Correo electrónico: {{ $user->email }}</p>
                     <p>Rol: {{ $user->role->role }}</p>
+                    <p>Funcionalidades:</p>
+                    <ul>
+                        @foreach ($user->role->features as $feature)
+                            <li>{{ $feature->feature }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>

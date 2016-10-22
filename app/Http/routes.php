@@ -28,25 +28,12 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/password/reset', 'Auth\PasswordController@reset');
 
     // Dashboard route
-    Route::get('/home', 'HomeController@index');
+    Route::get('/dashboard', 'DashboardController@index');
+    Route::get('/', 'DashboardController@start');
 
     // Relation routes testing
     Route::get('/usuario/{id}', 'UserController@show');
     Route::get('/funcionalidad/{id}', 'FeatureController@show');
     Route::get('/rol/{id}', 'RoleController@show');
-
-    // Basic routes for Xenon theme
-
-    Route::get('/', function () {
-        return view('welcome');
-    });
-
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    });
-
-    Route::get('/planificacion', function () {
-        return view('planificacion');
-    });
 
 });

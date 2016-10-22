@@ -80,15 +80,15 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('roles_id') ? ' has-error' : '' }}">
-                            <label for="roles_id" class="col-md-4 control-label">Role</label>
+                        <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
+                            <label for="role" class="col-md-4 control-label">Role</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="roles_id" class="form-control" name="roles_id" value="{{ old('roles_id') }}">
+                                <input id="email" type="role" class="form-control" name="role" value="{{ old('role') }}">
 
-                                @if ($errors->has('roles_id'))
+                                @if ($errors->has('role'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('roles_id') }}</strong>
+                                        <strong>{{ $errors->first('role') }}</strong>
                                     </span>
                                 @endif
                             </div>

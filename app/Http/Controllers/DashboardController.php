@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -14,7 +14,17 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('start');
+    }
+
+    /**
+     * Show the application start.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function start()
+    {
+        return view('start');
     }
 
     /**
@@ -24,6 +34,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('dashboard');
     }
 }
