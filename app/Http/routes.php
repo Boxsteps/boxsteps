@@ -11,29 +11,17 @@
 |
 */
 
-Route::group(['middleware' => 'web'], function () {
+// Middleware web group
+Route::group(['middleware' => 'web'], function () {});
 
-    // Authentication routes
-    Route::get('/login', 'Auth\AuthController@showLoginForm');
-    Route::post('/login', 'Auth\AuthController@login');
-    Route::get('/logout', 'Auth\AuthController@logout');
+// Authentication routes
+Route::auth();
 
-    // Registration routes
-    Route::get('/register', 'Auth\AuthController@showRegistrationForm');
-    Route::post('/register', 'Auth\AuthController@register');
+// Dashboard routes
+Route::get('/dashboard', 'DashboardController@index');
+Route::get('/', 'DashboardController@start');
 
-    // Password reset routes
-    Route::get('/password/reset/{token?}', 'Auth\PasswordController@showResetForm');
-    Route::post('/password/email', 'Auth\PasswordController@sendResetLinkEmail');
-    Route::post('/password/reset', 'Auth\PasswordController@reset');
-
-    // Dashboard route
-    Route::get('/dashboard', 'DashboardController@index');
-    Route::get('/', 'DashboardController@start');
-
-    // Relation routes testing
-    Route::get('/usuario/{id}', 'UserController@show');
-    Route::get('/funcionalidad/{id}', 'FeatureController@show');
-    Route::get('/rol/{id}', 'RoleController@show');
-
-});
+// Relation routes testing
+Route::get('/user/{id}', 'UserController@show');
+Route::get('/feature/{id}', 'FeatureController@show');
+Route::get('/role/{id}', 'RoleController@show');
