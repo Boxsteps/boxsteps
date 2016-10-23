@@ -36,4 +36,14 @@ class DashboardController extends Controller
     {
         return view('dashboard');
     }
+
+    /**
+     * Show the application blank page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function blank()
+    {
+        return view('blank');
+    }
 }

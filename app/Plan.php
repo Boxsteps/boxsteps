@@ -10,6 +10,16 @@ class Plan extends Model
     use SoftDeletes;
 
     /**
+     * The User that belong to the Plan.
+     */
+    public function user()
+    {
+        return $this->belongsToMany('App\User', 'conditions', 'plan_id', 'user_id')
+            ->withPivot('state_id')
+            ->withTimestamps();
+    }
+
+    /**
      * The attributes that should be mutated to dates.
      *
      * @var array

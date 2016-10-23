@@ -37,6 +37,44 @@ class User extends Authenticatable
     }
 
     /**
+     * The User that has a Messages sent.
+     */
+    public function messages_sent()
+    {
+        return $this->hasOne('App\Message', 'user_id', 'id');
+    }
+
+    /**
+     * Messages received relationship for Users
+     */
+    public function messages_received()
+    {
+        return $this->belongsToMany('App\Message', 'conditions', 'user_id', 'message_id')
+            ->withPivot('state_id')
+            ->withTimestamps();
+    }
+
+    /**
+     * Plans relationship for Users
+     */
+    public function plans()
+    {
+        return $this->belongsToMany('App\Plan', 'conditions', 'user_id', 'plan_id')
+            ->withPivot('state_id')
+            ->withTimestamps();
+    }
+
+    /**
+     * Notifications relationship for Users
+     */
+    public function notifications()
+    {
+        return $this->belongsToMany('App\Notification', 'conditions', 'user_id', 'notification_id')
+            ->withPivot('state_id')
+            ->withTimestamps();
+    }
+
+    /**
      * The attributes that should be mutated to dates.
      *
      * @var array

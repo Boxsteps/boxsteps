@@ -10,6 +10,16 @@ class Evaluation extends Model
     use SoftDeletes;
 
     /**
+     * The Students that belong to the Evaluation.
+     */
+    public function evaluations()
+    {
+        return $this->belongsToMany('App\Student', 'qualifications', 'evaluation_id', 'student_id')
+            ->withPivot('qualification')
+            ->withTimestamps();
+    }
+
+    /**
      * The attributes that should be mutated to dates.
      *
      * @var array

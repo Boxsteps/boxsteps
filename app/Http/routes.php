@@ -17,6 +17,9 @@ Route::group(['middleware' => 'web'], function () {});
 // Authentication routes
 Route::auth();
 
+// Blank route
+Route::get('/blank', 'DashboardController@blank');
+
 // Dashboard routes
 Route::get('/dashboard', 'DashboardController@index');
 Route::get('/', 'DashboardController@start');

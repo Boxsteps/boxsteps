@@ -10,6 +10,16 @@ class Notification extends Model
     use SoftDeletes;
 
     /**
+     * The User that belong to the Notifications.
+     */
+    public function user()
+    {
+        return $this->belongsToMany('App\User', 'conditions', 'notification_id', 'user_id')
+            ->withPivot('state_id')
+            ->withTimestamps();
+    }
+
+    /**
      * The attributes that should be mutated to dates.
      *
      * @var array

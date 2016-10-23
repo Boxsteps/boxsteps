@@ -8,6 +8,8 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'welcome' => 'Bienvenido a la aplicación'
+    'welcome' => 'Bienvenido a la aplicación',
+    'blank-title' => 'Página en blanco',
+    'blank-content' => 'Aquí comienza todo'
 
 ];
