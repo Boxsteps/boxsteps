@@ -1,20 +1,24 @@
 <ul class="navbar-nav">
-    <li>
-        <a href="#">
-            <i class="linecons-pencil"></i>
-            <span class="title">Planificación</span>
-        </a>
-    </li>
-    <li>
-        <a href="#">
-            <i class="fa fa-check-square-o"></i>
-            <span class="title">Evaluación</span>
-        </a>
-    </li>
-    <li>
-        <a href="#">
-            <i class="fa-bar-chart-o"></i>
-            <span class="title">Estadísticas</span>
-        </a>
-    </li>
+    @foreach ($features as $feature)
+        @if ( $feature->feature_id == null )
+            <li>
+                <a href="{{ $feature->url }}">
+                    <i class="{{ $feature->icon }}"></i>
+                    <span class="title">{{ $feature->feature }}</span>
+                </a>
+                @if ( $feature->childs->first() )
+                    <ul>
+                        @foreach ($feature->childs as $child)
+                            <li>
+                                <a href="{{ $child->url }}">
+                                    <i class="{{ $child->icon }}"></i>
+                                    <span class="title">{{ $child->feature }}</span>
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif
+            </li>
+        @endif
+    @endforeach
 </ul>

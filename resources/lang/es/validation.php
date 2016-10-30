@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Validation Language Lines
+    | Validation language lines
     |--------------------------------------------------------------------------
     |
     | The following language lines contain the default error messages used by
@@ -82,7 +82,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Custom Validation Language Lines
+    | Custom validation language lines
     |--------------------------------------------------------------------------
     |
     | Here you may specify custom validation messages for attributes using the
@@ -90,6 +90,9 @@ return [
     | specify a specific custom language line for a given attribute rule.
     |
     */
+
+    'email-async' => 'El campo correo electrónico es requerido.',
+    'password-async' => 'El campo contraseña es requerido.',
 
     'custom' => [
         'attribute-name' => [
@@ -99,7 +102,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Custom Validation Attributes
+    | Custom validation attributes
     |--------------------------------------------------------------------------
     |
     | The following language lines are used to swap attribute place-holders

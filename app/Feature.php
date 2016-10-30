@@ -18,6 +18,14 @@ class Feature extends Model
     }
 
     /**
+     * The child Features that has to the Feature.
+     */
+    public function childs()
+    {
+        return $this->hasMany('App\Feature', 'feature_id', 'id');
+    }
+
+    /**
      * The attributes that should be mutated to dates.
      *
      * @var array

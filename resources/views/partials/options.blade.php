@@ -28,7 +28,7 @@
             </a>
         </li>
         <li class="last">
-            <a href="#">
+            <a href="{{ url('/logout') }}">
                 <i class="fa-lock"></i>
                 Salir
             </a>

@@ -18,8 +18,11 @@ class MenuComposer
     {
         $user = Auth::user();
 
+        $features = $user->role->features()->orderBy('feature_id', 'asc')->orderBy('feature', 'asc')->get();
+
         $view->with([
-            'user' => $user
+            'user' => $user,
+            'features' => $features
         ]);
     }
 }

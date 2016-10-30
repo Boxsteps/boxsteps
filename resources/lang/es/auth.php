@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Authentication Language Lines
+    | Authentication language lines
     |--------------------------------------------------------------------------
     |
     | The following language lines are used during authentication for various
@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'Las credenciales no coinciden con nuestros registros.',
+    'failed' => 'Correo electrónico o contraseña inválido.',
     'throttle' => 'Se han realizado muchos intentos de inicio de sesión. Por favor, intenta en :seconds segundo(s).',
 
 ];

@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-    Boxsteps | Blank page
+    @lang('messages.title-blank')
 @endsection
 
 @section('custom-css')

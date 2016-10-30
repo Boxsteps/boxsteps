@@ -9,7 +9,7 @@
         <meta name="author" content="Boxsteps">
         <link rel="shortcut icon" type="image/x-icon" href="assets/images/boxsteps/favicon.ico">
 
-        <title>@yield('title')</title>
+        <title>@lang('messages.boxsteps') @lang('messages.separator') @yield('title')</title>
 
         <!-- Main CSS -->
         <link rel="stylesheet" href="assets/css/fonts.css">
@@ -27,7 +27,9 @@
         @yield('custom-css')
         <!-- Custom CSS -->
 
+        <!-- jQuery -->
         <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <!-- jQuery -->
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>

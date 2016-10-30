@@ -14,10 +14,10 @@ class FeaturesTableSeeder extends Seeder
         $dt = new DateTime;
 
         $inserts = array(
-            ['feature' => 'Planificación', 'url' => '#', 'created_at' => $dt->format('d-m-y H:i:s')],
-            ['feature' => 'Calificaciones', 'url' => '#', 'created_at' => $dt->format('d-m-y H:i:s')],
-            ['feature' => 'Estadísticas', 'url' => '#', 'created_at' => $dt->format('d-m-y H:i:s')],
-            ['feature' => 'Usuario', 'url' => '#', 'created_at' => $dt->format('d-m-y H:i:s')]
+            ['feature' => 'Planificación', 'url' => '#', 'icon' => 'linecons-pencil', 'created_at' => $dt->format('d-m-y H:i:s')],
+            ['feature' => 'Calificaciones', 'url' => '#', 'icon' => 'fa-check-square-o', 'created_at' => $dt->format('d-m-y H:i:s')],
+            ['feature' => 'Estadísticas', 'url' => '#', 'icon' => 'fa-bar-chart-o', 'created_at' => $dt->format('d-m-y H:i:s')],
+            ['feature' => 'Usuario', 'url' => '#', 'icon' => 'fa-user', 'created_at' => $dt->format('d-m-y H:i:s')]
         );
         DB::table('features')->insert( $inserts );
 

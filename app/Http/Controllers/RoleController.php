@@ -61,7 +61,9 @@ class RoleController extends Controller
     {
         $role = Role::find($id);
 
-        $data = array('role' => $role);
+        $features = $role->features()->orderBy('feature_id', 'asc')->orderBy('feature', 'asc')->get();
+
+        $data = array('role' => $role, 'features' => $features);
 
         return view('role', $data);
     }

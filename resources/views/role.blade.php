@@ -10,8 +10,18 @@
                 <div class="panel-body">
                     <p>Funcionalidades:</p>
                     <ul>
-                        @foreach ($role->features as $feature)
-                            <li>{{ $feature->feature }}</li>
+                        @foreach ($features as $feature)
+                            @if ( $feature->feature_id == null )
+                                <li>{{ $feature->feature }}
+                                @if ( $feature->childs->first() )
+                                    <ul>
+                                        @foreach ($feature->childs as $child)
+                                            <li>{{ $child->feature }}</li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                                </li>
+                            @endif
                         @endforeach
                     </ul>
                     <p>Usuarios:</p>
