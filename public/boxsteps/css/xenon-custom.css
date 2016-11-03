@@ -1,0 +1,49 @@
+/**
+ *
+ * Custom CSS rules for Boxsteps
+ *
+*/
+
+body {
+}
+
+a {
+}
+
+@media screen and (max-width:768px) {
+    .navbar.horizontal-menu .navbar-inner > .nav.navbar-mobile {
+        height: 40px;
+        padding-top: 10px;
+    }
+}
+
+@media screen and (max-width:991px) {
+    .shortcuts {
+        margin-top: 2em;
+    }
+}
+
+.fc-day.fc-widget-content.fc-sat, .fc-day.fc-widget-content.fc-sun {
+    background: repeating-linear-gradient(
+        45deg,
+        #fafafa,
+        #fafafa 20px,
+        #f4f4f4 20px,
+        #f4f4f4 40px
+    );
+}
+
+.fc-day.fc-widget-content.fc-today {
+    background: none;
+}
+
+.login-page {
+    background-image: url('../images/brand/background-login.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.login-page .login-form .form-group label.error {
+    color: #cc3f44;
+    position: relative;
+}

@@ -91,9 +91,6 @@ return [
     |
     */
 
-    'email-async' => 'El campo correo electrónico es requerido.',
-    'password-async' => 'El campo contraseña es requerido.',
-
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',

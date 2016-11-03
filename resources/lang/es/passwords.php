@@ -13,6 +13,10 @@ return [
     |
     */
 
+    'title' => 'Reinicio de contraseña',
+    'welcome' => '&nbsp;Si ha olvidado su contraseña, puede reiniciarla desde aquí',
+    'send' => 'Reiniciar contraseña',
+
     'password' => 'La contraseña debe de poseer al menos seis caracteres y coincidir.',
     'reset' => '¡Tu contraseña ha sido reiniciada!',
     'sent' => '¡Te hemos enviado un correo electrónico con el enlace requerido para reiniciar la contraseña!',

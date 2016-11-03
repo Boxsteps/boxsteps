@@ -1,173 +1,98 @@
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+@extends('layouts.bit')
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Boxsteps">
-        <meta name="author" content="Boxsteps">
-        <link rel="shortcut icon" type="image/x-icon" href="assets/images/boxsteps/favicon.ico">
+@section('title')
+    @lang('login.title')
+@endsection
 
-        <title>@lang('messages.boxsteps') @lang('messages.separator') @lang('messages.title-login')</title>
+@section('custom-css')
+@endsection
 
-        <!-- Main CSS -->
-        <link rel="stylesheet" href="assets/css/fonts.css">
-        <link rel="stylesheet" href="assets/css/fonts/linecons/css/linecons.css">
-        <link rel="stylesheet" href="assets/css/fonts/fontawesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="assets/css/bootstrap.css">
-        <link rel="stylesheet" href="assets/css/xenon-core.css">
-        <link rel="stylesheet" href="assets/css/xenon-forms.css">
-        <link rel="stylesheet" href="assets/css/xenon-components.css">
-        <link rel="stylesheet" href="assets/css/xenon-skins.css">
-        <link rel="stylesheet" href="assets/css/custom.css">
-        <!-- Main CSS -->
+@section('custom-js-header')
+@endsection
 
-        <!-- jQuery -->
-        <script src="assets/js/jquery-1.11.1.min.js"></script>
-        <!-- jQuery -->
+@section('content')
 
-        <!-- Xenon & Bootstrap core scripts -->
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/tweenmax.min.js"></script>
-        <script src="assets/js/resizeable.js"></script>
-        <script src="assets/js/joinable.js"></script>
-        <script src="assets/js/xenon-api.js"></script>
-        <script src="assets/js/xenon-toggles.js"></script>
-        <script src="assets/js/jquery-validate/jquery.validate.min.js"></script>
-    	<script src="assets/js/toastr/toastr.min.js"></script>
-        <!-- Xenon & Bootstrap core scripts -->
+    <script type="text/javascript">
+        jQuery(document).ready(function($)
+        {
+            /* Login form display */
+            setTimeout(function(){ $(".fade-in-effect").addClass('in'); }, 1);
 
-        <!-- Xenon custom scripts -->
-        <script src="assets/js/xenon-custom.js"></script>
-        <!-- Xenon custom scripts -->
+            /* Set form focus */
+            $("form#login .form-group:has(.form-control):first .form-control").focus();
+        });
+    </script>
 
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-        	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+    <!-- Errors container -->
+    <div class="errors-container">
+    </div>
+    <!-- Errors container -->
 
-    </head>
+    <form method="post" role="form" id="login" class="login-form fade-in-effect" action="{{ url('/login') }}">
+        {{ csrf_field() }}
 
-    <body class="page-body login-page">
+        <div class="login-header">
+            <a href="{{ url('/') }}" class="logo">
+                <img src="{{ asset('boxsteps/images/brand/boxsteps-logo-dark.png') }}" width="250" alt="@lang('globals.boxsteps')" /><br>
+                <span>@lang('login.title')</span>
+            </a>
 
-    	<div class="login-container">
+            <p>@lang('login.welcome')</p>
+        </div>
 
-    		<div class="row">
+        <div class="form-group">
+            <label class="control-label" for="email">@lang('login.email')</label>
+            <input type="text" class="form-control input-dark {{ $errors->has('email') ? ' error' : '' }}" name="email" id="email" autocomplete="off" value="{{ old('email') }}" />
+            @if ($errors->has('email'))
+                <label id="email-error" class="error" for="email">{{ $errors->first('email') }}</label>
+            @endif
+        </div>
 
-    			<div class="col-sm-6">
+        <div class="form-group">
+            <label class="control-label" for="password">@lang('login.password')</label>
+            <input type="password" class="form-control input-dark {{ $errors->has('password') ? ' error' : '' }}" name="password" id="password" autocomplete="off" />
+            @if ($errors->has('password'))
+                <label id="password-error" class="error" for="password">{{ $errors->first('password') }}</label>
+            @endif
+        </div>
 
-    				<script type="text/javascript">
-    					jQuery(document).ready(function($)
-    					{
-    						/* Login form display */
-    						setTimeout(function(){ $(".fade-in-effect").addClass('in'); }, 1);
+        <div class="form-group">
+            <div class="form-block">
+                <label for="remember" style="cursor: pointer;">
+                    <input type="checkbox" class="cbr form-control" name="remember" id="remember">
+                    @lang('login.remember')
+                </label>
+            </div>
+        </div>
 
-    						/* Validation */
-    						$("form#login").validate({
-    							rules: {
-    								email: {
-    									required: true
-    								},
+        <div class="form-group">
+            <button type="submit" class="btn btn-dark  btn-block text-left">
+                <i class="fa-lock"></i>
+                @lang('login.login')
+            </button>
+        </div>
 
-    								password: {
-    									required: true
-    								}
-    							},
+        <div class="login-footer">
+            <a href="{{ url('/password/reset') }}">@lang('login.forgot')</a>
 
-    							messages: {
-    								email: {
-    									required: '@lang('validation.email-async')'
-    								},
+            <div class="info-links">
+                <a href="#">@lang('login.policy')</a>
+            </div>
 
-    								password: {
-    									required: '@lang('validation.password-async')'
-    								}
-    							}
-    						});
+        </div>
 
-    						/* Set form focus */
-    						$("form#login .form-group:has(.form-control):first .form-control").focus();
-    					});
-    				</script>
+    </form>
 
-    				<!-- Errors container -->
-    				<div class="errors-container">
-    				</div>
-                    <!-- Errors container -->
+    <!-- External login -->
+    <div class="external-login">
+        <a href="" class="gplus">
+            <i class="fa-google-plus"></i>
+            @lang('login.google-plus')
+        </a>
+    </div>
+    <!-- External login -->
 
-    				<form method="post" role="form" id="login" class="login-form fade-in-effect" action="{{ url('/login') }}">
-                        {{ csrf_field() }}
+@endsection
 
-    					<div class="login-header">
-    						<a href="{{ url('/') }}" class="logo">
-    							<img src="assets/images/boxsteps/boxsteps-logo-dark.png" width="250" alt="@lang('messages.boxsteps')" /><br>
-    							<span>@lang('messages.title-login')</span>
-    						</a>
-
-    						<p>@lang('messages.welcome-login')</p>
-    					</div>
-
-    					<div class="form-group">
-    						<label class="control-label" for="email">@lang('messages.email')</label>
-    						<input type="text" class="form-control input-dark {{ $errors->has('email') ? ' error' : '' }}" name="email" id="email" autocomplete="off" value="{{ old('email') }}" />
-                            @if ($errors->has('email'))
-                                <label id="email-error" class="error" for="email">{{ $errors->first('email') }}</label>
-                            @endif
-    					</div>
-
-    					<div class="form-group">
-    						<label class="control-label" for="password">@lang('messages.password')</label>
-    						<input type="password" class="form-control input-dark {{ $errors->has('password') ? ' error' : '' }}" name="password" id="password" autocomplete="off" />
-                            @if ($errors->has('password'))
-                                <label id="password-error" class="error" for="password">{{ $errors->first('password') }}</label>
-                            @endif
-    					</div>
-
-                        <div class="form-group">
-                            <div class="form-block">
-                                <label for="remember">
-                                    <input type="checkbox" class="cbr form-control" name="remember" id="remember">
-                                    @lang('messages.remember')
-                                </label>
-                            </div>
-						</div>
-
-    					<div class="form-group">
-    						<button type="submit" class="btn btn-dark  btn-block text-left">
-    							<i class="fa-lock"></i>
-    							@lang('messages.login')
-    						</button>
-    					</div>
-
-    					<div class="login-footer">
-    						<a href="{{ url('/password/reset') }}">@lang('messages.forgot')</a>
-
-    						<div class="info-links">
-    							<a href="#">@lang('messages.policy')</a>
-    						</div>
-
-    					</div>
-
-    				</form>
-
-    				<!-- External login -->
-    				<div class="external-login">
-    					<a href="#" class="gplus">
-    						<i class="fa-google-plus"></i>
-    						@lang('messages.google-plus')
-    					</a>
-    				</div>
-                    <!-- External login -->
-
-    			</div>
-
-    		</div>
-
-    	</div>
-
-
-
-    </body>
-</html>
+@section('custom-js-footer')
+@endsection

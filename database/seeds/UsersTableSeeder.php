@@ -53,6 +53,16 @@ class UsersTableSeeder extends Seeder
                 'role_id' => 3,
                 'user_id' => 2,
                 'created_at' => $dt->format('d-m-y H:i:s')
+            ],
+            [
+                'name' => 'Marcos',
+                'second_name' => 'Sanlo',
+                'email' => 'mdsanlog@gmail.com',
+                'password' => bcrypt('1234'),
+                'remember_token' => str_random(10),
+                'role_id' => 2,
+                'user_id' => 1,
+                'created_at' => $dt->format('d-m-y H:i:s')
             ]
         );
         DB::table('users')->insert( $inserts );

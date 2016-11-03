@@ -1,26 +1,31 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="@lang('globals.language')">
+
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Boxsteps">
-        <meta name="author" content="Boxsteps">
-        <link rel="shortcut icon" type="image/x-icon" href="assets/images/boxsteps/favicon.ico">
+        <meta name="description" content="@lang('globals.boxsteps')">
+        <meta name="author" content="@lang('globals.boxsteps')">
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('boxsteps/images/brand/favicon.ico') }}">
 
-        <title>@lang('messages.boxsteps') @lang('messages.separator') @yield('title')</title>
+        <title>
+            @lang('globals.boxsteps')
+            @lang('globals.separator')
+            @yield('title')
+        </title>
 
         <!-- Main CSS -->
-        <link rel="stylesheet" href="assets/css/fonts.css">
-        <link rel="stylesheet" href="assets/css/fonts/linecons/css/linecons.css">
-        <link rel="stylesheet" href="assets/css/fonts/fontawesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="assets/css/bootstrap.css">
-        <link rel="stylesheet" href="assets/css/xenon-core.css">
-        <link rel="stylesheet" href="assets/css/xenon-forms.css">
-        <link rel="stylesheet" href="assets/css/xenon-components.css">
-        <link rel="stylesheet" href="assets/css/xenon-skins.css">
-        <link rel="stylesheet" href="assets/css/custom.css">
+        <link rel="stylesheet" href="{{ asset('boxsteps/css/fonts.css') }}">
+        <link rel="stylesheet" href="{{ asset('boxsteps/css/fonts/linecons/css/linecons.css') }}">
+        <link rel="stylesheet" href="{{ asset('boxsteps/css/fonts/fontawesome/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('boxsteps/css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('boxsteps/css/xenon-core.css') }}">
+        <link rel="stylesheet" href="{{ asset('boxsteps/css/xenon-forms.css') }}">
+        <link rel="stylesheet" href="{{ asset('boxsteps/css/xenon-components.css') }}">
+        <link rel="stylesheet" href="{{ asset('boxsteps/css/xenon-skins.css') }}">
+        <link rel="stylesheet" href="{{ asset('boxsteps/css/xenon-custom.css') }}">
         <!-- Main CSS -->
 
         <!-- Custom CSS -->
@@ -28,7 +33,7 @@
         <!-- Custom CSS -->
 
         <!-- jQuery -->
-        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="{{ asset('boxsteps/js/jquery-1.11.1.min.js') }}"></script>
         <!-- jQuery -->
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -52,8 +57,8 @@
     			<!-- Navbar brand -->
     			<div class="navbar-brand">
     				<a href="{{ url('/dashboard') }}" class="logo">
-    					<img src="assets/images/boxsteps/boxsteps-logo.png" width="120" alt="" class="hidden-xs" />
-    					<img src="assets/images/boxsteps/boxsteps-logo-dark.png" width="120" alt="" class="visible-xs" />
+    					<img src="{{ asset('boxsteps/images/brand/boxsteps-logo.png') }}" width="120" alt="@lang('globals.boxsteps')" class="hidden-xs" />
+    					<img src="{{ asset('boxsteps/images/brand/boxsteps-logo-dark.png') }}" width="120" alt="@lang('globals.boxsteps')" class="visible-xs" />
     				</a>
     			</div>
                 <!-- Navbar brand -->
@@ -106,9 +111,9 @@
                 <footer class="main-footer footer-type-1">
     				<div class="footer-inner">
     					<div class="footer-text">
-    						&copy; 2016
-    						<strong><a href="{{ url('/dashboard') }}">Boxsteps</a></strong>
-                            <br>Todos los derechos reservados.
+    						&copy; @lang('globals.year')
+    						<strong><a href="{{ url('/dashboard') }}">@lang('globals.boxsteps')</a></strong>
+                            <br>@lang('globals.rights')
     					</div>
     					<div class="go-up">
     						<a href="#" rel="go-top">
@@ -126,13 +131,13 @@
         <!-- Page container -->
 
         <!-- Xenon & Bootstrap core scripts -->
-    	<script src="assets/js/bootstrap.min.js"></script>
-    	<script src="assets/js/tweenmax.min.js"></script>
-    	<script src="assets/js/resizeable.js"></script>
-    	<script src="assets/js/joinable.js"></script>
-    	<script src="assets/js/xenon-api.js"></script>
-    	<script src="assets/js/xenon-toggles.js"></script>
-        <script src="assets/js/moment.min.js"></script>
+    	<script src="{{ asset('boxsteps/js/bootstrap.min.js') }}"></script>
+    	<script src="{{ asset('boxsteps/js/tweenmax.min.js') }}"></script>
+    	<script src="{{ asset('boxsteps/js/resizeable.js') }}"></script>
+    	<script src="{{ asset('boxsteps/js/joinable.js') }}"></script>
+    	<script src="{{ asset('boxsteps/js/xenon-api.js') }}"></script>
+    	<script src="{{ asset('boxsteps/js/xenon-toggles.js') }}"></script>
+        <script src="{{ asset('boxsteps/js/moment.min.js') }}"></script>
         <!-- Xenon & Bootstrap core scripts -->
 
         <!-- Custom JS -->
@@ -140,7 +145,7 @@
         <!-- Custom JS -->
 
     	<!-- Xenon custom scripts -->
-    	<script src="assets/js/xenon-custom.js"></script>
+    	<script src="{{ asset('boxsteps/js/xenon-custom.js') }}"></script>
         <!-- Xenon custom scripts -->
 
     </body>

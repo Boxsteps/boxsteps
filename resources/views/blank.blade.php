@@ -1,10 +1,13 @@
 @extends('layouts.main')
 
 @section('title')
-    @lang('messages.title-blank')
+    @lang('blank.title')
 @endsection
 
 @section('custom-css')
+@endsection
+
+@section('custom-js-header')
 @endsection
 
 @section('content')
@@ -12,10 +15,10 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">@lang('messages.blank-title')</div>
+                <div class="panel-heading">@lang('blank.title')</div>
 
                 <div class="panel-body">
-                    @lang('messages.blank-content')
+                    @lang('blank.content')
                 </div>
             </div>
         </div>
