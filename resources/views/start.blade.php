@@ -118,7 +118,8 @@
             );
 
             $( "#begin" ).click(function() {
-                window.location.href = '{{ url('/login') }}';
+				var location = '{{ url('/login') }}';
+                window.location.replace(location);
             });
 
         });

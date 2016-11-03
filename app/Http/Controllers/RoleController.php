@@ -59,7 +59,7 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        $role = Role::find($id);
+        $role = Role::findOrFail($id);
 
         $features = $role->features()->orderBy('feature_id', 'asc')->orderBy('feature', 'asc')->get();
 

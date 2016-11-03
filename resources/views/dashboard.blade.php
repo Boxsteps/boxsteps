@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-    @lang('messages.title-blank')
+    @lang('blank.title')
 @endsection
 
 @section('custom-css')

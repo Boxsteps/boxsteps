@@ -59,7 +59,7 @@ class FeatureController extends Controller
      */
     public function show($id)
     {
-        $feature = Feature::find($id);
+        $feature = Feature::findOrFail($id);
 
         $data = array('feature' => $feature);
 
