@@ -68,7 +68,7 @@
 
         <div class="form-group">
             <button type="submit" class="btn btn-dark  btn-block text-left">
-                <i class="fa fa-btn fa-refresh"></i>
+                <i class="fa-refresh"></i>
                 @lang('passwords.send')
             </button>
         </div>

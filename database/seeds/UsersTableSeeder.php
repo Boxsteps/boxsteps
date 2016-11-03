@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -11,8 +12,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $dt = new DateTime;
-
         $inserts = array(
             [
                 'name' => 'Wolfgang',
@@ -22,7 +21,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => str_random(10),
                 'role_id' => 1,
                 'user_id' => null,
-                'created_at' => $dt->format('d-m-y H:i:s')
+                'created_at' => Carbon::now()
             ],
             [
                 'name' => 'Fabrizio',
@@ -32,7 +31,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => str_random(10),
                 'role_id' => 2,
                 'user_id' => 1,
-                'created_at' => $dt->format('d-m-y H:i:s')
+                'created_at' => Carbon::now()
             ],
             [
                 'name' => 'Madeline',
@@ -42,7 +41,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => str_random(10),
                 'role_id' => 3,
                 'user_id' => 2,
-                'created_at' => $dt->format('d-m-y H:i:s')
+                'created_at' => Carbon::now()
             ],
             [
                 'name' => 'Boris',
@@ -52,7 +51,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => str_random(10),
                 'role_id' => 3,
                 'user_id' => 2,
-                'created_at' => $dt->format('d-m-y H:i:s')
+                'created_at' => Carbon::now()
             ],
             [
                 'name' => 'Marcos',
@@ -62,9 +61,9 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => str_random(10),
                 'role_id' => 2,
                 'user_id' => 1,
-                'created_at' => $dt->format('d-m-y H:i:s')
+                'created_at' => Carbon::now()
             ]
         );
-        DB::table('users')->insert( $inserts );
+        DB::table('users')->insert($inserts);
     }
 }

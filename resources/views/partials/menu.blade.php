@@ -2,7 +2,7 @@
     @foreach ($features as $feature)
         @if ( $feature->feature_id == null )
             <li>
-                <a href="{{ $feature->url }}">
+                <a href="{{ url($feature->url) }}">
                     <i class="{{ $feature->icon }}"></i>
                     <span class="title">{{ $feature->feature }}</span>
                 </a>
@@ -10,7 +10,7 @@
                     <ul>
                         @foreach ($feature->childs as $child)
                             <li>
-                                <a href="{{ $child->url }}">
+                                <a href="{{ url($child->url) }}">
                                     <i class="{{ $child->icon }}"></i>
                                     <span class="title">{{ $child->feature }}</span>
                                 </a>

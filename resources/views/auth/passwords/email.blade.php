@@ -55,7 +55,7 @@
 
         <div class="form-group">
             <button type="submit" class="btn btn-dark  btn-block text-left">
-                <i class="fa fa-btn fa-envelope"></i>
+                <i class="fa-envelope"></i>
                 @lang('passwords.send')
             </button>
         </div>

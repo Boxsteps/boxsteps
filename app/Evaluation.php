@@ -24,7 +24,11 @@ class Evaluation extends Model
      *
      * @var array
      */
-    protected $dates = ['deleted_at'];
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
 
     /**
      * The table associated with the model.
