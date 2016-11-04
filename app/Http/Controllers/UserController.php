@@ -27,7 +27,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::all();
+
+        $data = array('users' => $user);
+
+        return view('user.index', $data);
     }
 
     /**
@@ -97,6 +101,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $user->delete();
+
+        return redirect('user');
     }
 }

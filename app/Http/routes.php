@@ -19,23 +19,25 @@ Route::get('/login', 'Auth\AuthController@showLoginForm');
 Route::post('/login', 'Auth\AuthController@login');
 Route::get('/logout', 'Auth\AuthController@logout');
 
-// Registration routes
-Route::get('/user/create', 'Auth\AuthController@showRegistrationForm');
-Route::post('/user/create', 'Auth\AuthController@register');
-
 // Password reset routes
 Route::get('/password/reset/{token?}', 'Auth\PasswordController@showResetForm');
 Route::post('/password/email', 'Auth\PasswordController@sendResetLinkEmail');
 Route::post('/password/reset', 'Auth\PasswordController@reset');
 
-// Blank route
-Route::get('/blank', 'DashboardController@blank');
+// User routes
+Route::get('/user/create', 'Auth\AuthController@showRegistrationForm');
+Route::post('/user/store', 'Auth\AuthController@register');
+
+// User resource routes
+Route::resource('user', 'UserController', ['except' => [
+    'create', 'store'
+]]);
+
+// Relation routes testing
+Route::get('/feature/{id}', 'FeatureController@show');
+Route::get('/role/{id}', 'RoleController@show');
 
 // Dashboard routes
 Route::get('/dashboard', 'DashboardController@index');
+Route::get('/blank', 'DashboardController@blank');
 Route::get('/', 'DashboardController@start');
-
-// Relation routes testing
-Route::get('/user/{id}', 'UserController@show');
-Route::get('/feature/{id}', 'FeatureController@show');
-Route::get('/role/{id}', 'RoleController@show');

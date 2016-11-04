@@ -14,7 +14,7 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer(
-            ['blank', 'dashboard'], 'App\Http\ViewComposers\MenuComposer'
+            ['blank', 'dashboard', 'user.index'], 'App\Http\ViewComposers\MenuComposer'
         );
     }
 

@@ -47,3 +47,8 @@ a {
     color: #cc3f44;
     position: relative;
 }
+
+.action-links form {
+    width: 45px;
+    float: left;
+}
