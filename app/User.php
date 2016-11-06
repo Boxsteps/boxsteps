@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'second_name', 'email', 'password', 'role_id'
+        'name', 'second_name', 'email', 'password', 'role_id', 'user_id'
     ];
 
     /**
@@ -72,6 +72,17 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Notification', 'conditions', 'user_id', 'notification_id')
             ->withPivot('state_id')
             ->withTimestamps();
+    }
+
+    /**
+     * Set the user's reference to another user mutator.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setUserId($value)
+    {
+        $this->attributes['user_id'] = $value ?: null;
     }
 
     /**

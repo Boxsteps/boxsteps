@@ -52,3 +52,7 @@ a {
     width: 45px;
     float: left;
 }
+
+.action-links form button {
+    width: 37px;
+}

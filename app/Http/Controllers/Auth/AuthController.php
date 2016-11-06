@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Role;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -61,7 +62,8 @@ class AuthController extends Controller
             'second_name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-            'role' => 'required|max:255',
+            'role' => 'required',
+            'coordinator' => 'required_if:role,3'
         ]);
     }
 
@@ -79,6 +81,27 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'role_id' => $data['role'],
+            'user_id' => $data['coordinator']
         ]);
+    }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        if (property_exists($this, 'registerView')) {
+            return view($this->registerView);
+        }
+
+        $roles = Role::all();
+
+        $coordinators = Role::findOrFail(Role::getCID())->users;
+
+        $data = array('roles' => $roles, 'coordinators' => $coordinators);
+
+        return view('auth.register', $data);
     }
 }

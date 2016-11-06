@@ -25,11 +25,11 @@ Route::post('/password/email', 'Auth\PasswordController@sendResetLinkEmail');
 Route::post('/password/reset', 'Auth\PasswordController@reset');
 
 // User routes
-Route::get('/user/create', 'Auth\AuthController@showRegistrationForm');
-Route::post('/user/store', 'Auth\AuthController@register');
+Route::get('/users/create', 'Auth\AuthController@showRegistrationForm');
+Route::post('/users/store', 'Auth\AuthController@register');
 
 // User resource routes
-Route::resource('user', 'UserController', ['except' => [
+Route::resource('users', 'UserController', ['except' => [
     'create', 'store'
 ]]);
 

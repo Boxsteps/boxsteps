@@ -1,5 +1,5 @@
 <ul class="navbar-nav">
-    @foreach ($features as $feature)
+    @foreach ($auth_features as $feature)
         @if ( $feature->feature_id == null )
             <li>
                 <a href="{{ url($feature->url) }}">

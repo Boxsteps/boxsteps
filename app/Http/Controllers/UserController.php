@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
-use App\User as User;
+use Validator;
+use App\Role;
+use App\User;
 
 class UserController extends Controller
 {
@@ -31,7 +31,7 @@ class UserController extends Controller
 
         $data = array('users' => $user);
 
-        return view('user.index', $data);
+        return view('users.index', $data);
     }
 
     /**
@@ -67,7 +67,7 @@ class UserController extends Controller
 
         $data = array('user' => $user);
 
-        return view('user', $data);
+        return view('users.show', $data);
     }
 
     /**
@@ -78,7 +78,19 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $roles = Role::all();
+
+        $coordinators = Role::findOrFail(Role::getCID())->users;
+
+        $data = array(
+            'user' => $user,
+            'roles' => $roles,
+            'coordinators' => $coordinators
+        );
+
+        return view('users.edit', $data);
     }
 
     /**
@@ -90,7 +102,25 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = $this->validator($request->except(['email']));
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        $user = User::findOrFail($id);
+
+        $user->name = $request->name;
+        $user->second_name = $request->second_name;
+        $user->password = $request->password;
+        $user->role_id = $request->role;
+        $user->user_id = $request->coordinator;
+
+        $user->update();
+
+        return redirect('users/' . $id . '/edit');
     }
 
     /**
@@ -105,6 +135,24 @@ class UserController extends Controller
 
         $user->delete();
 
-        return redirect('user');
+        return redirect('users');
     }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|max:255',
+            'second_name' => 'required|max:255',
+            'password' => 'required|min:6|confirmed',
+            'role' => 'required',
+            'coordinator' => 'required_if:role,3'
+        ]);
+    }
+
 }

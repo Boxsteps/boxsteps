@@ -3,7 +3,7 @@
     <a href="#" data-toggle="dropdown">
         <img src="{{ asset('boxsteps/images/placeholder/user.png') }}" alt="user-image" class="img-circle img-inline userpic-32" width="28" />
         <span>
-            {{ $user->name }} {{ $user->second_name }}
+            {{ $auth_user->name }} {{ $auth_user->second_name }}
             <i class="fa-angle-down"></i>
         </span>
     </a>

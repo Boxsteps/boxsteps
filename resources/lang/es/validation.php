@@ -31,7 +31,7 @@ return [
     'confirmed'            => 'El campo de confirmación :attribute no coincide.',
     'date'                 => 'El campo :attribute no posee una fecha válida.',
     'date_format'          => 'El campo :attribute no coincide con el formato :format.',
-    'different'            => 'El campo :attribute y el campo :other deben de ser diferentes.',
+    'different'            => 'El campo :attribute debe de tener un valor diferente a ":other"',
     'digits'               => 'El campo :attribute debe de ser de :digits dígitos.',
     'digits_between'       => 'El campo :attribute debe de ser de :min y :max dígitos.',
     'distinct'             => 'El campo :attribute posee un valor duplicado.',
@@ -92,8 +92,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'coordinator' => [
+            'required_if' => 'El campo coordinador es requerido cuando el campo rol es "Docente".',
         ],
     ],
 
@@ -113,7 +113,10 @@ return [
         'second_name' => 'apellido',
         'email' => 'correo electrónico',
         'password' => 'contraseña',
-        'role' => 'rol'
+        'role' => 'rol',
+        'password_confirmation' => 'confirmación de contraseña',
+        'coordinator' => 'coordinador',
+        'null' => 'Ninguno'
     ],
 
 ];
