@@ -4,12 +4,6 @@
     @lang('passwords.title')
 @endsection
 
-@section('custom-css')
-@endsection
-
-@section('custom-js-header')
-@endsection
-
 @section('content')
 
     <script type="text/javascript">
@@ -75,7 +69,4 @@
 
     </form>
 
-@endsection
-
-@section('custom-js-footer')
 @endsection

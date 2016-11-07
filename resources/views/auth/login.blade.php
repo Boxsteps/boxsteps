@@ -8,10 +8,6 @@
 @endsection
 
 @section('custom-js-header')
-@endsection
-
-@section('content')
-
     <script type="text/javascript">
         jQuery(document).ready(function($)
         {
@@ -22,6 +18,9 @@
             $("form#login .form-group:has(.form-control):first .form-control").focus();
         });
     </script>
+@endsection
+
+@section('content')
 
     <!-- Errors container -->
     <div class="errors-container">
@@ -92,7 +91,4 @@
     </div>
     <!-- External login -->
 
-@endsection
-
-@section('custom-js-footer')
 @endsection

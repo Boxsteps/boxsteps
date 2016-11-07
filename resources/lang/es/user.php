@@ -29,6 +29,7 @@ return [
     'create.role' => 'Rol',
     'create.coordinator' => 'Coordinador',
     'create.register' => 'Crear nuevo usuario',
+    'create.success' => '¡El usuario fue creado de forma satisfactoria!',
 
     /*
     |--------------------------------------------------------------------------
@@ -45,5 +46,14 @@ return [
     'edit.role' => 'Rol',
     'edit.coordinator' => 'Coordinador',
     'edit.register' => 'Editar usuario',
+    'edit.success' => '¡El usuario fue editado de forma satisfactoria!',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Destroy messages
+    |--------------------------------------------------------------------------
+    */
+
+    'destroy.success' => '¡El usuario fue eliminado de forma satisfactoria!',
 
 ];

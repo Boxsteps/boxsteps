@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Role;
 use Validator;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -81,7 +83,7 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'role_id' => $data['role'],
-            'user_id' => $data['coordinator']
+            'user_id' => (array_key_exists('coordinator', $data) ? $data['coordinator'] : null)
         ]);
     }
 

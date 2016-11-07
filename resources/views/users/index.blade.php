@@ -4,10 +4,16 @@
     @lang('user.index.title')
 @endsection
 
-@section('custom-css')
-@endsection
-
-@section('custom-js-header')
+@section('messages')
+    @if (session('message'))
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="alert alert-success">
+                    {{ session('message') }}<br>{{ session('return') }} <a href="{{ session('url') }}">{{ session('name') }}</a>
+                </div>
+            </div>
+        </div>
+    @endif
 @endsection
 
 @section('content')
@@ -72,7 +78,4 @@
         </div>
     </div>
 
-@endsection
-
-@section('custom-js-footer')
 @endsection

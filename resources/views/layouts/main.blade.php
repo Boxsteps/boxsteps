@@ -103,7 +103,7 @@
             <!-- Main container -->
             <div class="main-content">
 
-                @yield('breadcrumbs')
+                @yield('messages')
 
                 @yield('content')
 

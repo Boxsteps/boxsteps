@@ -4,12 +4,6 @@
     @lang('user.create.title')
 @endsection
 
-@section('custom-css')
-@endsection
-
-@section('custom-js-header')
-@endsection
-
 @section('content')
 
     <div class="row">

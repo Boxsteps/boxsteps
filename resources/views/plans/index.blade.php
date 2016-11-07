@@ -5,29 +5,9 @@
 @endsection
 
 @section('custom-css')
-    <link rel="stylesheet" href="assets/js/wysihtml5/src/bootstrap-wysihtml5.css">
 @endsection
 
 @section('breadcrumbs')
-    <div class="page-title">
-
-        <div class="title-env">
-            <h1 class="title">@lang('breadcrumbs.plan-index-title')</h1>
-            <p class="description">@lang('breadcrumbs.plan-index-description')</p>
-        </div>
-
-        <div class="breadcrumb-env">
-            <ol class="breadcrumb bc-1">
-                <li>
-                    <a href="{{ url('/dashboard') }}"><i class="fa-home"></i>@lang('breadcrumbs.home')</a>
-                </li>
-                <li class="active">
-                    <strong>@lang('breadcrumbs.plan-index-title')</strong>
-                </li>
-            </ol>
-        </div>
-
-    </div>
 @stop
 
 @section('content')

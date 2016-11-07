@@ -120,7 +120,7 @@ class UserController extends Controller
 
         $user->update();
 
-        return redirect('users/' . $id . '/edit');
+        return self::redirection('users/' . $id . '/edit', trans('user.edit.success'), trans('user.index.title'), url('users'));
     }
 
     /**
@@ -135,11 +135,11 @@ class UserController extends Controller
 
         $user->delete();
 
-        return redirect('users');
+        return self::redirection('users', trans('user.destroy.success'), null, null);
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * Get a validator for an incoming store/update request.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator

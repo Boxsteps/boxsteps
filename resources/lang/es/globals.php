@@ -20,4 +20,6 @@ return [
     'year' => '2016',
     'rights' => 'Todos los derechos reservados.',
 
+    'return' => 'Regresar a'
+
 ];

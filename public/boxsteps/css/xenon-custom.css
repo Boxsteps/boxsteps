@@ -56,3 +56,8 @@ a {
 .action-links form button {
     width: 37px;
 }
+
+.alert.alert-success a {
+    color: #fff;
+    text-decoration: underline;
+}
