@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
-use Validator;
 
-class PlanController extends Controller
+use App\Http\Requests;
+
+class GroupController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class PlanController extends Controller
      */
     public function index()
     {
-        return view('plans.index');
+        //
     }
 
     /**
@@ -25,7 +25,7 @@ class PlanController extends Controller
      */
     public function create()
     {
-        return view('plans.create');
+        //
     }
 
     /**
@@ -36,13 +36,7 @@ class PlanController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = $this->validator($request->all());
-
-        if ($validator->fails()) {
-            $this->throwValidationException(
-                $request, $validator
-            );
-        }
+        //
     }
 
     /**
@@ -89,28 +83,4 @@ class PlanController extends Controller
     {
         //
     }
-
-    /**
-     * Get a validator for an incoming store/update request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'knowledge' => 'required',
-            'conceptual' => 'required',
-            'planification_date' => 'required',
-            'begin_time' => 'required',
-            'end_time' => 'required',
-            'procedimental' => 'required',
-            'actitudinal' => 'required',
-            'competences' => 'required',
-            'indicators' => 'required',
-            'teaching_strategy' => 'required',
-            'teaching_sequence' => 'required'
-        ]);
-    }
-
 }

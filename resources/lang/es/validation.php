@@ -116,6 +116,13 @@ return [
         'role' => 'rol',
         'password_confirmation' => 'confirmación de contraseña',
         'coordinator' => 'coordinador',
+
+        'knowledge' => 'área de conocimiento',
+        'conceptual' => 'bloque conceptual',
+        'planification_date' => 'fecha de planificación',
+        'begin_time' => 'hora de inicio',
+        'end_time' => 'hora de fin',
+
         'null' => 'Ninguno'
     ],
 

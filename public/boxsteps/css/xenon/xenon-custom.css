@@ -10,7 +10,7 @@ body {
 a {
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:769px) {
     .navbar.horizontal-menu .navbar-inner > .nav.navbar-mobile {
         height: 40px;
         padding-top: 10px;
@@ -21,6 +21,10 @@ a {
     .shortcuts {
         margin-top: 2em;
     }
+}
+
+.modal.link-dialog.in {
+    z-index: 102;
 }
 
 .fc-day.fc-widget-content.fc-sat, .fc-day.fc-widget-content.fc-sun {
@@ -38,7 +42,7 @@ a {
 }
 
 .login-page {
-    background-image: url('../images/brand/background-login.png');
+    background-image: url('../../images/brand/background-login.png');
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -46,6 +50,22 @@ a {
 .login-page .login-form .form-group label.error {
     color: #cc3f44;
     position: relative;
+}
+
+form .form-group.has-error .input-group-addon {
+    color: #fff;
+}
+
+.form-horizontal .control-label {
+    padding-top: 10px;
+}
+
+.member-form-inputs .control-label {
+    padding-top: 3px;
+}
+
+.form-control {
+    height: 37px;
 }
 
 .action-links form {

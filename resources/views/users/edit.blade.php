@@ -46,7 +46,7 @@
                             <label for="second_name" class="col-md-4 control-label">@lang('user.edit.second.name')</label>
 
                             <div class="col-md-6">
-                                <input id="second_name" type="text" class="form-control" name="second_name" value="{{ $user->second_name }}">
+                                <input id="second-name" type="text" class="form-control" name="second_name" value="{{ $user->second_name }}">
 
                                 @if ($errors->has('second_name'))
                                     <span class="help-block">

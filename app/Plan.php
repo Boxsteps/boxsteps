@@ -7,7 +7,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Plan extends Model
 {
+
     use SoftDeletes;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'procedimental_section', 'actitudinal_section', 'competences', 'indicators',
+        'teaching_strategy', 'teaching_sequence', 'start_date', 'end_date',
+        'period_id', 'course_id', 'conceptual_section_id'
+    ];
 
     /**
      * The User that belong to the Plan.
@@ -27,7 +39,9 @@ class Plan extends Model
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at'
+        'deleted_at',
+        'start_date',
+        'end_date'
     ];
 
     /**

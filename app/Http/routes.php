@@ -11,6 +11,12 @@
 |
 */
 
+/*
+|--------------------------------------------------------------------------
+| Users/Auth routes
+|--------------------------------------------------------------------------
+*/
+
 // Middleware web group
 Route::group(['middleware' => 'web'], function () {});
 
@@ -29,13 +35,17 @@ Route::get('/users/create', 'Auth\AuthController@showRegistrationForm');
 Route::post('/users/store', 'Auth\AuthController@register');
 
 // User resource routes
-Route::resource('users', 'UserController', ['except' => [
-    'create', 'store'
-]]);
+Route::resource('/users', 'UserController', ['except' => ['create', 'store']]);
 
-// Relation routes testing
-Route::get('/feature/{id}', 'FeatureController@show');
-Route::get('/role/{id}', 'RoleController@show');
+/*
+|--------------------------------------------------------------------------
+| Resources routes
+|--------------------------------------------------------------------------
+*/
+
+Route::resource('/features', 'FeatureController');
+Route::resource('/roles', 'RoleController');
+Route::resource('/plans', 'PlanController');
 
 // Dashboard routes
 Route::get('/dashboard', 'DashboardController@index');

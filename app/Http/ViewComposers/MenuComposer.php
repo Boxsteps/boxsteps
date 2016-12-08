@@ -18,6 +18,10 @@ class MenuComposer
     {
         $user = Auth::user();
 
+        if( is_null($user) ) {
+            return abort(404);
+        }
+
         $features = $user->role->features()->orderBy('feature_id', 'asc')->orderBy('feature', 'asc')->get();
 
         $view->with([

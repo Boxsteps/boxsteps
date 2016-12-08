@@ -18,7 +18,7 @@
 
         <!-- Main CSS -->
         <link rel="stylesheet" href="{{ asset('boxsteps/css/fonts.css') }}">
-        <link rel="stylesheet" href="{{ asset('boxsteps/css/xenon-errors.css') }}">
+        <link rel="stylesheet" href="{{ asset('boxsteps/css/xenon/xenon-errors.css') }}">
         <!-- Main CSS -->
     </head>
 

@@ -1,4 +1,5 @@
 <?php
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +20,17 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'password' => bcrypt(str_random(10)),
         'remember_token' => str_random(10),
         'role_id' => 1
+    ];
+});
+
+$factory->define(App\Student::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+        'second_name' => $faker->lastName,
+        'address' => $faker->address,
+        'dni' => $faker->randomNumber(8),
+        'email' => $faker->unique()->freeEmail,
+        'phone' => '0212' . $faker->randomNumber(7),
+        'mobile' => '0416' . $faker->randomNumber(7)
     ];
 });

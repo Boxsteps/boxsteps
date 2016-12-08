@@ -22,13 +22,10 @@ class CreateCoursesTable extends Migration
 
             $table->integer('period_id')->unsigned();
             $table->foreign('period_id', 'fk_courses_periods')->references('id')->on('periods');
-            $table->integer('student_id')->unsigned();
-            $table->foreign('student_id', 'fk_courses_students')->references('id')->on('students');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id', 'fk_courses_users')->references('id')->on('users');
 
             $table->index('period_id', 'fk_courses_periods_idx');
-            $table->index('student_id', 'fk_courses_students_idx');
             $table->index('user_id', 'fk_courses_users_idx');
 
         });
