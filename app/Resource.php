@@ -10,6 +10,14 @@ class Resource extends Model
     use SoftDeletes;
 
     /**
+     * Plans relationship for Resources
+     */
+    public function plans()
+    {
+        return $this->belongsTo('App\Plan', 'plan_id', 'id');
+    }
+
+    /**
      * The attributes that should be mutated to dates.
      *
      * @var array

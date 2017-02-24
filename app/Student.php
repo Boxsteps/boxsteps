@@ -10,12 +10,21 @@ class Student extends Model
     use SoftDeletes;
 
     /**
-     * The Evaluations that belong to the Student.
+     * The Evaluations that belongs to the Student.
      */
     public function evaluations()
     {
         return $this->belongsToMany('App\Evaluation', 'qualifications', 'student_id', 'evaluation_id')
             ->withPivot('qualification')
+            ->withTimestamps();
+    }
+
+    /**
+     * The Courses that belongs to the Student.
+     */
+    public function courses()
+    {
+        return $this->belongsToMany('App\Course', 'groups', 'course_id', 'student_id')
             ->withTimestamps();
     }
 

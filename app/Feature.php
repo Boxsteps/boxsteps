@@ -10,7 +10,7 @@ class Feature extends Model
     use SoftDeletes;
 
     /**
-     * The Roles that belong to the Feature.
+     * The Roles that belongs to the Feature.
      */
     public function roles()
     {

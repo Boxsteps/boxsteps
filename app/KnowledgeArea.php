@@ -10,6 +10,14 @@ class KnowledgeArea extends Model
     use SoftDeletes;
 
     /**
+     * The Conceptual Sections that has a Knowledge Area.
+     */
+    public function conceptual_sections()
+    {
+        return $this->hasMany('App\ConceptualSection', 'knowledge_area_id', 'id');
+    }
+
+    /**
      * The attributes that should be mutated to dates.
      *
      * @var array

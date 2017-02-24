@@ -10,6 +10,14 @@ class EvaluationType extends Model
     use SoftDeletes;
 
     /**
+     * The Evaluation Scales that has a Evaluation Type.
+     */
+    public function evaluation_scales()
+    {
+        return $this->hasMany('App\EvaluationScale', 'evaluation_type_id', 'id');
+    }
+
+    /**
      * The attributes that should be mutated to dates.
      *
      * @var array

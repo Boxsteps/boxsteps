@@ -86,35 +86,35 @@
                                 </div>
                             </div>
 
-                            <div class="form-group {{ $errors->has('begin_time') ? ' has-error' : '' }}">
+                            <div class="form-group {{ $errors->has('time_start') ? ' has-error' : '' }}">
                                 <label class="col-sm-4 control-label">@lang('plan.create.begin-time')</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
-                                        <input name="begin_time" id="begin-time" type="text" class="form-control timepicker" data-template="dropdown" data-default-time="" data-show-meridian="true" data-minute-step="5">
+                                        <input name="time_start" id="begin-time" type="text" class="form-control timepicker" data-template="dropdown" data-default-time="7:00 AM" data-show-meridian="true" data-minute-step="5">
                                         <div class="input-group-addon">
                                             <i class="linecons-clock"></i>
                                         </div>
                                     </div>
-                                    @if ($errors->has('begin_time'))
+                                    @if ($errors->has('time_start'))
                                         <span class="help-block">
-                                            <strong>{{ $errors->first('begin_time') }}</strong>
+                                            <strong>{{ $errors->first('time_start') }}</strong>
                                         </span>
                                     @endif
                                 </div>
                             </div>
 
-                            <div class="form-group {{ $errors->has('end_time') ? ' has-error' : '' }}">
+                            <div class="form-group {{ $errors->has('time_end') ? ' has-error' : '' }}">
                                 <label class="col-sm-4 control-label">@lang('plan.create.end-time')</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
-                                        <input name="end_time" id="end-time" type="text" class="form-control timepicker" data-template="dropdown" data-default-time="" data-show-meridian="true" data-minute-step="5">
+                                        <input name="time_end" id="end-time" type="text" class="form-control timepicker" data-template="dropdown" data-default-time="8:45 AM" data-show-meridian="true" data-minute-step="5">
                                         <div class="input-group-addon">
                                             <i class="linecons-clock"></i>
                                         </div>
                                     </div>
-                                    @if ($errors->has('end_time'))
+                                    @if ($errors->has('time_end'))
                                         <span class="help-block">
-                                            <strong>{{ $errors->first('end_time') }}</strong>
+                                            <strong>{{ $errors->first('time_end') }}</strong>
                                         </span>
                                     @endif
                                 </div>
@@ -127,13 +127,13 @@
     				    <h3 class="panel-title">@lang('plan.create.procedimental')</h3>
     				</div>
 
-                    <div class="panel-body {{ $errors->has('procedimental') ? ' has-error' : '' }}">
+                    <div class="panel-body">
+                        <textarea class="editor" name="procedimental" id="procedimental"></textarea>
                         @if ($errors->has('procedimental'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('procedimental') }}</strong>
+                            <span class="help-block error">
+                                <strong>{{ $errors->first('procedimental') }}</strong><br><br>
                             </span>
                         @endif
-                        <textarea class="editor" name="procedimental" id="procedimental"></textarea>
                     </div>
 
                     <div class="panel-heading">
@@ -142,6 +142,11 @@
 
                     <div class="panel-body">
                         <textarea class="editor" name="actitudinal" id="actitudinal"></textarea>
+                        @if ($errors->has('actitudinal'))
+                            <span class="help-block error">
+                                <strong>{{ $errors->first('actitudinal') }}</strong><br><br>
+                            </span>
+                        @endif
                     </div>
 
                     <div class="panel-heading">
@@ -150,6 +155,11 @@
 
                     <div class="panel-body">
                         <textarea class="editor" name="competences" id="competences"></textarea>
+                        @if ($errors->has('competences'))
+                            <span class="help-block error">
+                                <strong>{{ $errors->first('competences') }}</strong><br><br>
+                            </span>
+                        @endif
                     </div>
 
                     <div class="panel-heading">
@@ -158,6 +168,11 @@
 
                     <div class="panel-body">
                         <textarea class="editor" name="indicators" id="indicators"></textarea>
+                        @if ($errors->has('indicators'))
+                            <span class="help-block error">
+                                <strong>{{ $errors->first('indicators') }}</strong><br><br>
+                            </span>
+                        @endif
                     </div>
 
                     <div class="panel-heading">
@@ -166,6 +181,11 @@
 
                     <div class="panel-body">
                         <textarea class="editor" name="teaching_strategy" id="teaching-strategy"></textarea>
+                        @if ($errors->has('teaching_strategy'))
+                            <span class="help-block error">
+                                <strong>{{ $errors->first('teaching_strategy') }}</strong><br><br>
+                            </span>
+                        @endif
                     </div>
 
                     <div class="panel-heading">
@@ -174,6 +194,11 @@
 
                     <div class="panel-body">
                         <textarea class="editor" name="teaching_sequence" id="teaching-sequence"></textarea>
+                        @if ($errors->has('teaching_sequence'))
+                            <span class="help-block error">
+                                <strong>{{ $errors->first('teaching_sequence') }}</strong><br><br>
+                            </span>
+                        @endif
                     </div>
 
                     <div class="panel-body">

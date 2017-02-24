@@ -10,13 +10,38 @@ class Evaluation extends Model
     use SoftDeletes;
 
     /**
-     * The Students that belong to the Evaluation.
+     * The Students that belongs to the Evaluation.
      */
-    public function evaluations()
+    public function students()
     {
         return $this->belongsToMany('App\Student', 'qualifications', 'evaluation_id', 'student_id')
             ->withPivot('qualification')
             ->withTimestamps();
+    }
+
+    /**
+     * The Conceptual Sections that belongs to the Evaluation.
+     */
+    public function conceptual_sections()
+    {
+        return $this->belongsToMany('App\ConceptualSection', 'evaluation_contents', 'conceptual_section_id', 'evaluation_id')
+            ->withTimestamps();
+    }
+
+    /**
+     * Course relationship for Evaluations
+     */
+    public function course()
+    {
+        return $this->belongsTo('App\Course', 'course_id', 'id');
+    }
+
+    /**
+     * Evaluation Type relationship for Evaluations
+     */
+    public function evaluation_type()
+    {
+        return $this->belongsTo('App\EvaluationType', 'evaluation_type_id', 'id');
     }
 
     /**

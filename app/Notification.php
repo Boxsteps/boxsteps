@@ -10,13 +10,21 @@ class Notification extends Model
     use SoftDeletes;
 
     /**
-     * The User that belong to the Notifications.
+     * The User that belongs to the Notification.
      */
     public function user()
     {
         return $this->belongsToMany('App\User', 'conditions', 'notification_id', 'user_id')
             ->withPivot('state_id')
             ->withTimestamps();
+    }
+
+    /**
+     * The Condition of the Notification.
+     */
+    public function condition()
+    {
+        return $this->belongsToMany('App\State', 'conditions', 'notification_id', 'state_id');
     }
 
     /**

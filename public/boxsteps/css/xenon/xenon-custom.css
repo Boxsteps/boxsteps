@@ -1,7 +1,5 @@
 /**
- *
  * Custom CSS rules for Boxsteps
- *
 */
 
 body {
@@ -80,4 +78,8 @@ form .form-group.has-error .input-group-addon {
 .alert.alert-success a {
     color: #fff;
     text-decoration: underline;
+}
+
+.help-block.error {
+    color: #cc3f44;
 }

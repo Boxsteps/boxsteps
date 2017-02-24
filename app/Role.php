@@ -18,7 +18,7 @@ class Role extends Model
     }
 
     /**
-     * The Features that belong to the Role.
+     * The Features that belongs to the Role.
      */
     public function features()
     {

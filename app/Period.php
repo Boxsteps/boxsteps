@@ -10,6 +10,22 @@ class Period extends Model
     use SoftDeletes;
 
     /**
+     * The Courses that has a Period.
+     */
+    public function evaluations()
+    {
+        return $this->hasMany('App\Course', 'period_id', 'id');
+    }
+
+    /**
+     * The Plans that has a Period.
+     */
+    public function plans()
+    {
+        return $this->hasMany('App\Plan', 'period_id', 'id');
+    }
+
+    /**
      * The attributes that should be mutated to dates.
      *
      * @var array

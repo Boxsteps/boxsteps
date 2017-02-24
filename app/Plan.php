@@ -22,13 +22,53 @@ class Plan extends Model
     ];
 
     /**
-     * The User that belong to the Plan.
+     * The User that belongs to the Plan.
      */
     public function user()
     {
         return $this->belongsToMany('App\User', 'conditions', 'plan_id', 'user_id')
             ->withPivot('state_id')
             ->withTimestamps();
+    }
+
+    /**
+     * Course relationship for Plans
+     */
+    public function course()
+    {
+        return $this->belongsTo('App\Course', 'course_id', 'id');
+    }
+
+    /**
+     * Period relationship for Plans
+     */
+    public function period()
+    {
+        return $this->belongsTo('App\Period', 'period_id', 'id');
+    }
+
+    /**
+     * Conceptual Section relationship for Plans
+     */
+    public function conceptual_section()
+    {
+        return $this->belongsTo('App\ConceptualSection', 'conceptual_section_id', 'id');
+    }
+
+    /**
+     * The Resources that has a Plan.
+     */
+    public function resources()
+    {
+        return $this->hasMany('App\Resource', 'plan_id', 'id');
+    }
+
+    /**
+     * The Condition of the Plan.
+     */
+    public function condition()
+    {
+        return $this->belongsToMany('App\State', 'conditions', 'plan_id', 'state_id');
     }
 
     /**

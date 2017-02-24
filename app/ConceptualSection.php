@@ -10,6 +10,30 @@ class ConceptualSection extends Model
     use SoftDeletes;
 
     /**
+     * Knowledge Area relationship for Conceptual Sections
+     */
+    public function knowledge_area()
+    {
+        return $this->belongsTo('App\KnowledgeArea', 'knowledge_area_id', 'id');
+    }
+
+    /**
+     * The Plans that has a Conceptual Section.
+     */
+    public function plans()
+    {
+        return $this->hasMany('App\Plan', 'conceptual_section_id', 'id');
+    }
+
+    /**
+     * The Evaluations that belongs to the Conceptual Section.
+     */
+    public function evaluations()
+    {
+        return $this->belongsToMany('App\Evaluation', 'evaluation_contents', 'conceptual_section_id', 'evaluation_id');
+    }
+
+    /**
      * The attributes that should be mutated to dates.
      *
      * @var array

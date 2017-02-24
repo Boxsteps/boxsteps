@@ -120,8 +120,15 @@ return [
         'knowledge' => 'área de conocimiento',
         'conceptual' => 'bloque conceptual',
         'planification_date' => 'fecha de planificación',
-        'begin_time' => 'hora de inicio',
-        'end_time' => 'hora de fin',
+        'time_start' => 'hora de inicio',
+        'time_end' => 'hora de fin',
+
+        'procedimental' => 'bloque procedimental',
+        'actitudinal' => 'bloque actitudinal',
+        'competences' => 'competencias',
+        'indicators' => 'indicadores',
+        'teaching_strategy' => 'estrategia de enseñanza',
+        'teaching_sequence' => 'secuencia didáctica',
 
         'null' => 'Ninguno'
     ],

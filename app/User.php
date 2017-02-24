@@ -37,11 +37,27 @@ class User extends Authenticatable
     }
 
     /**
+     * The professor User that has a coordinator.
+     */
+    public function professors()
+    {
+        return $this->hasMany('App\User', 'user_id', 'id');
+    }
+
+    /**
+     * The User that has a Courses.
+     */
+    public function courses()
+    {
+        return $this->hasMany('App\Course', 'user_id', 'id');
+    }
+
+    /**
      * The User that has a Messages sent.
      */
     public function messages_sent()
     {
-        return $this->hasOne('App\Message', 'user_id', 'id');
+        return $this->hasMany('App\Message', 'user_id', 'id');
     }
 
     /**

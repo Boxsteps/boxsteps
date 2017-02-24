@@ -18,13 +18,21 @@ class Message extends Model
     }
 
     /**
-     * The Recipients (Users) that belong to the Message.
+     * The Recipients (Users) that belongs to the Message.
      */
     public function recipients()
     {
         return $this->belongsToMany('App\User', 'conditions', 'message_id', 'user_id')
             ->withPivot('state_id')
             ->withTimestamps();
+    }
+
+    /**
+     * The Condition of the Message.
+     */
+    public function condition()
+    {
+        return $this->belongsToMany('App\State', 'conditions', 'message_id', 'state_id');
     }
 
     /**
