@@ -4,10 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\KnowledgeArea;
 use Validator;
 
 class PlanController extends Controller
 {
+    /**
+     * Create a new user controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +36,11 @@ class PlanController extends Controller
      */
     public function create()
     {
-        return view('plans.create');
+        $knowledge_areas = KnowledgeArea::all();
+
+        $data = array('knowledge_areas' => $knowledge_areas);
+
+        return view('plans.create', $data);
     }
 
     /**

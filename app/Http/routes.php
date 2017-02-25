@@ -51,3 +51,11 @@ Route::resource('/plans', 'PlanController');
 Route::get('/dashboard', 'DashboardController@index');
 Route::get('/blank', 'DashboardController@blank');
 Route::get('/', 'DashboardController@start');
+
+/*
+|--------------------------------------------------------------------------
+| API routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/api/conceptual-sections-dropdown', 'ConceptualSectionController@index');

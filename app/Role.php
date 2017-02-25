@@ -26,30 +26,6 @@ class Role extends Model
     }
 
     /**
-     * Get Administrator role.
-     */
-    public static function getAID()
-    {
-        return 1;
-    }
-
-    /**
-     * Get Coordinator role.
-     */
-    public static function getCID()
-    {
-        return 2;
-    }
-
-    /**
-     * Get Teacher role.
-     */
-    public static function getTID()
-    {
-        return 3;
-    }
-
-    /**
      * The attributes that should be mutated to dates.
      *
      * @var array

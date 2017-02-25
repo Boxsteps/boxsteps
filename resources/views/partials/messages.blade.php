@@ -7,30 +7,20 @@
     <ul class="dropdown-menu messages">
         <li>
             <ul class="dropdown-menu-list list-unstyled ps-scrollbar">
-                <li class="active">
-                    <a href="#">
-                        <span class="line">
-                            <strong>Luc Chartier</strong>
-                            <span class="light small">- yesterday</span>
-                        </span>
+                @foreach ($auth_user->messages_received as $message)
+                    <li class="{{ $message->condition->first()->id == trans('globals.active') ? 'active' : '' }}">
+                        <a href="#">
+                            <span class="line">
+                                <strong>{{ $message->sender->name }} {{ $message->sender->second_name }}</strong>
+                                <span class="light small">{{ $message->created_at->diffForHumans() }}</span>
+                            </span>
 
-                        <span class="line desc small">
-                            This ain’t our first item, it is the best of the rest.
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="line">
-                            Hayden Cartwright
-                            <span class="light small">- a week ago</span>
-                        </span>
-
-                        <span class="line desc small">
-                            Whose her enjoy chief new young. Felicity if ye required likewise so doubtful.
-                        </span>
-                    </a>
-                </li>
+                            <span class="line desc small">
+                                {{ $message->message }}
+                            </span>
+                        </a>
+                    </li>
+                @endforeach
             </ul>
         </li>
         <li class="external">

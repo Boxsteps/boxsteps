@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
+use App\ConceptualSection;
 
 class ConceptualSectionController extends Controller
 {
@@ -15,7 +17,13 @@ class ConceptualSectionController extends Controller
      */
     public function index()
     {
-        //
+        $knowledge_area_value = Input::get('knowledge_area_value');
+
+        $conceptual_sections = ConceptualSection::where('knowledge_area_id', '=', $knowledge_area_value)
+            ->orderBy('conceptual_section', 'asc')
+            ->get();
+
+        return Response::json($conceptual_sections);
     }
 
     /**

@@ -49,8 +49,8 @@ class UsersTableSeeder extends Seeder
                 'email' => 'bps139@gmail.com',
                 'password' => bcrypt('1234'),
                 'remember_token' => str_random(10),
-                'role_id' => 3,
-                'user_id' => 2,
+                'role_id' => 2,
+                'user_id' => 1,
                 'created_at' => Carbon::now()
             ],
             [
@@ -59,8 +59,18 @@ class UsersTableSeeder extends Seeder
                 'email' => 'mdsanlog@gmail.com',
                 'password' => bcrypt('1234'),
                 'remember_token' => str_random(10),
-                'role_id' => 2,
-                'user_id' => 1,
+                'role_id' => 3,
+                'user_id' => 4,
+                'created_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Claudia',
+                'second_name' => 'Bruno',
+                'email' => 'claudibru@gmail.com',
+                'password' => bcrypt('1234'),
+                'remember_token' => str_random(10),
+                'role_id' => 3,
+                'user_id' => 4,
                 'created_at' => Carbon::now()
             ]
         );

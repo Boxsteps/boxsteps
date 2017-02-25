@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use Validator;
 use App\Role;
 use App\User;
+use Validator;
 
 class UserController extends Controller
 {
@@ -82,7 +82,7 @@ class UserController extends Controller
 
         $roles = Role::all();
 
-        $coordinators = Role::findOrFail(Role::getCID())->users;
+        $coordinators = Role::findOrFail( trans('globals.coordinator') )->users;
 
         $data = array(
             'user' => $user,

@@ -28,12 +28,10 @@
                                 <div class="col-sm-8">
                                     <div class="input-group col-xs-12 col-sm-12">
                                         <select class="form-control" name="knowledge" id="knowledge">
-                                            <option></option>
-                                            <optgroup label="North America">
-                                                <option>Alabama</option>
-                                                <option>Alaska</option>
-                                                <option>Arizona</option>
-                                                <option>Arkansas</option>
+                                            <option value="">Ninguno</option>
+                                            @foreach ($knowledge_areas as $area)
+                                                <option value="{{ $area->id }}">{{ $area->knowledge_area }}</option>
+                                            @endforeach
                                             </optgroup>
                                         </select>
                                     </div>
@@ -49,13 +47,7 @@
                                 <div class="col-sm-8">
                                     <div class="input-group col-xs-12 col-sm-12">
                                         <select class="form-control" name="conceptual" id="conceptual">
-                                            <option></option>
-                                            <optgroup label="North America">
-                                                <option>Alabama</option>
-                                                <option>Alaska</option>
-                                                <option>Arizona</option>
-                                                <option>Arkansas</option>
-                                            </optgroup>
+                                            <option value="">Ninguno</option>
                                         </select>
                                     </div>
                                     @if ($errors->has('conceptual'))
@@ -219,6 +211,7 @@
 @section('custom-js-footer')
     <script type="text/javascript">
         $(document).ready(function(){
+
             $('.datepicker').datepicker({
                 format: 'yyyy-mm-dd',
                 startDate: '0d',
@@ -227,6 +220,7 @@
                 weekStart: 1,
                 autoclose: true
             });
+
             $('.editor').summernote({
                 dialogsInBody: true,
                 height: 200,
@@ -242,6 +236,7 @@
                     ['view', ['codeview']]
                 ]
             });
+
             $('#knowledge').select2({
                 placeholder: '@lang('plan.create.knowledge')',
                 language: "es",
@@ -250,6 +245,7 @@
             {
                 $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
             });
+
             $('#conceptual').select2({
                 placeholder: '@lang('plan.create.conceptual')',
                 language: "es",
@@ -257,6 +253,19 @@
             }).on('select2-open', function()
             {
                 $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+            });
+
+            $('#knowledge').on('change', function(knowledge) {
+
+                var knowledge_area_value = knowledge.target.value;
+
+                $.get("{{ url('/api/conceptual-sections-dropdown?knowledge+area+value=') }}" + knowledge_area_value, function(data) {
+                    $('#conceptual').empty();
+                    $('#conceptual').append('<option value="">Ninguno</option>');
+                    $.each(data, function(index, option) {
+                        $('#conceptual').append('<option value ="' + option.id + '">' + option.conceptual_section + '</option>');
+                    });
+                });
             });
         });
     </script>

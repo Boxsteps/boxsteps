@@ -17,9 +17,25 @@ return [
 
     'language' => 'es',
 
-    'year' => '2016',
+    'year' => '2017',
     'rights' => 'Todos los derechos reservados.',
 
-    'return' => 'Regresar a'
+    'return' => 'Regresar a',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Global status
+    |--------------------------------------------------------------------------
+    */
+
+    'administrator' => '1',
+    'coordinator' => '2',
+    'teacher' => '3',
+
+    'pending' => '1',
+    'approved' => '2',
+    'finished' => '3',
+    'active' => '4',
+    'off' => '5'
 
 ];

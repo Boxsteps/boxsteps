@@ -2,7 +2,6 @@
 
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
-use App\Student;
 
 class StudentsTableSeeder extends Seeder
 {
@@ -13,6 +12,6 @@ class StudentsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Student::class, 50)->create();
+        factory(App\Student::class, 120)->create();
     }
 }

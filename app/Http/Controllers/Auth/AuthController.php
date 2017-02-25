@@ -100,7 +100,7 @@ class AuthController extends Controller
 
         $roles = Role::all();
 
-        $coordinators = Role::findOrFail(Role::getCID())->users;
+        $coordinators = Role::findOrFail( trans('globals.coordinator') )->users;
 
         $data = array('roles' => $roles, 'coordinators' => $coordinators);
 

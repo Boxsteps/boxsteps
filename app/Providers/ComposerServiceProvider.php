@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 
 class ComposerServiceProvider extends ServiceProvider
@@ -13,6 +14,7 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Carbon::setLocale('es');
         view()->composer(
             [
                 'blank',
