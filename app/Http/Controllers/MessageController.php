@@ -3,11 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
+use App\Message;
+use App;
 
 class MessageController extends Controller
 {
+    /**
+     * Create a new user controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +27,7 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+        return view('messages.index');
     }
 
     /**
@@ -47,7 +59,20 @@ class MessageController extends Controller
      */
     public function show($id)
     {
-        //
+        $message = Message::findOrFail($id);
+
+        $data = array('message' => $message);
+
+        $message = $message->state->where( 'user_id', Auth::id() )->first();
+        if ( is_null($message) ) {
+            App::abort(404);
+        }
+        else {
+            $message->state_id = 5;
+            $message->save();
+        }
+
+        return view('messages.show', $data);
     }
 
     /**
@@ -81,6 +106,10 @@ class MessageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $message = Message::findOrFail($id);
+
+        $message->delete();
+
+        return redirect('messages');
     }
 }

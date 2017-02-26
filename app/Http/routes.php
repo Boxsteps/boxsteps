@@ -46,10 +46,11 @@ Route::resource('/users', 'UserController', ['except' => ['create', 'store']]);
 Route::resource('/features', 'FeatureController');
 Route::resource('/roles', 'RoleController');
 Route::resource('/plans', 'PlanController');
+Route::resource('/messages', 'MessageController');
 
 // Dashboard routes
 Route::get('/dashboard', 'DashboardController@index');
-Route::get('/blank', 'DashboardController@blank');
+Route::get('/new', 'DashboardController@newview');
 Route::get('/', 'DashboardController@start');
 
 /*

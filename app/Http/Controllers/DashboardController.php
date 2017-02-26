@@ -42,8 +42,8 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function blank()
+    public function newview()
     {
-        return view('blank');
+        return view('new');
     }
 }

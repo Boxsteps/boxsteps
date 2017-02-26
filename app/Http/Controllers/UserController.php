@@ -18,6 +18,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('role:1');
     }
 
     /**
@@ -135,7 +136,8 @@ class UserController extends Controller
 
         $user->delete();
 
-        return self::redirection('users', trans('user.destroy.success'), null, null);
+        return redirect('users');
+        //return self::redirection('users', trans('user.destroy.success'), null, null);
     }
 
     /**

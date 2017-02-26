@@ -8,7 +8,7 @@
 
         <li class="top">
             <p class="small">
-                <a href="#" class="pull-right">Marcar como leídas</a>
+                <a href="#" class="pull-right">@lang('partials.mark-readed')</a>
                 Tienes <strong>6</strong> nuevas notificaciones.
             </p>
         </li>
@@ -98,7 +98,7 @@
 
         <li class="external">
             <a href="#">
-                <span>Todas las notificaciones</span>
+                <span>@lang('partials.all-notifications')</span>
                 <i class="fa-link-ext"></i>
             </a>
         </li>

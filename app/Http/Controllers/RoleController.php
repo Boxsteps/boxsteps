@@ -18,6 +18,7 @@ class RoleController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('role:1');
     }
 
     /**
@@ -65,7 +66,7 @@ class RoleController extends Controller
 
         $data = array('role' => $role, 'features' => $features);
 
-        return view('role', $data);
+        return view('roles.show', $data);
     }
 
     /**

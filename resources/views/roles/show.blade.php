@@ -1,14 +1,19 @@
-@extends('layouts.app')
+@extends('layouts.main')
+
+@section('title')
+    {{ trans('role.show.title', ['role' => $role->role]) }}
+@endsection
 
 @section('content')
-<div class="container">
+
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Rol de {{ $role->role }}</div>
+                <div class="panel-heading">@lang('role.show.role') {{ $role->role }}</div>
 
                 <div class="panel-body">
-                    <p>Funcionalidades:</p>
+                    <h4>@lang('role.show.features')</h4>
+                    <br>
                     <ul>
                         @foreach ($features as $feature)
                             @if ( $feature->feature_id == null )
@@ -24,7 +29,9 @@
                             @endif
                         @endforeach
                     </ul>
-                    <p>Usuarios:</p>
+                    <br>
+                    <h4>@lang('role.show.users')</h4>
+                    <br>
                     <ul>
                         @foreach ($role->users as $user)
                             <li>{{ $user->name }}</li>
@@ -34,5 +41,5 @@
             </div>
         </div>
     </div>
-</div>
+
 @endsection

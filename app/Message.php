@@ -14,7 +14,9 @@ class Message extends Model
      */
     public function sender()
     {
-        return $this->belongsTo('App\User', 'user_id', 'id');
+        return $this->belongsTo('App\User', 'user_id', 'id')
+            ->withTrashed()
+            ->orderBy('created_at', 'asc');
     }
 
     /**
@@ -24,15 +26,17 @@ class Message extends Model
     {
         return $this->belongsToMany('App\User', 'conditions', 'message_id', 'user_id')
             ->withPivot('state_id')
-            ->withTimestamps();
+            ->withTimestamps()
+            ->withTrashed()
+            ->orderBy('created_at', 'asc');
     }
 
     /**
-     * The Condition of the Message.
+     * The State of the Message.
      */
-    public function condition()
+    public function state()
     {
-        return $this->belongsToMany('App\State', 'conditions', 'message_id', 'state_id');
+        return $this->hasMany('App\Condition', 'message_id', 'id');
     }
 
     /**

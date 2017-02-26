@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    
+
     <div class="title">@lang('errors.404.title')</div>
     <div class="content col-md-6">
         <p>

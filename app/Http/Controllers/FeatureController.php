@@ -18,6 +18,7 @@ class FeatureController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('role:1');
     }
 
     /**
@@ -63,7 +64,7 @@ class FeatureController extends Controller
 
         $data = array('feature' => $feature);
 
-        return view('feature', $data);
+        return view('features.show', $data);
     }
 
     /**

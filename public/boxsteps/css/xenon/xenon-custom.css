@@ -43,6 +43,20 @@ a {
     background-image: url('../../images/brand/background-login.png');
     background-size: cover;
     background-repeat: no-repeat;
+    padding-top: 50px;
+}
+
+.cbr-replaced .cbr-state span {
+    background: url('../../images/ok-white.png') no-repeat center center;
+}
+
+.cbr-replaced.cbr-checked .cbr-state span {
+    background: url('../../images/ok.png') no-repeat center center;
+}
+
+.navbar.horizontal-menu .navbar-inner > .nav > li
+.dropdown-menu.messages .dropdown-menu-list li.no-new-messages::after {
+    background-color: transparent;
 }
 
 .login-page .login-form .form-group label.error {

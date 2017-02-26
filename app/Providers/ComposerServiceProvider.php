@@ -17,10 +17,12 @@ class ComposerServiceProvider extends ServiceProvider
         Carbon::setLocale('es');
         view()->composer(
             [
-                'blank',
-                'dashboard',
+                'new', 'dashboard',
                 'users.index', 'users.show', 'users.edit', 'auth.register',
-                'plans.index', 'plans.create'
+                'plans.index', 'plans.create',
+                'messages.index', 'messages.show',
+                'roles.index', 'roles.show',
+                'features.index', 'features.show',
             ], 'App\Http\ViewComposers\MenuComposer'
         );
     }
