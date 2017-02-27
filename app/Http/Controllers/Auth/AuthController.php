@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use App\Role;
-use Validator;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Routing\Redirector;
+use App\Http\Controllers\Controller;
+use Validator;
+use Socialite;
+use App\User;
+use App\Role;
 
 class AuthController extends Controller
 {
@@ -105,5 +108,37 @@ class AuthController extends Controller
         $data = array('roles' => $roles, 'coordinators' => $coordinators);
 
         return view('auth.register', $data);
+    }
+
+    /**
+     * Redirect the user to the Google+ authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToProvider()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    /**
+     * Obtain the user information from Google+.
+     *
+     * @return Response
+     */
+    public function handleProviderCallback(Request $request)
+    {
+        if ( $request->input('error') == 'access_denied' )
+            return redirect('login')->with('oauth-error', trans('auth.oauth-deny'));
+
+        $oauth = Socialite::driver('google')->user();
+
+        $user = User::where('email', '=', $oauth->email)->first();
+
+        if( empty($user) )
+            return redirect('login')->with('oauth-error', trans('auth.oauth-miss'));
+
+        auth()->login($user, true);
+
+        return redirect('dashboard');
     }
 }

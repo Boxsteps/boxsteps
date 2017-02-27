@@ -94,6 +94,6 @@ form .form-group.has-error .input-group-addon {
     text-decoration: underline;
 }
 
-.help-block.error {
+.help-block.error, .errors-container p {
     color: #cc3f44;
 }

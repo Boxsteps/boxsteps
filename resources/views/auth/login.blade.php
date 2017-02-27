@@ -24,6 +24,7 @@
 
     <!-- Errors container -->
     <div class="errors-container">
+        <p>{{ Session::get('oauth-error') }}</p>
     </div>
     <!-- Errors container -->
 
@@ -84,7 +85,7 @@
 
     <!-- External login -->
     <div class="external-login">
-        <a href="" class="gplus">
+        <a href="{{ url('login/google') }}" class="gplus">
             <i class="fa-google-plus"></i>
             @lang('login.google-plus')
         </a>

@@ -21,21 +21,25 @@
 Route::group(['middleware' => 'web'], function () {});
 
 // Authentication routes
-Route::get('/login', 'Auth\AuthController@showLoginForm');
-Route::post('/login', 'Auth\AuthController@login');
-Route::get('/logout', 'Auth\AuthController@logout');
+Route::get('login', 'Auth\AuthController@showLoginForm');
+Route::post('login', 'Auth\AuthController@login');
+Route::get('logout', 'Auth\AuthController@logout');
+
+// Authentication Google+
+Route::get('login/google', 'Auth\AuthController@redirectToProvider');
+Route::get('login/google/callback', 'Auth\AuthController@handleProviderCallback');
 
 // Password reset routes
-Route::get('/password/reset/{token?}', 'Auth\PasswordController@showResetForm');
-Route::post('/password/email', 'Auth\PasswordController@sendResetLinkEmail');
-Route::post('/password/reset', 'Auth\PasswordController@reset');
+Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
+Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
+Route::post('password/reset', 'Auth\PasswordController@reset');
 
 // User routes
-Route::get('/users/create', 'Auth\AuthController@showRegistrationForm');
-Route::post('/users/store', 'Auth\AuthController@register');
+Route::get('users/create', 'Auth\AuthController@showRegistrationForm');
+Route::post('users/store', 'Auth\AuthController@register');
 
 // User resource routes
-Route::resource('/users', 'UserController', ['except' => ['create', 'store']]);
+Route::resource('users', 'UserController', ['except' => ['create', 'store']]);
 
 /*
 |--------------------------------------------------------------------------
@@ -43,14 +47,14 @@ Route::resource('/users', 'UserController', ['except' => ['create', 'store']]);
 |--------------------------------------------------------------------------
 */
 
-Route::resource('/features', 'FeatureController');
-Route::resource('/roles', 'RoleController');
-Route::resource('/plans', 'PlanController');
-Route::resource('/messages', 'MessageController');
+Route::resource('features', 'FeatureController');
+Route::resource('roles', 'RoleController');
+Route::resource('plans', 'PlanController');
+Route::resource('messages', 'MessageController');
 
 // Dashboard routes
-Route::get('/dashboard', 'DashboardController@index');
-Route::get('/new', 'DashboardController@newview');
+Route::get('dashboard', 'DashboardController@index');
+Route::get('new', 'DashboardController@newview');
 Route::get('/', 'DashboardController@start');
 
 /*

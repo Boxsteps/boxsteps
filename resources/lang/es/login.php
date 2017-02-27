@@ -18,6 +18,6 @@ return [
     'forgot' => '¿Olvidaste tu contraseña?',
     'policy' => 'Políticas de privacidad',
     'remember' => 'Recuérdame',
-    'google-plus' => 'Iniciar sesión con Google+',
+    'google-plus' => 'Iniciar sesión',
 
 ];
