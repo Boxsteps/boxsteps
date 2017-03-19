@@ -51,6 +51,7 @@ Route::resource('features', 'FeatureController');
 Route::resource('roles', 'RoleController');
 Route::resource('plans', 'PlanController');
 Route::resource('messages', 'MessageController');
+Route::resource('courses', 'CourseController');
 
 // Dashboard routes
 Route::get('dashboard', 'DashboardController@index');

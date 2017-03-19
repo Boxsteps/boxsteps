@@ -23,6 +23,7 @@ class ComposerServiceProvider extends ServiceProvider
                 'messages.index', 'messages.show',
                 'roles.index', 'roles.show',
                 'features.index', 'features.show',
+                'courses.index', 'courses.show',
             ], 'App\Http\ViewComposers\MenuComposer'
         );
     }

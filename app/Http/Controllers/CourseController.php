@@ -3,11 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 
 class CourseController extends Controller
 {
+    /**
+     * Create a new user controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware(trans('globals.role.teacher'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +26,11 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        $courses = Auth::user()->courses;
+
+        $data = array('courses' => $courses);
+
+        return view('courses.index', $data);
     }
 
     /**

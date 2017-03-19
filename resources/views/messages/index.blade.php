@@ -36,9 +36,7 @@
 
                                     <div class="mail-pagination">
                                         <strong>{{ ( $auth_user->messages_received->count() > 0 ) ? $auth_user->messages_received->count() : '' }}</strong>
-                                        @php
-                                            echo trans_choice('message.index.emails', $auth_user->messages_received->count());
-                                        @endphp
+                                        {{ trans_choice('message.index.emails', $auth_user->messages_received->count()) }}
 
                                         <div class="next-prev">
                                             <a href="#"><i class="fa-angle-left"></i></a>
@@ -62,9 +60,7 @@
 
                                     <div class="mail-pagination">
                                         <strong>{{ ( $auth_user->messages_received->count() > 0 ) ? $auth_user->messages_received->count() : '' }}</strong>
-                                        @php
-                                            echo trans_choice('message.index.emails', $auth_user->messages_received->count());
-                                        @endphp
+                                        {{ trans_choice('message.index.emails', $auth_user->messages_received->count()) }}
 
                                         <div class="next-prev">
                                             <a href="#"><i class="fa-angle-left"></i></a>

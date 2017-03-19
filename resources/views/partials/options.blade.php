@@ -10,7 +10,9 @@
 
     <ul class="dropdown-menu user-profile-menu list-unstyled">
         <li><a href="{{ url('profile') }}"><i class="fa-user"></i>@lang('partials.profile')</a></li>
-        <li><a href="{{ url('courses') }}"><i class="fa-group"></i>@lang('partials.courses')</a></li>
+        @if ( $auth_user->role->id == trans('globals.teacher') )
+            <li><a href="{{ url('courses') }}"><i class="fa-group"></i>@lang('partials.courses')</a></li>
+        @endif
         <li class="last"><a href="{{ url('logout') }}"><i class="fa-lock"></i>@lang('partials.logout')</a></li>
     </ul>
 

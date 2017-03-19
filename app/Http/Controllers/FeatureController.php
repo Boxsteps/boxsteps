@@ -18,7 +18,7 @@ class FeatureController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('role:1');
+        $this->middleware(trans('globals.role.administrator'));
     }
 
     /**
