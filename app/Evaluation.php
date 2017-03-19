@@ -24,7 +24,7 @@ class Evaluation extends Model
      */
     public function conceptual_sections()
     {
-        return $this->belongsToMany('App\ConceptualSection', 'evaluation_contents', 'conceptual_section_id', 'evaluation_id')
+        return $this->belongsToMany('App\ConceptualSection', 'evaluation_contents', 'evaluation_id', 'conceptual_section_id')
             ->withTimestamps();
     }
 

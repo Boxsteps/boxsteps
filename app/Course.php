@@ -12,7 +12,7 @@ class Course extends Model
     /**
      * User relationship for Courses
      */
-    public function users()
+    public function user()
     {
         return $this->belongsTo('App\User', 'user_id', 'id');
     }
@@ -46,7 +46,7 @@ class Course extends Model
      */
     public function students()
     {
-        return $this->belongsToMany('App\Student', 'groups', 'student_id', 'course_id');
+        return $this->belongsToMany('App\Student', 'groups', 'course_id', 'student_id');
     }
 
     /**
