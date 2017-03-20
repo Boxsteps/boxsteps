@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
+use App\Course;
 
 class CourseController extends Controller
 {
@@ -62,7 +63,13 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        //
+        $course = Course::findOrFail($id);
+
+        $students = $course->students;
+
+        $data = array('course' => $course, 'students' => $students);
+
+        return view('courses.show', $data);
     }
 
     /**

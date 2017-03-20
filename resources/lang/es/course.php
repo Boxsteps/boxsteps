@@ -18,6 +18,14 @@ return [
     |--------------------------------------------------------------------------
     */
 
+    'show.title' => 'Curso - :gradeº grado, sección ":section"',
+    'show.name' => 'Nombre',
+    'show.second_name' => 'Apellido',
+    'show.address' => 'Dirección',
+    'show.dni' => 'DNI',
+    'show.email' => 'Correo electrónico',
+    'show.phones' => 'Teléfonos',
+
     /*
     |--------------------------------------------------------------------------
     | Create messages

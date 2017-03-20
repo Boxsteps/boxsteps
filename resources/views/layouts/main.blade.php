@@ -108,7 +108,7 @@
                 @yield('content')
 
                 <!-- Footer section -->
-                <footer class="main-footer footer-type-1">
+                <footer class="main-footer sticky footer-type-1">
     				<div class="footer-inner">
     					<div class="footer-text">
     						&copy; @lang('globals.year')

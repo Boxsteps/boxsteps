@@ -1,6 +1,6 @@
 /**
  * Custom CSS rules for Boxsteps
-*/
+ */
 
 body {
 }
@@ -96,4 +96,8 @@ form .form-group.has-error .input-group-addon {
 
 .help-block.error, .errors-container p {
     color: #cc3f44;
+}
+
+.dataTable td {
+    vertical-align: middle !important;
 }
