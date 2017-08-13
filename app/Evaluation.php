@@ -45,6 +45,14 @@ class Evaluation extends Model
     }
 
     /**
+     * Plan relationship for Evaluations
+     */
+    public function plan()
+    {
+        return $this->belongsTo('App\Plan', 'plan_id', 'id');
+    }
+
+    /**
      * The attributes that should be mutated to dates.
      *
      * @var array

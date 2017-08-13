@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\KnowledgeArea;
+use App\Plan;
 use Validator;
 
 class PlanController extends Controller
@@ -26,7 +29,11 @@ class PlanController extends Controller
      */
     public function index()
     {
-        return view('plans.index');
+        $courses = Auth::user()->courses;
+
+        $data = array('courses' => $courses);
+
+        return view('plans.index', $data);
     }
 
     /**
@@ -36,9 +43,10 @@ class PlanController extends Controller
      */
     public function create()
     {
+        $courses = Auth::user()->courses;
         $knowledge_areas = KnowledgeArea::all();
 
-        $data = array('knowledge_areas' => $knowledge_areas);
+        $data = array('knowledge_areas' => $knowledge_areas, 'courses' => $courses);
 
         return view('plans.create', $data);
     }
@@ -58,6 +66,23 @@ class PlanController extends Controller
                 $request, $validator
             );
         }
+
+        $plan = new Plan([
+            'course_id' => $request->get('course'),
+            'conceptual_section_id' => $request->get('conceptual'),
+            'start_date' => Carbon::createFromFormat( 'd-m-Y h:i A', $request->get('planification_date') . ' ' . $request->get('time_start') ),
+            'end_date' => Carbon::createFromFormat( 'd-m-Y h:i A', $request->get('planification_date') . ' ' . $request->get('time_end') ),
+            'procedimental_section' => $request->get('procedimental'),
+            'actitudinal_section' => $request->get('actitudinal'),
+            'competences' => $request->get('competences'),
+            'indicators' => $request->get('indicators'),
+            'teaching_strategy' => $request->get('teaching_strategy'),
+            'teaching_sequence' => $request->get('teaching_sequence'),
+            'period_id' => 1
+        ]);
+
+        $plan->save();
+        return redirect('/plans');
     }
 
     /**
@@ -114,6 +139,7 @@ class PlanController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'course' => 'required',
             'knowledge' => 'required',
             'conceptual' => 'required',
             'planification_date' => 'required',

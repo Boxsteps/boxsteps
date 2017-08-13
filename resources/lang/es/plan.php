@@ -8,7 +8,14 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'index.title' => 'Listar planificaciones',
+    'index.title' => 'Lista de planificaciones',
+    'index.course-format' => ':gradeº grado, sección ":section"',
+    'index.course' => 'Curso',
+    'index.knowledge' => 'Área de conocimiento',
+    'index.conceptual' => 'Bloque conceptual',
+    'index.date' => 'Fecha',
+    'index.time' => 'Hora',
+    'index.options' => 'Opciones',
 
     /*
     |--------------------------------------------------------------------------
@@ -26,6 +33,8 @@ return [
     'create.teaching-strategy' => 'Estrategia de enseñanza',
     'create.teaching-sequence' => 'Secuencia didáctica',
     'create.resources' => 'Recursos',
+    'create.course' => 'Curso',
+    'create.course-format' => ':gradeº grado, sección ":section"',
 
     'create.date' => 'Definición de fecha',
     'create.planification-date' => 'Fecha de planificación',

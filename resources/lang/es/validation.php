@@ -129,6 +129,7 @@ return [
         'indicators' => 'indicadores',
         'teaching_strategy' => 'estrategia de enseñanza',
         'teaching_sequence' => 'secuencia didáctica',
+        'course' => 'curso',
 
         'null' => 'Ninguno'
     ],

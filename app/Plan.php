@@ -72,6 +72,14 @@ class Plan extends Model
     }
 
     /**
+     * The Evaluation that has a Plan.
+     */
+    public function evaluation()
+    {
+        return $this->hasOne('App\Evaluation', 'plan_id', 'id');
+    }
+
+    /**
      * The attributes that should be mutated to dates.
      *
      * @var array

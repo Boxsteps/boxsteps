@@ -22,7 +22,29 @@
     				</div>
 
                     <div class="panel-body">
-                        <div class="panel-body col-sm-6">
+
+                        <div class="panel-body col-sm-6">    
+
+                            <div class="form-group {{ $errors->has('course') ? ' has-error' : '' }}">
+                                <label class="col-sm-4 control-label">@lang('plan.create.course')</label>
+                                <div class="col-sm-8">
+                                    <div class="input-group col-xs-12 col-sm-12">
+                                        <select class="form-control" name="course" id="course">
+                                            <option value="">Ninguno</option>
+                                            @foreach ($courses as $course)
+                                                <option value="{{ $course->id }}">{{ trans('plan.create.course-format', ['grade' => $course->grade, 'section' => $course->section]) }}</option>
+                                            @endforeach
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                    @if ($errors->has('course'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('course') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+
                             <div class="form-group {{ $errors->has('knowledge') ? ' has-error' : '' }}">
                                 <label class="col-sm-4 control-label">@lang('plan.create.knowledge')</label>
                                 <div class="col-sm-8">
@@ -42,6 +64,7 @@
                                     @endif
                                 </div>
                             </div>
+
                             <div class="form-group {{ $errors->has('conceptual') ? ' has-error' : '' }}">
                                 <label class="col-sm-4 control-label">@lang('plan.create.conceptual')</label>
                                 <div class="col-sm-8">
@@ -114,6 +137,8 @@
 
                         </div>
                     </div>
+
+                    <br><br>
 
                     <div class="panel-heading">
     				    <h3 class="panel-title">@lang('plan.create.procedimental')</h3>
@@ -235,6 +260,15 @@
                     ['insert', ['link', 'picture', 'video']],
                     ['view', ['codeview']]
                 ]
+            });
+
+            $('#course').select2({
+                placeholder: '@lang('plan.create.course')',
+                language: "es",
+                allowClear: true
+            }).on('select2-open', function()
+            {
+                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
             });
 
             $('#knowledge').select2({

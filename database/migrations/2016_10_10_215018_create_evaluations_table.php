@@ -26,9 +26,12 @@ class CreateEvaluationsTable extends Migration
             $table->foreign('course_id', 'fk_evaluations_courses')->references('id')->on('courses');
             $table->integer('evaluation_type_id')->unsigned();
             $table->foreign('evaluation_type_id', 'fk_evaluations_eval_type')->references('id')->on('evaluation_types');
+            $table->integer('plan_id')->unsigned();
+            $table->foreign('plan_id', 'fk_evaluations_plans')->references('id')->on('plans');
 
             $table->index('course_id', 'fk_evaluations_courses_idx');
             $table->index('evaluation_type_id', 'fk_evaluations_eval_type_idx');
+            $table->index('plan_id', 'fk_evaluations_plans_idx');
 
         });
     }

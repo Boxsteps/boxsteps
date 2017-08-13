@@ -8,7 +8,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'index.title' => 'Listar usuarios',
+    'index.title' => 'Lista de usuarios',
     'index.name.rol' => 'Nombre y rol',
     'index.email' => 'Correo electrónico',
     'index.id' => 'ID',
