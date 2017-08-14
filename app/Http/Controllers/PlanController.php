@@ -82,7 +82,8 @@ class PlanController extends Controller
         ]);
 
         $plan->save();
-        return redirect('/plans');
+
+        return self::redirection('plans', trans('plan.create.success'), null, null);
     }
 
     /**
@@ -127,7 +128,11 @@ class PlanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $plan = Plan::findOrFail($id);
+
+        $plan->delete();
+
+        return self::redirection('plans', trans('plan.destroy.success'), null, null);
     }
 
     /**
@@ -143,8 +148,8 @@ class PlanController extends Controller
             'knowledge' => 'required',
             'conceptual' => 'required',
             'planification_date' => 'required',
-            'time_start' => 'required',
-            'time_end' => 'required',
+            'time_start' => 'required|date_format:h:i A|before:time_end',
+            'time_end' => 'required|date_format:h:i A|after:time_start',
             'procedimental' => 'required',
             'actitudinal' => 'required',
             'competences' => 'required',

@@ -9,7 +9,14 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="alert alert-success">
-                    {{ session('message') }}<br>{{ session('return') }} <a href="{{ session('url') }}">{{ session('name') }}</a>
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">@lang('globals.message.close')</span>
+                    </button>
+                    {{ session('message') }}<br>{{ session('return') }}
+                    @if ( (session('url') != null) && (session('name') != null) )
+                        <a href="{{ session('url') }}">{{ session('name') }}</a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -56,14 +63,14 @@
                                         <form role="form" action="{{ url('/users/' . $user->id . '/edit' ) }}" method="POST">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="_method" value="GET">
-                                            <button class="btn btn-icon btn-success" title="Editar usuario">
+                                            <button class="btn btn-icon btn-success" title="@lang('user.index.title.edit')">
                                                 <i class="fa-pencil"></i>
                                             </button>
                                         </form>
                                         <form role="form" action="{{ url('/users/' . $user->id ) }}" method="POST">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="_method" value="DELETE">
-                                            <button class="btn btn-icon btn-red" title="Eliminar usuario">
+                                            <button class="btn btn-icon btn-red" title="@lang('user.index.title.delete')">
                                                 <i class="fa-remove"></i>
                                             </button>
                                         </form>

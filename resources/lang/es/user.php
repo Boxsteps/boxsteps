@@ -13,6 +13,9 @@ return [
     'index.email' => 'Correo electrónico',
     'index.id' => 'ID',
     'index.options' => 'Opciones',
+    'index.title.edit' => 'Editar usuario',
+    'index.title.delete' => 'Eliminar usuario',
+
 
     /*
     |--------------------------------------------------------------------------

@@ -8,6 +8,25 @@
     <link rel="stylesheet" href="{{ asset('boxsteps/js/datatables/css/datatables.bootstrap.css') }}">
 @endsection
 
+@section('messages')
+    @if (session('message'))
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">@lang('globals.message.close')</span>
+                    </button>
+                    {{ session('message') }}<br>{{ session('return') }}
+                    @if ( (session('url') != null) && (session('name') != null) )
+                        <a href="{{ session('url') }}">{{ session('name') }}</a>
+                    @endif
+                </div>
+            </div>
+        </div>
+    @endif
+@endsection
+
 @section('content')
 
     <div class="row">
@@ -41,14 +60,14 @@
                                             <form role="form" action="{{ url('/plans/' . $plan->id . '/edit' ) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="_method" value="GET">
-                                                <button class="btn btn-icon btn-success" title="Editar planificación">
+                                                <button class="btn btn-icon btn-success" title="@lang('plan.index.title.edit')">
                                                     <i class="fa-pencil"></i>
                                                 </button>
                                             </form>
                                             <form role="form" action="{{ url('/plans/' . $plan->id ) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="_method" value="DELETE">
-                                                <button class="btn btn-icon btn-red" title="Eliminar planificación">
+                                                <button class="btn btn-icon btn-red" title="@lang('plan.index.title.delete')">
                                                     <i class="fa-remove"></i>
                                                 </button>
                                             </form>

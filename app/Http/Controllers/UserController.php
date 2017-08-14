@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\Role;
 use App\User;
@@ -18,7 +19,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware(trans('globals.role.administrator'));
+        $this->middleware(trans('globals.role.administrator'), ['except' => array('profile')]);
     }
 
     /**
@@ -67,6 +68,18 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         $data = array('user' => $user);
+
+        return view('users.show', $data);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function profile()
+    {
+        $data = array('user' => Auth::user());
 
         return view('users.show', $data);
     }
@@ -136,8 +149,7 @@ class UserController extends Controller
 
         $user->delete();
 
-        return redirect('users');
-        //return self::redirection('users', trans('user.destroy.success'), null, null);
+        return self::redirection('users', trans('user.destroy.success'), null, null);
     }
 
     /**

@@ -16,6 +16,8 @@ return [
     'index.date' => 'Fecha',
     'index.time' => 'Hora',
     'index.options' => 'Opciones',
+    'index.title.edit' => 'Editar planificación',
+    'index.title.delete' => 'Eliminar planificación',
 
     /*
     |--------------------------------------------------------------------------
@@ -35,6 +37,7 @@ return [
     'create.resources' => 'Recursos',
     'create.course' => 'Curso',
     'create.course-format' => ':gradeº grado, sección ":section"',
+    'create.success' => '¡La planificación fue creada de forma satisfactoria!',
 
     'create.date' => 'Definición de fecha',
     'create.planification-date' => 'Fecha de planificación',
@@ -54,5 +57,7 @@ return [
     | Destroy messages
     |--------------------------------------------------------------------------
     */
+
+    'destroy.success' => '¡La planificación fue eliminada de forma satisfactoria!',
 
 ];

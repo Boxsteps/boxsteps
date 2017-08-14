@@ -38,6 +38,9 @@ Route::post('password/reset', 'Auth\PasswordController@reset');
 Route::get('users/create', 'Auth\AuthController@showRegistrationForm');
 Route::post('users/store', 'Auth\AuthController@register');
 
+// Profile routes
+Route::get('profile', 'UserController@profile');
+
 // User resource routes
 Route::resource('users', 'UserController', ['except' => ['create', 'store']]);
 

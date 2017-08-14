@@ -101,3 +101,7 @@ form .form-group.has-error .input-group-addon {
 .dataTable td {
     vertical-align: middle !important;
 }
+
+.alert .close {
+    margin-top: 0 !important;
+}
