@@ -81,8 +81,13 @@ form .form-group.has-error .input-group-addon {
 }
 
 .action-links form {
-    width: 45px;
+    width: 37px;
     float: left;
+    margin-right: 5px;
+}
+
+.action-links form:last-child {
+    margin: 0;
 }
 
 .action-links form button {

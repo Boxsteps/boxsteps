@@ -45,7 +45,7 @@
                                 <th width="70">@lang('plan.index.condition')</th>
                                 <th>@lang('plan.index.date')</th>
                                 <th>@lang('plan.index.time')</th>
-                                <th width="100">@lang('plan.index.options')</th>
+                                <th width="121" class="no-sort">@lang('plan.index.options')</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -59,6 +59,13 @@
                                         <td>{{ $plan->start_date->format('d-m-Y') }}</td>
                                         <td>{{ $plan->start_date->format('h:i A') }} - {{ $plan->end_date->format('h:i A') }}</td>
                                         <td class="action-links">
+                                            <form role="form" action="{{ url('/plans/' . $plan->id ) }}" method="POST">
+                                                {{ csrf_field() }}
+                                                <input type="hidden" name="_method" value="GET">
+                                                <button class="btn btn-icon btn-info" title="@lang('plan.index.title.info')">
+                                                    <i class="fa-info"></i>
+                                                </button>
+                                            </form>
                                             <form role="form" action="{{ url('/plans/' . $plan->id . '/edit' ) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="_method" value="GET">
@@ -99,7 +106,11 @@
             $("#plans").dataTable({
                 'language': {
                     'url': $languageURL
-                }
+                },
+                'aoColumnDefs' : [{
+                    'bSortable': false,
+                    'aTargets': ['no-sort']
+                }]
             });
         });
     </script>

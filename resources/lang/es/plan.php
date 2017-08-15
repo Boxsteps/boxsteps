@@ -17,6 +17,7 @@ return [
     'index.date' => 'Fecha',
     'index.time' => 'Hora',
     'index.options' => 'Opciones',
+    'index.title.info' => 'Detallar planificación',
     'index.title.edit' => 'Editar planificación',
     'index.title.delete' => 'Eliminar planificación',
 
