@@ -13,7 +13,7 @@ class StatesTableSeeder extends Seeder
     public function run()
     {
         $inserts = array(
-            [ 'state' => 'Revisión', 'created_at' => Carbon::now() ],
+            [ 'state' => 'Esperando', 'created_at' => Carbon::now() ],
             [ 'state' => 'Aprobado', 'created_at' => Carbon::now() ],
             [ 'state' => 'Realizado', 'created_at' => Carbon::now() ],
             [ 'state' => 'No leído', 'created_at' => Carbon::now() ],

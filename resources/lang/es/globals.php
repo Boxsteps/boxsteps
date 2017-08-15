@@ -32,11 +32,11 @@ return [
     'coordinator' => '2',
     'teacher' => '3',
 
-    'pending' => '1',
-    'approved' => '2',
-    'finished' => '3',
-    'active' => '4',
-    'off' => '5',
+    'condition.pending' => '1',
+    'condition.approved' => '2',
+    'condition.finished' => '3',
+    'condition.active' => '4',
+    'condition.off' => '5',
 
     'message.close' => 'Cerrar',
 

@@ -10,6 +10,15 @@ class Condition extends Model
     use SoftDeletes;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'state_id', 'plan_id', 'user_id', 'message_id', 'notification_id'
+    ];
+
+    /**
      * State relationship for Conditions
      */
     public function state()

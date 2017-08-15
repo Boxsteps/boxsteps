@@ -64,13 +64,14 @@ class MessageController extends Controller
         $data = array('message' => $message);
 
         $message = $message->state->where( 'user_id', Auth::id() )->first();
+        
         if ( is_null($message) )
         {
             App::abort(404);
         }
         else
         {
-            $message->state_id = 5;
+            $message->state_id = trans('globals.condition.off');
             $message->save();
         }
 

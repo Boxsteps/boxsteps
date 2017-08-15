@@ -77,7 +77,7 @@
 
                             @if ( $auth_user->messages_received->count() > 0)
                                 @foreach ( $auth_user->messages_received->sortBy('created_at') as $message )
-                                    <tr class="{{ $message->pivot->state_id == trans('globals.active') ? 'unread' : '' }}">
+                                    <tr class="{{ $message->pivot->state_id == trans('globals.condition.active') ? 'unread' : '' }}">
                                         <td class="col-cb">
                                             <div class="checkbox checkbox-replace">
                                                 <input type="checkbox" class="cbr" />
@@ -127,7 +127,7 @@
                             <a href="{{ url('messages') }}">@lang('message.index.inbox')
                                 @php $count = 0; @endphp
                                 @foreach ( $auth_user->messages_received as $message )
-                                    @if ( $message->pivot->state_id == trans('globals.active') )
+                                    @if ( $message->pivot->state_id == trans('globals.condition.active') )
                                         @php $count++ @endphp
                                     @endif
                                 @endforeach

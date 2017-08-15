@@ -13,6 +13,7 @@ return [
     'index.course' => 'Curso',
     'index.knowledge' => 'Área de conocimiento',
     'index.conceptual' => 'Bloque conceptual',
+    'index.condition' => 'Estado',
     'index.date' => 'Fecha',
     'index.time' => 'Hora',
     'index.options' => 'Opciones',

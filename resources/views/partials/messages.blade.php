@@ -4,7 +4,7 @@
         <i class="fa-envelope-o"></i>
         @php $count = 0; @endphp
         @foreach ( $auth_user->messages_received as $message )
-            @if ( $message->pivot->state_id == trans('globals.active') )
+            @if ( $message->pivot->state_id == trans('globals.condition.active') )
                 @php $count++ @endphp
             @endif
         @endforeach
@@ -18,7 +18,7 @@
             <ul class="dropdown-menu-list list-unstyled ps-scrollbar">
                 @if ( $count > 0 )
                     @foreach ( $auth_user->messages_received as $message )
-                        @if ( $message->pivot->state_id == trans('globals.active') )
+                        @if ( $message->pivot->state_id == trans('globals.condition.active') )
                             <li class="active">
                                 <a href="{{ url( 'messages/' . $message->id ) }}">
                                     <span class="line">

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\KnowledgeArea;
+use App\Condition;
+use App\Period;
 use App\Plan;
 use Validator;
 
@@ -44,6 +46,7 @@ class PlanController extends Controller
     public function create()
     {
         $courses = Auth::user()->courses;
+
         $knowledge_areas = KnowledgeArea::all();
 
         $data = array('knowledge_areas' => $knowledge_areas, 'courses' => $courses);
@@ -78,10 +81,17 @@ class PlanController extends Controller
             'indicators' => $request->get('indicators'),
             'teaching_strategy' => $request->get('teaching_strategy'),
             'teaching_sequence' => $request->get('teaching_sequence'),
-            'period_id' => 1
+            'period_id' => Period::all()->last()->id
         ]);
 
         $plan->save();
+
+        $condition = new Condition([
+            'state_id' => trans('globals.condition.pending'),
+            'plan_id' => Plan::all()->last()->id
+        ]);
+
+        $condition->save();
 
         return self::redirection('plans', trans('plan.create.success'), null, null);
     }

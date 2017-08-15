@@ -115,7 +115,7 @@
                             <a href="{{ url('messages') }}">@lang('message.index.inbox')
                                 @php $count = 0; @endphp
                                 @foreach ( $auth_user->messages_received as $message )
-                                    @if ( $message->pivot->state_id == trans('globals.active') )
+                                    @if ( $message->pivot->state_id == trans('globals.condition.active') )
                                         @php $count++ @endphp
                                     @endif
                                 @endforeach

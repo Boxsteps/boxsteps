@@ -39,12 +39,13 @@
                     <table id="plans" class="table table-striped table-bordered table-responsive" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th>@lang('plan.index.course')</th>
-                                <th>@lang('plan.index.knowledge')</th>
-                                <th>@lang('plan.index.conceptual')</th>
+                                <th width="70">@lang('plan.index.course')</th>
+                                <th width="200">@lang('plan.index.knowledge')</th>
+                                <th width="200">@lang('plan.index.conceptual')</th>
+                                <th width="70">@lang('plan.index.condition')</th>
                                 <th>@lang('plan.index.date')</th>
                                 <th>@lang('plan.index.time')</th>
-                                <th>@lang('plan.index.options')</th>
+                                <th width="100">@lang('plan.index.options')</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,6 +55,7 @@
                                         <td>{{ trans('plan.index.course-format', ['grade' => $course->grade, 'section' => $course->section]) }}</td>
                                         <td>{{ $plan->conceptual_section->knowledge_area->knowledge_area }}</td>
                                         <td>{{ $plan->conceptual_section->conceptual_section }}</td>
+                                        <td>{{ $plan->condition->first()->state }}</td>
                                         <td>{{ $plan->start_date->format('d-m-Y') }}</td>
                                         <td>{{ $plan->start_date->format('h:i A') }} - {{ $plan->end_date->format('h:i A') }}</td>
                                         <td class="action-links">
