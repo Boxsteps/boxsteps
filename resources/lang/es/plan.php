@@ -23,6 +23,29 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Show messages
+    |--------------------------------------------------------------------------
+    */
+
+    'show.title' => 'Detalles de la planificación',
+    'show.content' => 'Contenido de la planificación',
+    'show.knowledge' => 'Área de conocimiento',
+    'show.conceptual' => 'Bloque conceptual',
+    'show.procedimental' => 'Bloque procedimental',
+    'show.actitudinal' => 'Bloque actitudinal',
+    'show.competences' => 'Competencias',
+    'show.indicators' => 'Indicadores',
+    'show.teaching-strategy' => 'Estrategia de enseñanza',
+    'show.teaching-sequence' => 'Secuencia didáctica',
+    'show.resources' => 'Recursos',
+    'show.course' => 'Curso',
+    'show.course-format' => ':gradeº grado, sección ":section"',
+    'show.date' => 'Fecha',
+    'show.time' => 'Hora',
+    'show.condition' => 'Estado',
+
+    /*
+    |--------------------------------------------------------------------------
     | Create messages
     |--------------------------------------------------------------------------
     */

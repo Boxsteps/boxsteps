@@ -110,3 +110,11 @@ form .form-group.has-error .input-group-addon {
 .alert .close {
     margin-top: 0 !important;
 }
+
+.tabs-vertical-env {
+    height: 450px;
+}
+
+.tabs-vertical-env .nav.tabs-vertical li > a {
+    text-align: left;
+}

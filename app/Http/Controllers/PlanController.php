@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\KnowledgeArea;
+use App\ConceptualSection;
 use App\Condition;
 use App\Period;
 use App\Plan;
@@ -104,7 +105,17 @@ class PlanController extends Controller
      */
     public function show($id)
     {
-        //
+        $plan = Plan::findOrFail($id);
+
+        $conceptual = ConceptualSection::findOrFail($plan->conceptual_section_id);
+
+        $data = array(
+            'plan' => $plan,
+            'conceptual' => $conceptual->conceptual_section,
+            'knowledge' => $conceptual->knowledge_area->knowledge_area
+        );
+
+        return view('plans.show', $data);
     }
 
     /**

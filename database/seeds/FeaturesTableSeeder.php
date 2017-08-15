@@ -13,7 +13,7 @@ class FeaturesTableSeeder extends Seeder
     public function run()
     {
         $inserts = array(
-            ['feature' => 'Planificación', 'url' => 'plans', 'icon' => 'linecons-pencil', 'created_at' => Carbon::now()],
+            ['feature' => 'Planificación', 'url' => 'plans', 'icon' => 'fa-pencil-square-o', 'created_at' => Carbon::now()],
             ['feature' => 'Calificaciones', 'url' => '#', 'icon' => 'fa-check-square-o', 'created_at' => Carbon::now()],
             ['feature' => 'Estadísticas', 'url' => '#', 'icon' => 'fa-bar-chart-o', 'created_at' => Carbon::now()],
             ['feature' => 'Usuario', 'url' => 'users', 'icon' => 'fa-user', 'created_at' => Carbon::now()],
