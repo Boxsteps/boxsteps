@@ -220,9 +220,9 @@
 
 					<div class="panel-body">
 						<div class="pull-right">
-							<button type="submit" class="btn btn-primary">
-								<i class="linecons-pencil"></i>
-								@lang('plan.create.register')
+							<button type="submit" class="btn btn-primary btn-icon btn-icon-standalone">
+								<i class="fa-pencil"></i>
+								<span>@lang('plan.create.register')</span>
 							</button>
 						</div>
 					</div>

@@ -43,6 +43,7 @@ return [
     'show.date' => 'Fecha',
     'show.time' => 'Hora',
     'show.condition' => 'Estado',
+    'show.print' => 'Imprimir planificación',
 
     /*
     |--------------------------------------------------------------------------

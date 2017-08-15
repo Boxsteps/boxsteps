@@ -121,12 +121,12 @@
                                 @endif
                             </div>
                         </div>
-
+                        
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-user"></i>
-                                    @lang('user.create.register')
+                                <button type="submit" class="btn btn-primary btn-icon btn-icon-standalone">
+                                    <i class="fa-user"></i>
+                                    <span>@lang('user.create.register')</span>
                                 </button>
                             </div>
                         </div>

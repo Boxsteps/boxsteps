@@ -1,0 +1,44 @@
+/**
+ * Custom CSS rules for printing plans on Boxsteps
+ */
+
+.form-control[disabled] {
+    background-color: #fff;
+}
+
+h3.print-title {
+    display: none;
+}
+
+@media print {
+    .panel-heading .panel-title {
+        text-transform: uppercase;
+        font-size: 1.5em !important;
+    }
+
+    .tab-content > .tab-pane {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .tabs-vertical-env.tabs-vertical-bordered .nav.tabs-vertical {
+        display: none;
+    }
+
+    .tabs-vertical-env.tabs-vertical-bordered .tab-content {
+        padding: 0;
+        border: 0;
+    }
+
+    h3.print-title {
+        display: block;
+        font-size: 1.5em;
+        padding-bottom: 1em;
+        padding-top: 1em;
+    }
+
+    .btn-icon.btn-icon-standalone {
+        display: none;
+    }
+}

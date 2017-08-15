@@ -5,11 +5,7 @@
 @endsection
 
 @section('custom-css')
-    <style type="text/css">
-        .form-control[disabled] {
-            background-color: #fff;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('boxsteps/css/xenon/xenon-print.css') }}">
 @endsection
 
 @section('custom-js-header')
@@ -91,7 +87,9 @@
 
                 <br><br><br>
 
-                <div class="panel-heading">@lang('plan.show.content')</div>
+                <div class="panel-heading">
+                    <h3 class="panel-title">@lang('plan.show.content')</h3>
+                </div>
 
                 <div class="panel-body">
                     <div class="tabs-vertical-env tabs-vertical-bordered">
@@ -107,25 +105,40 @@
                         
                         <div class="tab-content">
                             <div class="tab-pane active scrollable" data-max-height="388" id="procedimental">
+                                <h3 class="print-title">@lang('plan.show.procedimental')</h3>
                                 {!! $plan->procedimental_section !!}
                             </div>
                             <div class="tab-pane scrollable" data-max-height="388" id="actitudinal">
+                                <h3 class="print-title">@lang('plan.show.actitudinal')</h3>
                                 {!! $plan->actitudinal_section !!}
                             </div>
                             <div class="tab-pane scrollable" data-max-height="388" id="competences">
+                                <h3 class="print-title">@lang('plan.show.competences')</h3>
                                 {!! $plan->competences !!}
                             </div>
                             <div class="tab-pane scrollable" data-max-height="388" id="indicators">
+                                <h3 class="print-title">@lang('plan.show.indicators')</h3>
                                 {!! $plan->indicators !!}
                             </div>
                             <div class="tab-pane scrollable" data-max-height="388" id="teaching-strategy">
+                                <h3 class="print-title">@lang('plan.show.teaching-strategy')</h3>
                                 {!! $plan->teaching_strategy !!}
                             </div>
                             <div class="tab-pane scrollable" data-max-height="388" id="teaching-sequence">
+                                <h3 class="print-title">@lang('plan.show.teaching-sequence')</h3>
                                 {!! $plan->teaching_sequence !!}
                             </div>
                         </div>
                         
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <div class="pull-right">
+                        <button onclick="planPrint()" class="btn btn-primary btn-icon btn-icon-standalone">
+                            <i class="fa-print"></i>
+                            <span>@lang('plan.show.print')</span>
+                        </button>
                     </div>
                 </div>
 
@@ -136,4 +149,9 @@
 @endsection
 
 @section('custom-js-footer')
+    <script type="text/javascript">
+        function planPrint() {
+            window.print();
+        }
+    </script>
 @endsection

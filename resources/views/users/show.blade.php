@@ -4,6 +4,14 @@
     @lang('user.show.title')
 @endsection
 
+@section('custom-css')
+    <style type="text/css">
+        .form-control[disabled] {
+            background-color: #fff;
+        }
+    </style>
+@stop
+
 @section('content')
 
     <div class="row">
@@ -34,7 +42,7 @@
                                 <label class="control-label" for="name">@lang('user.show.name')</label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="name" id="name" value="{{ $user->name }}" />
+                                <input type="text" class="form-control" name="name" id="name" value="{{ $user->name }}" disabled="disabled" />
                             </div>
                         </div>
 
@@ -43,7 +51,7 @@
                                 <label class="control-label" for="second_name">@lang('user.show.second.name')</label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="second_name" id="second_name" value="{{ $user->second_name }}" />
+                                <input type="text" class="form-control" name="second_name" id="second_name" value="{{ $user->second_name }}" disabled="disabled" />
                             </div>
                         </div>
 
@@ -61,7 +69,7 @@
                                 <label class="control-label" for="role">@lang('user.show.role')</label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="role" id="role" value="{{ $user->role->role }}" />
+                                <input type="text" class="form-control" name="role" id="role" value="{{ $user->role->role }}" disabled="disabled" />
                             </div>
                         </div>
 
