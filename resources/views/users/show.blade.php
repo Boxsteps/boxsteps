@@ -73,37 +73,8 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <label class="control-label" for="name">@lang('user.show.features')</label>
-                            </div>
-                            <div class="col-sm-9">
-                                <ul style="list-style-type: none; padding: 0;">
-                                    @foreach ($user->role->features as $feature)
-                                        @if ( $feature->feature_id == null )
-                                            <li>
-                                                <a href="{{ url($feature->url) }}">
-                                                    <i class="{{ $feature->icon }}"></i>
-                                                    <span class="title">{{ $feature->feature }}</span>
-                                                </a>
-                                                @if ( $feature->childs->first() )
-                                                    <ul style="list-style-type: none;">
-                                                        @foreach ($feature->childs as $child)
-                                                            <li style="padding: 7px;">
-                                                                <a href="{{ url($child->url) }}">
-                                                                    <i class="{{ $child->icon }}"></i>
-                                                                    <span class="title">{{ $child->feature }}</span>
-                                                                </a>
-                                                            </li>
-                                                        @endforeach
-                                                    </ul>
-                                                @endif
-                                            </li>
-                                        @endif
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
+                        <div class="row"><div class="col-sm-3"></div></div>
+                        
                     </div>
 
                 </div>

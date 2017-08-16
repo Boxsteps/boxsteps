@@ -13,6 +13,7 @@ class PermissionsTableSeeder extends Seeder
     public function run()
     {
         $inserts = array(
+            ['feature_id' => 1, 'role_id' => 2, 'created_at' => Carbon::now()],
             ['feature_id' => 1, 'role_id' => 3, 'created_at' => Carbon::now()],
             ['feature_id' => 2, 'role_id' => 3, 'created_at' => Carbon::now()],
             ['feature_id' => 3, 'role_id' => 3, 'created_at' => Carbon::now()],
