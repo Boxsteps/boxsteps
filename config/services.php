@@ -38,7 +38,7 @@ return [
     'google' => [
         'client_id' => '237856751091-8j3pu4p21evjcfn5h4rgm6uvc5g7e51k.apps.googleusercontent.com',
         'client_secret' => '18VhL8IxRcf-slXIvwwEjdcn',
-        'redirect' => 'http://www.boxsteps.dev/login/google/callback',
+        'redirect' => 'http://www.boxsteps.edu/login/google/callback',
     ],
 
 ];
