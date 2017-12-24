@@ -126,7 +126,22 @@ class PlanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $plan = Plan::findOrFail($id);
+
+        $courses = Auth::user()->courses;
+
+        $knowledge_areas = KnowledgeArea::all();
+
+        $plan_knowledge = $plan->conceptual_section->knowledge_area;
+
+        $data = array(
+            'plan' => $plan,
+            'courses' => $courses,
+            'knowledge_areas' => $knowledge_areas,
+            'plan_knowledge' => $plan_knowledge
+        );
+
+        return view('plans.edit', $data);
     }
 
     /**
@@ -138,7 +153,30 @@ class PlanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        $plan = Plan::findOrFail($id);
+
+        $plan->course_id = $request->course;
+        $plan->conceptual_section_id = $request->conceptual;
+        $plan->start_date = Carbon::createFromFormat( 'd-m-Y h:i A', $request->planification_date . ' ' . $request->time_start );
+        $plan->end_date = Carbon::createFromFormat( 'd-m-Y h:i A', $request->planification_date . ' ' . $request->time_end );
+        $plan->procedimental_section = $request->procedimental;
+        $plan->actitudinal_section = $request->actitudinal;
+        $plan->competences = $request->competences;
+        $plan->indicators = $request->indicators;
+        $plan->teaching_strategy = $request->teaching_strategy;
+        $plan->teaching_sequence = $request->teaching_sequence;
+
+        $plan->update();
+
+        return self::redirection('plans/' . $id . '/edit', trans('plan.edit.success'), trans('plan.index.title'), url('plans'));
     }
 
     /**

@@ -78,6 +78,27 @@ return [
     |--------------------------------------------------------------------------
     */
 
+    'edit.title' => 'Editar planificación',
+    'edit.knowledge' => 'Área de conocimiento',
+    'edit.conceptual' => 'Bloque conceptual',
+    'edit.procedimental' => 'Bloque procedimental',
+    'edit.actitudinal' => 'Bloque actitudinal',
+    'edit.competences' => 'Competencias',
+    'edit.indicators' => 'Indicadores',
+    'edit.teaching-strategy' => 'Estrategia de enseñanza',
+    'edit.teaching-sequence' => 'Secuencia didáctica',
+    'edit.resources' => 'Recursos',
+    'edit.course' => 'Curso',
+    'edit.course-format' => ':gradeº grado, sección ":section"',
+    'edit.success' => '¡La planificación fue editada de forma satisfactoria!',
+
+    'edit.date' => 'Definición de fecha',
+    'edit.planification-date' => 'Fecha de planificación',
+    'edit.begin-time' => 'Hora de inicio',
+    'edit.end-time' => 'Hora de fin',
+
+    'edit.register' => 'Editar planificación',
+
     /*
     |--------------------------------------------------------------------------
     | Destroy messages
