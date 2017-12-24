@@ -57,16 +57,25 @@
                                             <td>{{ $teacher->name }} {{ $teacher->second_name }}</td>
                                             <td>{{ $plan->conceptual_section->knowledge_area->knowledge_area }}</td>
                                             <td>{{ $plan->conceptual_section->conceptual_section }}</td>
-                                            <td>{{ $plan->condition->first()->state }}</td>
+                                            <td>{{ $plan->state->first()->state }}</td>
                                             <td>{{ $plan->start_date->format('d-m-Y') }}</td>
                                             <td class="action-links">
-                                                <form role="form" action="{{ url('/revisions/' . $plan->id . '/edit' ) }}" method="POST">
+                                                <form role="form" action="{{ url( '/revisions/' . $plan->id ) }}" method="POST">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="_method" value="GET">
-                                                    <button class="btn btn-icon btn-warning" title="@lang('revision.index.title.review')">
-                                                        <i class="fa-check"></i>
+                                                    <button class="btn btn-icon btn-info" title="@lang('revision.index.title.info')">
+                                                        <i class="fa-info"></i>
                                                     </button>
                                                 </form>
+                                                @if ( $plan->state->first()->id == trans('globals.condition.pending') )
+                                                    <form role="form" action="{{ url( '/revisions/' . $plan->id ) }}" method="POST">
+                                                        {{ csrf_field() }}
+                                                        <input type="hidden" name="_method" value="PUT">
+                                                        <button class="btn btn-icon btn-warning" title="@lang('revision.index.title.review')">
+                                                            <i class="fa-check"></i>
+                                                        </button>
+                                                    </form>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

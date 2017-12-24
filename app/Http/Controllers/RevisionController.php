@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\ConceptualSection;
+use App\Plan;
 
 use App\Http\Requests;
 
@@ -64,7 +66,17 @@ class RevisionController extends Controller
      */
     public function show($id)
     {
-        //
+        $plan = Plan::findOrFail($id);
+
+        $conceptual = ConceptualSection::findOrFail($plan->conceptual_section_id);
+
+        $data = array(
+            'plan' => $plan,
+            'conceptual' => $conceptual->conceptual_section,
+            'knowledge' => $conceptual->knowledge_area->knowledge_area
+        );
+
+        return view('revisions.show', $data);
     }
 
     /**
@@ -87,7 +99,15 @@ class RevisionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $plan = Plan::findOrFail($id);
+
+        $condition = $plan->condition;
+
+        $condition->state_id = trans('globals.condition.approved');
+
+        $condition->update();
+
+        return self::redirection('revisions', trans('revision.approve.success'), null, null);
     }
 
     /**

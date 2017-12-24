@@ -66,9 +66,17 @@ class Plan extends Model
     /**
      * The Condition of the Plan.
      */
-    public function condition()
+    public function state()
     {
         return $this->belongsToMany('App\State', 'conditions', 'plan_id', 'state_id');
+    }
+
+    /**
+     * The Condition that has a Plan.
+     */
+    public function condition()
+    {
+        return $this->hasOne('App\Condition', 'plan_id', 'id');
     }
 
     /**

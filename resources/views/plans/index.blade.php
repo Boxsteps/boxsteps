@@ -55,7 +55,7 @@
                                         <td>{{ trans('plan.index.course-format', ['grade' => $course->grade, 'section' => $course->section]) }}</td>
                                         <td>{{ $plan->conceptual_section->knowledge_area->knowledge_area }}</td>
                                         <td>{{ $plan->conceptual_section->conceptual_section }}</td>
-                                        <td>{{ $plan->condition->first()->state }}</td>
+                                        <td>{{ $plan->state->first()->state }}</td>
                                         <td>{{ $plan->start_date->format('d-m-Y') }}</td>
                                         <td>{{ $plan->start_date->format('h:i A') }} - {{ $plan->end_date->format('h:i A') }}</td>
                                         <td class="action-links">

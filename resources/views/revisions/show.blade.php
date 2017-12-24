@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-    @lang('plan.show.title')
+    @lang('revision.show.title')
 @endsection
 
 @section('custom-css')
@@ -18,7 +18,7 @@
             <div class="panel panel-default">
 
                 <div class="panel-heading">
-                    <h3 class="panel-title">@lang('plan.show.title')</h3>
+                    <h3 class="panel-title">@lang('revision.show.title')</h3>
                 </div>
 
                 <div class="panel-body">
@@ -27,15 +27,15 @@
                         <form role="form" class="form-horizontal" role="form">
 
                             <div class="form-group">
-                                <label class="col-sm-4 control-label" for="course">@lang('plan.show.course')</label>
+                                <label class="col-sm-4 control-label" for="course">@lang('revision.show.course')</label>
 
                                 <div class="col-sm-8">
-                                    <input type="text" disabled="disabled" class="form-control" id="course" value="{{ trans('plan.show.course-format', ['grade' => $plan->course->grade, 'section' => $plan->course->section]) }}">
+                                    <input type="text" disabled="disabled" class="form-control" id="course" value="{{ trans('revision.show.course-format', ['grade' => $plan->course->grade, 'section' => $plan->course->section]) }}">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-sm-4 control-label" for="knowledge">@lang('plan.show.knowledge')</label>
+                                <label class="col-sm-4 control-label" for="knowledge">@lang('revision.show.knowledge')</label>
 
                                 <div class="col-sm-8">
                                     <input type="text" disabled="disabled" class="form-control" id="knowledge" value="{{ $knowledge }}">
@@ -43,7 +43,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-sm-4 control-label" for="conceptual">@lang('plan.show.conceptual')</label>
+                                <label class="col-sm-4 control-label" for="conceptual">@lang('revision.show.conceptual')</label>
 
                                 <div class="col-sm-8">
                                     <input type="text" disabled="disabled" class="form-control" id="conceptual" value="{{ $conceptual }}">
@@ -57,7 +57,7 @@
                         <form role="form" class="form-horizontal" role="form">
 
                             <div class="form-group">
-                                <label class="col-sm-4 control-label" for="date">@lang('plan.show.date')</label>
+                                <label class="col-sm-4 control-label" for="date">@lang('revision.show.date')</label>
 
                                 <div class="col-sm-8">
                                     <input type="text" disabled="disabled" class="form-control" id="date" value="{{ $plan->start_date->format('d-m-Y') }}">
@@ -65,7 +65,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-sm-4 control-label" for="time">@lang('plan.show.time')</label>
+                                <label class="col-sm-4 control-label" for="time">@lang('revision.show.time')</label>
 
                                 <div class="col-sm-8">
                                     <input type="text" disabled="disabled" class="form-control" id="time" value="{{ $plan->start_date->format('h:i A') }} - {{ $plan->end_date->format('h:i A') }}">
@@ -73,7 +73,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-sm-4 control-label" for="condition">@lang('plan.show.condition')</label>
+                                <label class="col-sm-4 control-label" for="condition">@lang('revision.show.condition')</label>
 
                                 <div class="col-sm-8">
                                     <input type="text" disabled="disabled" class="form-control" id="condition" value="{{ $plan->state->first()->state }}">
@@ -88,44 +88,44 @@
                 <br><br><br>
 
                 <div class="panel-heading">
-                    <h3 class="panel-title">@lang('plan.show.content')</h3>
+                    <h3 class="panel-title">@lang('revision.show.content')</h3>
                 </div>
 
                 <div class="panel-body">
                     <div class="tabs-vertical-env tabs-vertical-bordered">
 
                         <ul class="nav tabs-vertical">
-                            <li class="active"><a href="#procedimental" data-toggle="tab">@lang('plan.show.procedimental')</a></li>
-                            <li><a href="#actitudinal" data-toggle="tab">@lang('plan.show.actitudinal')</a></li>
-                            <li><a href="#competences" data-toggle="tab">@lang('plan.show.competences')</a></li>
-                            <li><a href="#indicators" data-toggle="tab">@lang('plan.show.indicators')</a></li>
-                            <li><a href="#teaching-strategy" data-toggle="tab">@lang('plan.show.teaching-strategy')</a></li>
-                            <li><a href="#teaching-sequence" data-toggle="tab">@lang('plan.show.teaching-sequence')</a></li>
+                            <li class="active"><a href="#procedimental" data-toggle="tab">@lang('revision.show.procedimental')</a></li>
+                            <li><a href="#actitudinal" data-toggle="tab">@lang('revision.show.actitudinal')</a></li>
+                            <li><a href="#competences" data-toggle="tab">@lang('revision.show.competences')</a></li>
+                            <li><a href="#indicators" data-toggle="tab">@lang('revision.show.indicators')</a></li>
+                            <li><a href="#teaching-strategy" data-toggle="tab">@lang('revision.show.teaching-strategy')</a></li>
+                            <li><a href="#teaching-sequence" data-toggle="tab">@lang('revision.show.teaching-sequence')</a></li>
                         </ul>
 
                         <div class="tab-content">
                             <div class="tab-pane active scrollable" data-max-height="388" id="procedimental">
-                                <h3 class="print-title">@lang('plan.show.procedimental')</h3>
+                                <h3 class="print-title">@lang('revision.show.procedimental')</h3>
                                 {!! $plan->procedimental_section !!}
                             </div>
                             <div class="tab-pane scrollable" data-max-height="388" id="actitudinal">
-                                <h3 class="print-title">@lang('plan.show.actitudinal')</h3>
+                                <h3 class="print-title">@lang('revision.show.actitudinal')</h3>
                                 {!! $plan->actitudinal_section !!}
                             </div>
                             <div class="tab-pane scrollable" data-max-height="388" id="competences">
-                                <h3 class="print-title">@lang('plan.show.competences')</h3>
+                                <h3 class="print-title">@lang('revision.show.competences')</h3>
                                 {!! $plan->competences !!}
                             </div>
                             <div class="tab-pane scrollable" data-max-height="388" id="indicators">
-                                <h3 class="print-title">@lang('plan.show.indicators')</h3>
+                                <h3 class="print-title">@lang('revision.show.indicators')</h3>
                                 {!! $plan->indicators !!}
                             </div>
                             <div class="tab-pane scrollable" data-max-height="388" id="teaching-strategy">
-                                <h3 class="print-title">@lang('plan.show.teaching-strategy')</h3>
+                                <h3 class="print-title">@lang('revision.show.teaching-strategy')</h3>
                                 {!! $plan->teaching_strategy !!}
                             </div>
                             <div class="tab-pane scrollable" data-max-height="388" id="teaching-sequence">
-                                <h3 class="print-title">@lang('plan.show.teaching-sequence')</h3>
+                                <h3 class="print-title">@lang('revision.show.teaching-sequence')</h3>
                                 {!! $plan->teaching_sequence !!}
                             </div>
                         </div>
@@ -134,10 +134,23 @@
                 </div>
 
                 <div class="panel-body">
+                    @if ( $plan->state->first()->id == trans('globals.condition.pending') )
+                        <div class="pull-right">
+                            <form role="form" action="{{ url( '/revisions/' . $plan->id ) }}" method="POST">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="_method" value="PUT">
+                                &nbsp;
+                                <button class="btn btn-icon btn-icon-standalone btn-warning">
+                                    <i class="fa-check"></i>
+                                    <span>@lang('revision.show.title.review')</span>
+                                </button>
+                            </form>
+                        </div>
+                    @endif
                     <div class="pull-right">
                         <button onclick="planPrint()" class="btn btn-primary btn-icon btn-icon-standalone">
                             <i class="fa-print"></i>
-                            <span>@lang('plan.show.print')</span>
+                            <span>@lang('revision.show.print')</span>
                         </button>
                     </div>
                 </div>
