@@ -23,6 +23,7 @@ class PlanController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware(trans('globals.role.teacher'), ['except' => array('profile')]);
     }
 
     /**
@@ -89,7 +90,8 @@ class PlanController extends Controller
 
         $condition = new Condition([
             'state_id' => trans('globals.condition.pending'),
-            'plan_id' => Plan::all()->last()->id
+            'plan_id' => Plan::all()->last()->id,
+            'user_id' => Auth::user()->id
         ]);
 
         $condition->save();

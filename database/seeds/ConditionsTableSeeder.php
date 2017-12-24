@@ -23,5 +23,18 @@ class ConditionsTableSeeder extends Seeder
         DB::table('conditions')->insert($inserts);
 
         factory(App\Condition::class, 9)->create();
+
+        $inserts = array(
+            [ 'created_at' => Carbon::now(), 'state_id' => 1, 'plan_id' => 1, 'user_id' => 3 ],
+            [ 'created_at' => Carbon::now(), 'state_id' => 1, 'plan_id' => 2, 'user_id' => 3 ],
+            [ 'created_at' => Carbon::now(), 'state_id' => 1, 'plan_id' => 3, 'user_id' => 3 ],
+            [ 'created_at' => Carbon::now(), 'state_id' => 1, 'plan_id' => 4, 'user_id' => 5 ],
+            [ 'created_at' => Carbon::now(), 'state_id' => 1, 'plan_id' => 5, 'user_id' => 5 ],
+            [ 'created_at' => Carbon::now(), 'state_id' => 1, 'plan_id' => 6, 'user_id' => 5 ],
+            [ 'created_at' => Carbon::now(), 'state_id' => 1, 'plan_id' => 7, 'user_id' => 6 ],
+            [ 'created_at' => Carbon::now(), 'state_id' => 1, 'plan_id' => 8, 'user_id' => 6 ],
+            [ 'created_at' => Carbon::now(), 'state_id' => 1, 'plan_id' => 9, 'user_id' => 6 ],
+        );
+        DB::table('conditions')->insert($inserts);
     }
 }

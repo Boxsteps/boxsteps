@@ -37,9 +37,9 @@ class User extends Authenticatable
     }
 
     /**
-     * The professor User that has a coordinator.
+     * The teachers that has a coordinator.
      */
-    public function professors()
+    public function teachers()
     {
         return $this->hasMany('App\User', 'user_id', 'id');
     }

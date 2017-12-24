@@ -13,6 +13,20 @@
 
 /*
 |--------------------------------------------------------------------------
+| Resources routes
+|--------------------------------------------------------------------------
+*/
+
+Route::resource('courses', 'CourseController');
+Route::resource('features', 'FeatureController');
+Route::resource('messages', 'MessageController');
+Route::resource('plans', 'PlanController');
+Route::resource('revisions', 'RevisionController');
+Route::resource('roles', 'RoleController');
+Route::resource('users', 'UserController', ['except' => ['create', 'store']]);
+
+/*
+|--------------------------------------------------------------------------
 | Users/Auth routes
 |--------------------------------------------------------------------------
 */
@@ -40,21 +54,6 @@ Route::post('users/store', 'Auth\AuthController@register');
 
 // Profile routes
 Route::get('profile', 'UserController@profile');
-
-// User resource routes
-Route::resource('users', 'UserController', ['except' => ['create', 'store']]);
-
-/*
-|--------------------------------------------------------------------------
-| Resources routes
-|--------------------------------------------------------------------------
-*/
-
-Route::resource('features', 'FeatureController');
-Route::resource('roles', 'RoleController');
-Route::resource('plans', 'PlanController');
-Route::resource('messages', 'MessageController');
-Route::resource('courses', 'CourseController');
 
 // Dashboard routes
 Route::get('dashboard', 'DashboardController@index');
