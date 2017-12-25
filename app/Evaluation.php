@@ -20,15 +20,6 @@ class Evaluation extends Model
     }
 
     /**
-     * The Conceptual Sections that belongs to the Evaluation.
-     */
-    public function conceptual_sections()
-    {
-        return $this->belongsToMany('App\ConceptualSection', 'evaluation_contents', 'evaluation_id', 'conceptual_section_id')
-            ->withTimestamps();
-    }
-
-    /**
      * Course relationship for Evaluations
      */
     public function course()

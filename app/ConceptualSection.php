@@ -26,14 +26,6 @@ class ConceptualSection extends Model
     }
 
     /**
-     * The Evaluations that belongs to the Conceptual Section.
-     */
-    public function evaluations()
-    {
-        return $this->belongsToMany('App\Evaluation', 'evaluation_contents', 'conceptual_section_id', 'evaluation_id');
-    }
-
-    /**
      * The attributes that should be mutated to dates.
      *
      * @var array
