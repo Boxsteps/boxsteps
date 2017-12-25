@@ -51,7 +51,7 @@
 								<div class="col-sm-8">
 									<div class="input-group col-xs-12 col-sm-12">
 										<select class="form-control" name="course" id="course">
-											<option value="">Ninguno</option>
+											<option value="">@lang('globals.value.null')</option>
 											@foreach ($courses as $course)
 												<option {{ ( $plan->course_id == $course->id ? 'selected="selected"' : '' ) }} value="{{ $course->id }}">{{ trans('plan.edit.course-format', ['grade' => $course->grade, 'section' => $course->section]) }}</option>
 											@endforeach
@@ -71,7 +71,7 @@
 								<div class="col-sm-8">
 									<div class="input-group col-xs-12 col-sm-12">
 										<select class="form-control" name="knowledge" id="knowledge">
-											<option value="">Ninguno</option>
+											<option value="">@lang('globals.value.null')</option>
 											@foreach ($knowledge_areas as $area)
 												<option {{ ( $plan_knowledge->id == $area->id ? 'selected="selected"' : '' ) }} value="{{ $area->id }}">{{ $area->knowledge_area }}</option>
 											@endforeach
@@ -91,7 +91,7 @@
 								<div class="col-sm-8">
 									<div class="input-group col-xs-12 col-sm-12">
 										<select class="form-control" name="conceptual" id="conceptual">
-											<option value="">Ninguno</option>
+											<option value="">@lang('globals.value.null')</option>
 										</select>
 									</div>
 									@if ($errors->has('conceptual'))
@@ -324,7 +324,7 @@
 
 			$.get("{{ url('/api/conceptual-sections-dropdown?knowledge+area+value=') }}" + $('#knowledge').val(), function(data) {
 				$('#conceptual').empty();
-				$('#conceptual').append('<option value="">Ninguno</option>');
+				$('#conceptual').append('<option value="">@lang('globals.value.null')</option>');
 				$.each(data, function(index, option) {
 					if ( option.id == {{ $plan->conceptual_section_id }} ) {
 						$('#conceptual').append('<option selected="selected" value ="' + option.id + '">' + option.conceptual_section + '</option>');
@@ -342,7 +342,7 @@
 
 				$.get("{{ url('/api/conceptual-sections-dropdown?knowledge+area+value=') }}" + knowledge_area_value, function(data) {
 					$('#conceptual').empty();
-					$('#conceptual').append('<option value="">Ninguno</option>');
+					$('#conceptual').append('<option value="">@lang('globals.value.null')</option>');
 					$.each(data, function(index, option) {
 						$('#conceptual').append('<option value ="' + option.id + '">' + option.conceptual_section + '</option>');
 					});

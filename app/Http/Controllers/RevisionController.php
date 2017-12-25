@@ -70,10 +70,26 @@ class RevisionController extends Controller
 
         $conceptual = ConceptualSection::findOrFail($plan->conceptual_section_id);
 
+        $completion = $plan->completion_time;
+
+        if ( $completion == trans('globals.evaluation.early.completion') ) {
+            $completion = trans('plan.evaluation.early.completion');
+        }
+        elseif ( $completion == trans('globals.evaluation.expected.completion') ) {
+            $completion = trans('plan.evaluation.expected.completion');
+        }
+        elseif ( $completion == trans('globals.evaluation.delayed.completion') ) {
+            $completion = trans('plan.evaluation.delayed.completion');
+        }
+        else {
+            $completion = trans('plan.evaluation.na.completion');
+        }
+
         $data = array(
             'plan' => $plan,
             'conceptual' => $conceptual->conceptual_section,
-            'knowledge' => $conceptual->knowledge_area->knowledge_area
+            'knowledge' => $conceptual->knowledge_area->knowledge_area,
+            'completion' => $completion
         );
 
         return view('revisions.show', $data);

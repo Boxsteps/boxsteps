@@ -66,20 +66,31 @@
                                                     <i class="fa-info"></i>
                                                 </button>
                                             </form>
-                                            <form role="form" action="{{ url('/plans/' . $plan->id . '/edit' ) }}" method="POST">
-                                                {{ csrf_field() }}
-                                                <input type="hidden" name="_method" value="GET">
-                                                <button class="btn btn-icon btn-success" title="@lang('plan.index.title.edit')">
-                                                    <i class="fa-pencil"></i>
-                                                </button>
-                                            </form>
-                                            <form role="form" action="{{ url('/plans/' . $plan->id ) }}" method="POST">
-                                                {{ csrf_field() }}
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <button class="btn btn-icon btn-red" title="@lang('plan.index.title.delete')">
-                                                    <i class="fa-remove"></i>
-                                                </button>
-                                            </form>
+                                            @if ( $plan->state->first()->id == trans('globals.condition.approved') )
+                                                <form role="form" action="{{ url( '/plans/' . $plan->id . '/evaluation' ) }}" method="POST">
+                                                    {{ csrf_field() }}
+                                                    <input type="hidden" name="_method" value="GET">
+                                                    <button class="btn btn-icon btn-purple" title="@lang('plan.index.title.review')">
+                                                        <i class="fa-check-square-o"></i>
+                                                    </button>
+                                                </form>
+                                            @endif
+                                            @if ( $plan->state->first()->id == trans('globals.condition.pending') )
+                                                <form role="form" action="{{ url('/plans/' . $plan->id . '/edit' ) }}" method="POST">
+                                                    {{ csrf_field() }}
+                                                    <input type="hidden" name="_method" value="GET">
+                                                    <button class="btn btn-icon btn-success" title="@lang('plan.index.title.edit')">
+                                                        <i class="fa-pencil"></i>
+                                                    </button>
+                                                </form>
+                                                <form role="form" action="{{ url('/plans/' . $plan->id ) }}" method="POST">
+                                                    {{ csrf_field() }}
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <button class="btn btn-icon btn-red" title="@lang('plan.index.title.delete')">
+                                                        <i class="fa-remove"></i>
+                                                    </button>
+                                                </form>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

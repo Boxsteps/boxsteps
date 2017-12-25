@@ -111,10 +111,26 @@ class PlanController extends Controller
 
         $conceptual = ConceptualSection::findOrFail($plan->conceptual_section_id);
 
+        $completion = $plan->completion_time;
+
+        if ( $completion == trans('globals.evaluation.early.completion') ) {
+            $completion = trans('plan.evaluation.early.completion');
+        }
+        elseif ( $completion == trans('globals.evaluation.expected.completion') ) {
+            $completion = trans('plan.evaluation.expected.completion');
+        }
+        elseif ( $completion == trans('globals.evaluation.delayed.completion') ) {
+            $completion = trans('plan.evaluation.delayed.completion');
+        }
+        else {
+            $completion = trans('plan.evaluation.na.completion');
+        }
+
         $data = array(
             'plan' => $plan,
             'conceptual' => $conceptual->conceptual_section,
-            'knowledge' => $conceptual->knowledge_area->knowledge_area
+            'knowledge' => $conceptual->knowledge_area->knowledge_area,
+            'completion' => $completion
         );
 
         return view('plans.show', $data);
@@ -144,6 +160,21 @@ class PlanController extends Controller
         );
 
         return view('plans.edit', $data);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editPlanEvaluation($id)
+    {
+        $plan = Plan::findOrFail($id);
+
+        $data = array('plan' => $plan);
+
+        return view('plans.evaluation', $data);
     }
 
     /**
@@ -182,6 +213,40 @@ class PlanController extends Controller
     }
 
     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updatePlanEvaluation(Request $request, $id)
+    {
+        $validator = $this->validatorPlanEvaluation($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        $plan = Plan::findOrFail($id);
+
+        $plan->score = $request->score;
+        $plan->completion_time = $request->completion;
+        $plan->observations = $request->observations;
+
+        $plan->update();
+
+        $condition = $plan->condition;
+
+        $condition->state_id = trans('globals.condition.finished');
+
+        $condition->update();
+
+        return self::redirection('plans', trans('plan.evaluation.success'), null, null);
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -217,6 +282,21 @@ class PlanController extends Controller
             'indicators' => 'required',
             'teaching_strategy' => 'required',
             'teaching_sequence' => 'required'
+        ]);
+    }
+
+    /**
+     * Get a validator for an incoming store/update request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validatorPlanEvaluation(array $data)
+    {
+        return Validator::make($data, [
+            'completion' => 'required',
+            'score' => 'required',
+            'observations' => 'required'
         ]);
     }
 

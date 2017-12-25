@@ -13,26 +13,17 @@
 
 /*
 |--------------------------------------------------------------------------
-| Resources routes
+| Web middleware routes
 |--------------------------------------------------------------------------
 */
 
-Route::resource('courses', 'CourseController');
-Route::resource('features', 'FeatureController');
-Route::resource('messages', 'MessageController');
-Route::resource('plans', 'PlanController');
-Route::resource('revisions', 'RevisionController');
-Route::resource('roles', 'RoleController');
-Route::resource('users', 'UserController', ['except' => ['create', 'store']]);
+Route::group(['middleware' => 'web'], function () {});
 
 /*
 |--------------------------------------------------------------------------
 | Users/Auth routes
 |--------------------------------------------------------------------------
 */
-
-// Middleware web group
-Route::group(['middleware' => 'web'], function () {});
 
 // Authentication routes
 Route::get('login', 'Auth\AuthController@showLoginForm');
@@ -52,6 +43,21 @@ Route::post('password/reset', 'Auth\PasswordController@reset');
 Route::get('users/create', 'Auth\AuthController@showRegistrationForm');
 Route::post('users/store', 'Auth\AuthController@register');
 
+/*
+|--------------------------------------------------------------------------
+| Plan evaluation routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get('plans/{id}/evaluation', 'PlanController@editPlanEvaluation');
+Route::put('plans/{id}/evaluation', 'PlanController@updatePlanEvaluation');
+
+/*
+|--------------------------------------------------------------------------
+| Dashboard routes
+|--------------------------------------------------------------------------
+*/
+
 // Profile routes
 Route::get('profile', 'UserController@profile');
 
@@ -67,3 +73,17 @@ Route::get('/', 'DashboardController@start');
 */
 
 Route::get('/api/conceptual-sections-dropdown', 'ConceptualSectionController@index');
+
+/*
+|--------------------------------------------------------------------------
+| Resources routes
+|--------------------------------------------------------------------------
+*/
+
+Route::resource('courses', 'CourseController');
+Route::resource('features', 'FeatureController');
+Route::resource('messages', 'MessageController');
+Route::resource('plans', 'PlanController');
+Route::resource('revisions', 'RevisionController', ['except' => ['create', 'store', 'edit', 'destroy']]);
+Route::resource('roles', 'RoleController');
+Route::resource('users', 'UserController', ['except' => ['create', 'store']]);

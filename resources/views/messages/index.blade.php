@@ -137,7 +137,6 @@
                             </a>
                         </li>
                         <li><a href="{{ url('messages/sent') }}">@lang('message.index.sent')</a></li>
-                        <li><a href="{{ url('messages/drafts') }}">@lang('message.index.drafts')</a></li>
                         <li><a href="{{ url('messages/trash') }}">@lang('message.index.trash')</a></li>
                     </ul>
 

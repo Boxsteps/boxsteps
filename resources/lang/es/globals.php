@@ -38,6 +38,12 @@ return [
     'condition.active' => '4',
     'condition.off' => '5',
 
+    'evaluation.early.completion' => '1',
+    'evaluation.expected.completion' => '2',
+    'evaluation.delayed.completion' => '3',
+
+    'value.null' => 'Ninguno',
+
     'message.close' => 'Cerrar',
 
     /*

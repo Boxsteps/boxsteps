@@ -20,6 +20,7 @@ return [
     'index.title.info' => 'Detallar planificación',
     'index.title.edit' => 'Editar planificación',
     'index.title.delete' => 'Eliminar planificación',
+    'index.title.review' => 'Evaluar planificación',
 
     /*
     |--------------------------------------------------------------------------
@@ -29,6 +30,8 @@ return [
 
     'show.title' => 'Detalles de la planificación',
     'show.content' => 'Contenido de la planificación',
+    'show.evaluation' => 'Evaluación de la planificación',
+
     'show.knowledge' => 'Área de conocimiento',
     'show.conceptual' => 'Bloque conceptual',
     'show.procedimental' => 'Bloque procedimental',
@@ -37,13 +40,20 @@ return [
     'show.indicators' => 'Indicadores',
     'show.teaching-strategy' => 'Estrategia de enseñanza',
     'show.teaching-sequence' => 'Secuencia didáctica',
+
     'show.resources' => 'Recursos',
     'show.course' => 'Curso',
     'show.course-format' => ':gradeº grado, sección ":section"',
     'show.date' => 'Fecha',
     'show.time' => 'Hora',
     'show.condition' => 'Estado',
+
+    'show.score' => 'Calificación',
+    'show.completion' => 'Tiempo de culminación',
+    'show.observations' => 'Observaciones',
+
     'show.print' => 'Imprimir planificación',
+    'show.title.review' => 'Evaluar planificación',
 
     /*
     |--------------------------------------------------------------------------
@@ -106,5 +116,24 @@ return [
     */
 
     'destroy.success' => '¡La planificación fue eliminada de forma satisfactoria!',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Show Evaluation messages
+    |--------------------------------------------------------------------------
+    */
+
+    'evaluation.title' => 'Evaluar planificación',
+    'evaluation.score' => 'Calificación',
+    'evaluation.completion' => 'Tiempo de culminación',
+    'evaluation.observations' => 'Observaciones',
+    'evaluation.title.review' => 'Evaluar planificación',
+
+    'evaluation.early.completion' => 'Culminación anticipada',
+    'evaluation.expected.completion' => 'Culminación esperada',
+    'evaluation.delayed.completion' => 'Culminación retrasada',
+    'evaluation.na.completion' => 'N/A',
+
+    'evaluation.success' => '¡La planificación fue evaluada de forma satisfactoria!',
 
 ];

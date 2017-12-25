@@ -8,7 +8,6 @@
 
         <li class="top">
             <p class="small">
-                <a href="#" class="pull-right">@lang('partials.mark-readed')</a>
                 Tienes <strong>6</strong> nuevas notificaciones.
             </p>
         </li>

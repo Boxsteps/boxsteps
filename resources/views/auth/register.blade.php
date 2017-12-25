@@ -89,7 +89,7 @@
 
                             <div class="col-md-6">
                                 <select id="role" type="role" class="form-control" name="role">
-                                    <option value="">Ninguno</option>
+                                    <option value="">@lang('globals.value.null')</option>
                                     @foreach ($roles as $role)
                                         <option value="{{$role->id}}">{{$role->role}}</option>
                                     @endforeach
@@ -108,7 +108,7 @@
 
                             <div class="col-md-6">
                                 <select id="coordinator" type="coordinator" class="form-control" name="coordinator" disabled="disabled">
-                                    <option value="">Ninguno</option>
+                                    <option value="">@lang('globals.value.null')</option>
                                     @foreach ($coordinators as $coordinator)
                                         <option value="{{$coordinator->id}}">{{$coordinator->name}} {{$coordinator->second_name}}</option>
                                     @endforeach
@@ -121,7 +121,7 @@
                                 @endif
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary btn-icon btn-icon-standalone">

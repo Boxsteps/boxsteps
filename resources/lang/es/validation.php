@@ -131,6 +131,10 @@ return [
         'teaching_sequence' => 'secuencia didáctica',
         'course' => 'curso',
 
+        'completion' => 'tiempo de culminación',
+        'score' => 'calificación',
+        'observations' => 'observaciones',
+
         'null' => 'Ninguno'
     ],
 

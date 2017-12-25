@@ -25,7 +25,6 @@ class FeaturesTableSeeder extends Seeder
         $inserts = array(
             ['feature' => 'Crear planificación', 'url' => 'plans/create', 'feature_id' => 1, 'created_at' => Carbon::now()],
             ['feature' => 'Listar planificación', 'url' => 'plans', 'feature_id' => 1, 'created_at' => Carbon::now()],
-            ['feature' => 'Evaluar planificación', 'url' => 'plans/evaluation', 'feature_id' => 1, 'created_at' => Carbon::now()],
             ['feature' => 'Crear evaluación', 'url' => 'evaluations/create', 'feature_id' => 2, 'created_at' => Carbon::now()],
             ['feature' => 'Listar evaluaciones', 'url' => 'evaluations', 'feature_id' => 2, 'created_at' => Carbon::now()],
             ['feature' => 'Asignar calificaciones', 'url' => 'qualifications', 'feature_id' => 2, 'created_at' => Carbon::now()],

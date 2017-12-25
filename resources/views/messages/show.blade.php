@@ -86,8 +86,6 @@
                         <div class="fake-form">
                             <div>
                                 <a href="{{ url('messages/reply') }}">@lang('message.show.box.reply')</a>
-                                @lang('message.show.box.or')
-                                <a href="{{ url('messages/forward') }}">@lang('message.show.box.forward')</a>
                                 @lang('message.show.box.this-message')
                             </div>
                         </div>
@@ -125,7 +123,6 @@
                             </a>
                         </li>
                         <li><a href="{{ url('messages/sent') }}">@lang('message.index.sent')</a></li>
-                        <li><a href="{{ url('messages/drafts') }}">@lang('message.index.drafts')</a></li>
                         <li><a href="{{ url('messages/trash') }}">@lang('message.index.trash')</a></li>
                     </ul>
 
