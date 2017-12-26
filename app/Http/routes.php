@@ -81,6 +81,7 @@ Route::get('/api/conceptual-sections-dropdown', 'ConceptualSectionController@ind
 */
 
 Route::resource('courses', 'CourseController');
+Route::resource('evaluations', 'EvaluationController');
 Route::resource('features', 'FeatureController');
 Route::resource('messages', 'MessageController');
 Route::resource('plans', 'PlanController');

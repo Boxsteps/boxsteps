@@ -18,14 +18,16 @@ class ComposerServiceProvider extends ServiceProvider
         view()->composer(
             [
                 'new', 'dashboard',
-                'users.index', 'users.show', 'users.edit', 'auth.register',
+                'courses.index', 'courses.show',
+                'evaluations.create',
+                'features.index', 'features.show',
+                'messages.index', 'messages.show',
                 'plans.index', 'plans.show', 'plans.create', 'plans.edit', 'plans.evaluation',
                 'revisions.index', 'revisions.show',
-                'messages.index', 'messages.show',
                 'roles.index', 'roles.show',
-                'features.index', 'features.show',
-                'courses.index', 'courses.show',
-            ], 'App\Http\ViewComposers\MenuComposer'
+                'users.index', 'users.show', 'users.edit', 'auth.register',
+            ],
+            'App\Http\ViewComposers\MenuComposer'
         );
     }
 

@@ -10,6 +10,16 @@ class Evaluation extends Model
     use SoftDeletes;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'representative_percentage', 'start_date', 'end_date',
+        'course_id', 'evaluation_type_id', 'plan_id'
+    ];
+
+    /**
      * The Students that belongs to the Evaluation.
      */
     public function students()
@@ -51,7 +61,9 @@ class Evaluation extends Model
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at'
+        'deleted_at',
+        'start_date',
+        'end_date'
     ];
 
     /**
