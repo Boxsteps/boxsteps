@@ -19,7 +19,7 @@ class ComposerServiceProvider extends ServiceProvider
             [
                 'new', 'dashboard',
                 'courses.index', 'courses.show',
-                'evaluations.create',
+                'evaluations.index', 'evaluations.show', 'evaluations.create', 'evaluations.edit',
                 'features.index', 'features.show',
                 'messages.index', 'messages.show',
                 'plans.index', 'plans.show', 'plans.create', 'plans.edit', 'plans.evaluation',

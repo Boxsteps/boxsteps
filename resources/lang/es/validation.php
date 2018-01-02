@@ -135,6 +135,7 @@ return [
         'score' => 'calificación',
         'observations' => 'observaciones',
 
+        'evaluation_name' => 'nombre de evaluación',
         'evaluation_content' => 'contenido a evaluar',
         'evaluation_type' => 'tipo de evaluación',
         'percentage' => 'porcentaje representativo',

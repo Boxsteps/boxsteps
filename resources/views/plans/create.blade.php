@@ -221,7 +221,7 @@
 					<div class="panel-body">
 						<div class="pull-right">
 							<button type="submit" class="btn btn-primary btn-icon btn-icon-standalone">
-								<i class="fa-pencil"></i>
+								<i class="fa-pencil-square-o"></i>
 								<span>@lang('plan.create.register')</span>
 							</button>
 						</div>
