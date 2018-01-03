@@ -15,7 +15,7 @@ class CreateQualificationsTable extends Migration
         Schema::create('qualifications', function (Blueprint $table) {
 
             $table->increments('id');
-            $table->string('qualification');
+            $table->string('qualification')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
