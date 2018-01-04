@@ -20,7 +20,7 @@ return [
     'index.title.info' => 'Detallar evaluación',
     'index.title.edit' => 'Editar evaluación',
     'index.title.delete' => 'Eliminar evaluación',
-    'index.title.review' => 'Evaluar evaluación',
+    'index.title.review' => 'Calificar evaluación',
 
     /*
     |--------------------------------------------------------------------------

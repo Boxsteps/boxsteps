@@ -23,6 +23,7 @@ class ComposerServiceProvider extends ServiceProvider
                 'features.index', 'features.show',
                 'messages.index', 'messages.show',
                 'plans.index', 'plans.show', 'plans.create', 'plans.edit', 'plans.evaluation',
+                'qualifications.index',
                 'revisions.index', 'revisions.show',
                 'roles.index', 'roles.show',
                 'users.index', 'users.show', 'users.edit', 'auth.register',

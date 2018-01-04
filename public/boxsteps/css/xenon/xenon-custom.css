@@ -118,3 +118,7 @@ form .form-group.has-error .input-group-addon {
 .tabs-vertical-env .nav.tabs-vertical li > a {
     text-align: left;
 }
+
+blockquote.blockquote.blockquote-default p {
+    font-size: 0.8em;
+}

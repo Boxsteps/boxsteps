@@ -17,7 +17,7 @@ return [
 
     'language' => 'es',
 
-    'year' => '2017',
+    'year' => '2018',
     'rights' => 'Todos los derechos reservados.',
 
     'return' => 'Regresar a',

@@ -40,7 +40,7 @@
                         <thead>
                             <tr>
                                 <th width="70">@lang('evaluation.index.course')</th>
-                                <th width="70">@lang('evaluation.index.name')</th>
+                                <th width="100">@lang('evaluation.index.name')</th>
                                 <th width="80">@lang('evaluation.index.percentage')</th>
                                 <th width="280">@lang('evaluation.index.content')</th>
                                 <th>@lang('evaluation.index.date')</th>
@@ -79,6 +79,14 @@
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <button class="btn btn-icon btn-red" title="@lang('evaluation.index.title.delete')">
                                                         <i class="fa-remove"></i>
+                                                    </button>
+                                                </form>
+                                            @else
+                                                <form role="form" action="{{ url( '/evaluations/' . $evaluation->id . '/qualifications' ) }}" method="POST">
+                                                    {{ csrf_field() }}
+                                                    <input type="hidden" name="_method" value="GET">
+                                                    <button class="btn btn-icon btn-purple" title="@lang('evaluation.index.title.review')">
+                                                        <i class="fa-check-square-o"></i>
                                                     </button>
                                                 </form>
                                             @endif
