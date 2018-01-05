@@ -14,8 +14,8 @@ class FeaturesTableSeeder extends Seeder
     {
         $inserts = array(
             ['feature' => 'Planificación', 'url' => 'plans', 'icon' => 'fa-pencil-square-o', 'created_at' => Carbon::now()],
-            ['feature' => 'Evaluaciones', 'url' => '#', 'icon' => 'fa-check-square-o', 'created_at' => Carbon::now()],
-            ['feature' => 'Estadísticas', 'url' => '#', 'icon' => 'fa-bar-chart-o', 'created_at' => Carbon::now()],
+            ['feature' => 'Evaluaciones', 'url' => 'evaluations', 'icon' => 'fa-check-square-o', 'created_at' => Carbon::now()],
+            ['feature' => 'Estadísticas', 'url' => 'statistics', 'icon' => 'fa-bar-chart-o', 'created_at' => Carbon::now()],
             ['feature' => 'Usuario', 'url' => 'users', 'icon' => 'fa-user', 'created_at' => Carbon::now()],
             ['feature' => 'Opciones', 'url' => 'options', 'icon' => 'fa-wrench', 'created_at' => Carbon::now()],
             ['feature' => 'Planificación', 'url' => 'revisions', 'icon' => 'fa-pencil-square-o', 'created_at' => Carbon::now()]
@@ -27,7 +27,6 @@ class FeaturesTableSeeder extends Seeder
             ['feature' => 'Listar planificación', 'url' => 'plans', 'feature_id' => 1, 'created_at' => Carbon::now()],
             ['feature' => 'Crear evaluación', 'url' => 'evaluations/create', 'feature_id' => 2, 'created_at' => Carbon::now()],
             ['feature' => 'Listar evaluaciones', 'url' => 'evaluations', 'feature_id' => 2, 'created_at' => Carbon::now()],
-            ['feature' => 'Asignar calificaciones', 'url' => 'qualifications', 'feature_id' => 2, 'created_at' => Carbon::now()],
             ['feature' => 'Crear usuario', 'url' => 'users/create', 'feature_id' => 4, 'created_at' => Carbon::now()],
             ['feature' => 'Listar usuario', 'url' => 'users', 'feature_id' => 4, 'created_at' => Carbon::now()],
             ['feature' => 'Roles', 'url' => 'roles', 'feature_id' => 5, 'created_at' => Carbon::now()],

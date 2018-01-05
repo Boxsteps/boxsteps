@@ -107,6 +107,10 @@ class EvaluationController extends Controller
     {
         $evaluation = Evaluation::findOrFail($id);
 
+        if ( $evaluation->plan->user->first()->id != Auth::user()->id ) {
+            abort(403);
+        }
+
         $plan = Plan::findOrFail($evaluation->plan_id);
 
         $conceptual = ConceptualSection::findOrFail($plan->conceptual_section_id);
@@ -132,6 +136,11 @@ class EvaluationController extends Controller
     public function edit($id)
     {
         $evaluation = Evaluation::findOrFail($id);
+
+        if ( Carbon::now()->gt($evaluation->start_date) ||
+             $evaluation->plan->user->first()->id != Auth::user()->id ) {
+            abort(403);
+        }
 
         $plans = Auth::user()->plans;
 
@@ -189,6 +198,11 @@ class EvaluationController extends Controller
     public function destroy($id)
     {
         $evaluation = Evaluation::findOrFail($id);
+
+        if ( Carbon::now()->gt($evaluation->start_date) ||
+             $evaluation->plan->user->first()->id != Auth::user()->id ) {
+            abort(403);
+        }
 
         $evaluation->delete();
 

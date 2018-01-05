@@ -135,14 +135,16 @@
 										<select class="form-control" name="evaluation_content" id="evaluation-content">
 											<option value="">@lang('globals.value.null')</option>
 											@foreach ($plans as $plan)
-												<option value="{{ $plan->id }}"
-                                                        data-course="{{ trans('evaluation.create.course-format', ['grade' => $plan->course->grade, 'section' => $plan->course->section]) }}"
-                                                        data-conceptual="{{ $plan->conceptual_section->conceptual_section }}"
-                                                        data-knowledge="{{ $plan->conceptual_section->knowledge_area->knowledge_area }}"
-                                                        data-date="{{ $plan->start_date->format('d-m-Y') }}"
-                                                        data-time="{{ $plan->start_date->format('h:i A') }} - {{ $plan->end_date->format('h:i A') }}">
-                                                    @lang('evaluation.create.plan'){{ $plan->id }}
-                                                </option>
+                                                @if ( $plan->condition->state_id == trans('globals.condition.finished') && !($plan->evaluation) )
+                                                    <option value="{{ $plan->id }}"
+                                                            data-course="{{ trans('evaluation.create.course-format', ['grade' => $plan->course->grade, 'section' => $plan->course->section]) }}"
+                                                            data-conceptual="{{ $plan->conceptual_section->conceptual_section }}"
+                                                            data-knowledge="{{ $plan->conceptual_section->knowledge_area->knowledge_area }}"
+                                                            data-date="{{ $plan->start_date->format('d-m-Y') }}"
+                                                            data-time="{{ $plan->start_date->format('h:i A') }} - {{ $plan->end_date->format('h:i A') }}">
+                                                        @lang('evaluation.create.plan'){{ $plan->id }}
+                                                    </option>
+                                                @endif
 											@endforeach
 											</optgroup>
 										</select>

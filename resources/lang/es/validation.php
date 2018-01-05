@@ -135,6 +135,10 @@ return [
         'score' => 'calificación',
         'observations' => 'observaciones',
 
+        'qualification' => 'calificación',
+        'minimum_qualification' => 'calificación mínima',
+        'maximum_qualification' => 'calificación máxima',
+
         'evaluation_name' => 'nombre de evaluación',
         'evaluation_content' => 'contenido a evaluar',
         'evaluation_type' => 'tipo de evaluación',

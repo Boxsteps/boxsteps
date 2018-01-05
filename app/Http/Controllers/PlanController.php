@@ -109,6 +109,10 @@ class PlanController extends Controller
     {
         $plan = Plan::findOrFail($id);
 
+        if ( $plan->user->first()->id != Auth::user()->id ) {
+            abort(403);
+        }
+
         $conceptual = ConceptualSection::findOrFail($plan->conceptual_section_id);
 
         $completion = $plan->completion_time;
@@ -146,10 +150,13 @@ class PlanController extends Controller
     {
         $plan = Plan::findOrFail($id);
 
+        if ( $plan->condition->state_id != trans('globals.condition.pending') ||
+             $plan->user->first()->id != Auth::user()->id ) {
+            abort(403);
+        }
+
         $courses = Auth::user()->courses;
-
         $knowledge_areas = KnowledgeArea::all();
-
         $plan_knowledge = $plan->conceptual_section->knowledge_area;
 
         $data = array(
@@ -171,6 +178,11 @@ class PlanController extends Controller
     public function editPlanEvaluation($id)
     {
         $plan = Plan::findOrFail($id);
+
+        if ( $plan->condition->state_id == trans('globals.condition.finished') ||
+             $plan->user->first()->id != Auth::user()->id ) {
+            abort(403);
+        }
 
         $data = array('plan' => $plan);
 
@@ -255,6 +267,11 @@ class PlanController extends Controller
     public function destroy($id)
     {
         $plan = Plan::findOrFail($id);
+
+        if ( $plan->condition->state_id != trans('globals.condition.pending') ||
+             $plan->user->first()->id != Auth::user()->id ) {
+            abort(403);
+        }
 
         $plan->delete();
 

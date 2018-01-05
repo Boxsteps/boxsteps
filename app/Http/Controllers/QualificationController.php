@@ -30,6 +30,13 @@ class QualificationController extends Controller
     {
         $evaluation = Evaluation::findOrFail($evaluationId);
 
+        if ( $evaluation->plan->user->first()->id != Auth::user()->id ) {
+            abort(403);
+        }
+
+        $evaluation_scales = $evaluation->evaluation_type->evaluation_scales;
+        $evaluation_scales_count = count($evaluation_scales);
+
         $course = $evaluation->course;
 
         // Create a list of students id on the course
@@ -43,8 +50,10 @@ class QualificationController extends Controller
         $qualifications = $evaluation->students;
 
         $data = array(
-            'evaluation' => $evaluation,
             'course' => $course,
+            'evaluation' => $evaluation,
+            'evaluation_scales' => $evaluation_scales,
+            'evaluation_scales_count' => $evaluation_scales_count,
             'qualifications' => $qualifications
         );
 
@@ -89,9 +98,31 @@ class QualificationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($evaluationId, $studentId)
     {
-        //
+        $evaluation = Evaluation::findOrFail($evaluationId);
+
+        if ( $evaluation->plan->user->first()->id != Auth::user()->id ) {
+            abort(403);
+        }
+
+        $evaluation_type = $evaluation->evaluation_type;
+        $evaluation_scales = $evaluation->evaluation_type->evaluation_scales;
+        $evaluation_scales_count = count($evaluation_scales);
+
+        $student = $evaluation->students->find($studentId);
+
+        if ( !$student ) { abort(404); }
+
+        $data = array(
+            'evaluation' => $evaluation,
+            'evaluation_type' => $evaluation_type,
+            'evaluation_scales' => $evaluation_scales,
+            'evaluation_scales_count' => $evaluation_scales_count,
+            'student' => $student
+        );
+
+        return view('qualifications.edit', $data);
     }
 
     /**
@@ -101,9 +132,21 @@ class QualificationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($evaluationId, $studentId, Request $request)
     {
-        //
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        $evaluation = Evaluation::findOrFail($evaluationId);
+
+        $evaluation->students()->syncWithoutDetaching([$studentId => ['qualification' => $request->qualification]]);
+
+        return self::redirection('evaluations/' . $evaluationId . '/qualifications/' . $studentId . '/edit', trans('qualification.edit.success'), trans('qualification.index.title'), url('evaluations/' . $evaluationId . '/qualifications'));
     }
 
     /**
@@ -115,5 +158,18 @@ class QualificationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Get a validator for an incoming store/update request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'qualification' => 'required|integer|between:' . $data['minimum_qualification'] . ',' . $data['maximum_qualification']
+        ]);
     }
 }

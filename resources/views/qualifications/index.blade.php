@@ -69,15 +69,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ( $qualifications as $qualification )
+                            @foreach ( $qualifications as $student )
                                 <tr>
-                                    <td>{{ $qualification->dni }}</td>
-                                    <td>{{ $qualification->name }}</td>
-                                    <td>{{ $qualification->second_name }}</td>
-                                    <td>{{ $qualification->email }}</td>
-                                    <td>{{ ( $qualification->pivot->qualification ? $qualification->pivot->qualification : trans('qualification.index.null-qualification') ) }}</td>
+                                    <td>{{ $student->dni }}</td>
+                                    <td>{{ $student->name }}</td>
+                                    <td>{{ $student->second_name }}</td>
+                                    <td>{{ $student->email }}</td>
+                                    <td>
+                                        @if ( $student->pivot->qualification )
+                                            @if ( $evaluation_scales_count > 0 )
+                                                @foreach ($evaluation_scales as $notation)
+                                                    @if ( $student->pivot->qualification >= $notation->minimum_equivalent &&
+                                                          $student->pivot->qualification <= $notation->maximum_equivalent)
+                                                        {{ $notation->notation }}
+                                                    @endif
+                                                @endforeach
+                                            @else
+                                                {{ $student->pivot->qualification }}
+                                            @endif
+                                        @else
+                                            @lang('qualification.index.null-qualification')
+                                        @endif
+                                    </td>
                                     <td class="action-links">
-                                        <form role="form" action="{{ url( '/evaluations/' . $evaluation->id . '/qualifications/' . $qualification->id ) }}" method="POST">
+                                        <form role="form" action="{{ url( '/evaluations/' . $evaluation->id . '/qualifications/' . $student->id . '/edit' ) }}" method="POST">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="_method" value="GET">
                                             <button class="btn btn-icon btn-purple" title="@lang('qualification.index.title.review')">

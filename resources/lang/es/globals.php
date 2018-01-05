@@ -42,6 +42,9 @@ return [
     'evaluation.expected.completion' => '2',
     'evaluation.delayed.completion' => '3',
 
+    'evaluation-type.quantitative' => '1',
+    'evaluation-type.qualitative' => '2',
+
     'value.null' => 'Ninguno',
 
     'message.close' => 'Cerrar',
