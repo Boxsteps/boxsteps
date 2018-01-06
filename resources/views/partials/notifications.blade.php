@@ -1,4 +1,4 @@
-<li class="dropdown xs-left">
+{{-- <li class="dropdown xs-left">
 
     <a href="#" data-toggle="dropdown" class="notification-icon notification-icon-messages">
         <i class="fa-bell-o"></i>
@@ -104,4 +104,4 @@
 
     </ul>
 
-</li>
+</li> --}}

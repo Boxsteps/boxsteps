@@ -62,7 +62,7 @@ Route::put('plans/{id}/evaluation', 'PlanController@updatePlanEvaluation');
 Route::get('profile', 'UserController@profile');
 
 // Dashboard routes
-Route::get('dashboard', 'DashboardController@index');
+Route::get('dashboard', 'DashboardController@dashboard');
 Route::get('new', 'DashboardController@newview');
 Route::get('/', 'DashboardController@start');
 

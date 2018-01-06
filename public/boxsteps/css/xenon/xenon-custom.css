@@ -122,3 +122,17 @@ form .form-group.has-error .input-group-addon {
 blockquote.blockquote.blockquote-default p {
     font-size: 0.8em;
 }
+
+.fa-fix-cirle-pencil-square-o:before {
+    line-height: 54px;
+    padding-left: 5px;
+}
+
+.fa-fix-cirle-check-square-o:before {
+    line-height: 54px;
+    padding-left: 2px;
+}
+
+.fa-fix-button-standalone {
+    width: 45px;
+}
