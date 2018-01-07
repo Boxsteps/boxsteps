@@ -80,12 +80,12 @@ Route::get('/api/conceptual-sections-dropdown', 'ConceptualSectionController@ind
 |--------------------------------------------------------------------------
 */
 
-Route::resource('courses', 'CourseController');
+Route::resource('courses', 'CourseController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
 Route::resource('evaluations', 'EvaluationController');
 Route::resource('evaluations.qualifications', 'QualificationController', ['except' => ['create', 'store', 'show', 'destroy']]);
-Route::resource('features', 'FeatureController');
+Route::resource('features', 'FeatureController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
 Route::resource('messages', 'MessageController');
 Route::resource('plans', 'PlanController');
 Route::resource('revisions', 'RevisionController', ['except' => ['create', 'store', 'edit', 'destroy']]);
-Route::resource('roles', 'RoleController');
+Route::resource('roles', 'RoleController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
 Route::resource('users', 'UserController', ['except' => ['create', 'store']]);

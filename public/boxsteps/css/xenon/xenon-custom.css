@@ -1,5 +1,7 @@
-/**
+/*
+ * ---------------------------------------------------------------------
  * Custom CSS rules for Boxsteps
+ * ---------------------------------------------------------------------
  */
 
 body {
@@ -8,46 +10,39 @@ body {
 a {
 }
 
-@media screen and (max-width:769px) {
-    .navbar.horizontal-menu .navbar-inner > .nav.navbar-mobile {
-        height: 40px;
-        padding-top: 10px;
-    }
+.navbar.horizontal-menu.navbar-fixed-top + .page-container {
+    margin-top: 0;
 }
 
-@media screen and (max-width:991px) {
-    .shortcuts {
-        margin-top: 2em;
-    }
-
-    .calendar-left {
-        padding: 0 30px !important;
-    }
+.page-container .main-content {
+    padding-top: 115px;
 }
 
 .modal.link-dialog.in {
     z-index: 102;
 }
 
-.fc-day.fc-widget-content.fc-sat, .fc-day.fc-widget-content.fc-sun {
-    background: repeating-linear-gradient(
-        45deg,
-        #fafafa,
-        #fafafa 20px,
-        #f4f4f4 20px,
-        #f4f4f4 40px
-    );
+.navbar.horizontal-menu .navbar-inner > .nav > li
+.dropdown-menu.messages .dropdown-menu-list li.no-new-messages::after {
+    background-color: transparent;
 }
 
-.fc-day.fc-widget-content.fc-today {
-    background: none;
-}
+/*
+ * ---------------------------------------------------------------------
+ * Login form rules for Boxsteps
+ * ---------------------------------------------------------------------
+ */
 
 .login-page {
     background-image: url('../../images/brand/background-login.png');
     background-size: cover;
     background-repeat: no-repeat;
     padding-top: 50px;
+}
+
+.login-page .login-form .form-group label.error {
+    color: #cc3f44;
+    position: relative;
 }
 
 .cbr-replaced .cbr-state span {
@@ -58,57 +53,35 @@ a {
     background: url('../../images/ok.png') no-repeat center center;
 }
 
-.navbar.horizontal-menu .navbar-inner > .nav > li
-.dropdown-menu.messages .dropdown-menu-list li.no-new-messages::after {
-    background-color: transparent;
-}
+/*
+ * ---------------------------------------------------------------------
+ * Native forms rules for Boxsteps
+ * ---------------------------------------------------------------------
+ */
 
-.login-page .login-form .form-group label.error {
-    color: #cc3f44;
-    position: relative;
-}
-
-form .form-group.has-error .input-group-addon {
-    color: #fff;
+.form-control {
+    height: 37px;
 }
 
 .form-horizontal .control-label {
     padding-top: 10px;
 }
 
+form .form-group.has-error .input-group-addon {
+    color: #fff;
+}
+
 .member-form-inputs .control-label {
     padding-top: 3px;
-}
-
-.form-control {
-    height: 37px;
-}
-
-.action-links form {
-    width: 37px;
-    float: left;
-    margin-right: 5px;
-}
-
-.action-links form:last-child {
-    margin: 0;
-}
-
-.action-links form button {
-    width: 37px;
-}
-
-.alert.alert-success a {
-    color: #fff;
-    text-decoration: underline;
 }
 
 .help-block.error, .errors-container p {
     color: #cc3f44;
 }
 
-.dataTable td {
-    vertical-align: middle !important;
+.alert.alert-success a {
+    color: #fff;
+    text-decoration: underline;
 }
 
 .alert .close {
@@ -127,6 +100,56 @@ blockquote.blockquote.blockquote-default p {
     font-size: 0.8em;
 }
 
+/*
+ * ---------------------------------------------------------------------
+ * DatePicker rules for Boxsteps
+ * ---------------------------------------------------------------------
+ */
+
+.fc-day.fc-widget-content.fc-sat, .fc-day.fc-widget-content.fc-sun {
+    background: repeating-linear-gradient(
+        45deg,
+        #fafafa,
+        #fafafa 20px,
+        #f4f4f4 20px,
+        #f4f4f4 40px
+    );
+}
+
+.fc-day.fc-widget-content.fc-today {
+    background: none;
+}
+
+/*
+ * ---------------------------------------------------------------------
+ * DataTables rules for Boxsteps
+ * ---------------------------------------------------------------------
+ */
+
+.dataTable td {
+    vertical-align: middle !important;
+}
+
+.action-links form {
+    width: 37px;
+    float: left;
+    margin-right: 5px;
+}
+
+.action-links form:last-child {
+    margin: 0;
+}
+
+.action-links form button {
+    width: 37px;
+}
+
+/*
+ * ---------------------------------------------------------------------
+ * FontAwesome correction rules for Boxsteps
+ * ---------------------------------------------------------------------
+ */
+
 .fa-fix-cirle-pencil-square-o:before {
     line-height: 54px;
     padding-left: 5px;
@@ -139,4 +162,30 @@ blockquote.blockquote.blockquote-default p {
 
 .fa-fix-button-standalone {
     width: 45px;
+}
+
+/*
+ * ---------------------------------------------------------------------
+ * Media queries rules for Boxsteps
+ * ---------------------------------------------------------------------
+ */
+
+@media screen and (max-width:769px) {
+    .navbar.horizontal-menu .navbar-inner > .nav.navbar-mobile {
+        height: 40px;
+        padding-top: 10px;
+    }
+    .page-container .main-content {
+        padding-top: 60px;
+    }
+}
+
+@media screen and (max-width:991px) {
+    .shortcuts {
+        margin-top: 2em;
+    }
+
+    .calendar-left {
+        padding: 0 30px !important;
+    }
 }

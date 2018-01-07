@@ -116,7 +116,7 @@
 
                 <div class="mailbox-sidebar">
 
-                    <a href="{{ url('messages/compose') }}" class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right">
+                    <a href="{{ url('messages/compose') }}" class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-left">
                         <i class="linecons-mail"></i>
                         <span>@lang('message.index.compose')</span>
                     </a>
