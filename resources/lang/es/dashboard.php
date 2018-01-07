@@ -21,4 +21,14 @@ return [
     'create-evaluation' => 'Crear evaluación',
     'statistics' => 'Estadísticas generales',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Dashboard colors
+    |--------------------------------------------------------------------------
+    */
+
+    'color.blue' => '#40bbea',
+    'color.purple' => '#7c38bc',
+    'color.white' => '#fff',
+
 ];

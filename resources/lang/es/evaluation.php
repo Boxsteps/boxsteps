@@ -65,6 +65,7 @@ return [
     'create.end-time' => 'Hora de fin',
 
     'create.plan' => 'Planificación # ',
+    'create.evaluation' => 'Evaluación # ',
 
     'create.register' => 'Registrar evaluación',
     'create.success' => '¡La evaluación fue creada de forma satisfactoria!',

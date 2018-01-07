@@ -2,6 +2,8 @@
 
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use App\Message;
+use App\User;
 
 class ConditionsTableSeeder extends Seeder
 {
@@ -12,29 +14,34 @@ class ConditionsTableSeeder extends Seeder
      */
     public function run()
     {
-        $inserts = array(
-            [ 'created_at' => Carbon::now(), 'state_id' => 4, 'user_id' => 1, 'message_id' => 1 ],
-            [ 'created_at' => Carbon::now(), 'state_id' => 4, 'user_id' => 2, 'message_id' => 1 ],
-            [ 'created_at' => Carbon::now(), 'state_id' => 4, 'user_id' => 3, 'message_id' => 1 ],
-            [ 'created_at' => Carbon::now(), 'state_id' => 4, 'user_id' => 4, 'message_id' => 1 ],
-            [ 'created_at' => Carbon::now(), 'state_id' => 4, 'user_id' => 5, 'message_id' => 1 ],
-            [ 'created_at' => Carbon::now(), 'state_id' => 4, 'user_id' => 6, 'message_id' => 1 ]
-        );
-        DB::table('conditions')->insert($inserts);
+        // Messages condition
+
+        $message = Message::findOrFail(1);
+
+        for ($user = 1; $user < 7 ; $user++) {
+            $message->recipients()->syncWithoutDetaching([$user => ['state_id' => 4]]);
+        }
 
         factory(App\Condition::class, 9)->create();
 
-        $inserts = array(
-            [ 'created_at' => Carbon::now(), 'state_id' => 1, 'plan_id' => 1, 'user_id' => 3 ],
-            [ 'created_at' => Carbon::now(), 'state_id' => 1, 'plan_id' => 2, 'user_id' => 3 ],
-            [ 'created_at' => Carbon::now(), 'state_id' => 1, 'plan_id' => 3, 'user_id' => 3 ],
-            [ 'created_at' => Carbon::now(), 'state_id' => 1, 'plan_id' => 4, 'user_id' => 5 ],
-            [ 'created_at' => Carbon::now(), 'state_id' => 1, 'plan_id' => 5, 'user_id' => 5 ],
-            [ 'created_at' => Carbon::now(), 'state_id' => 1, 'plan_id' => 6, 'user_id' => 5 ],
-            [ 'created_at' => Carbon::now(), 'state_id' => 1, 'plan_id' => 7, 'user_id' => 6 ],
-            [ 'created_at' => Carbon::now(), 'state_id' => 1, 'plan_id' => 8, 'user_id' => 6 ],
-            [ 'created_at' => Carbon::now(), 'state_id' => 1, 'plan_id' => 9, 'user_id' => 6 ],
-        );
-        DB::table('conditions')->insert($inserts);
+        // Plans condition
+
+        $user = User::findOrFail(3);
+
+        for ($plan = 1; $plan < 31 ; $plan++) {
+            $user->plans()->syncWithoutDetaching([$plan => ['state_id' => 3]]);
+        }
+
+        $user = User::findOrFail(5);
+
+        for ($plan = 31; $plan < 61 ; $plan++) {
+            $user->plans()->syncWithoutDetaching([$plan => ['state_id' => 3]]);
+        }
+
+        $user = User::findOrFail(6);
+
+        for ($plan = 61; $plan < 91 ; $plan++) {
+            $user->plans()->syncWithoutDetaching([$plan => ['state_id' => 3]]);
+        }
     }
 }

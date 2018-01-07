@@ -19,6 +19,10 @@ a {
     .shortcuts {
         margin-top: 2em;
     }
+
+    .calendar-left {
+        padding: 0 30px !important;
+    }
 }
 
 .modal.link-dialog.in {

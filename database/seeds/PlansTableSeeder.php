@@ -15,135 +15,36 @@ class PlansTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        $inserts = array(
-            [
-                'course_id' => 1,
-                'conceptual_section_id' => $faker->numberBetween($min = 1, $max = 55),
-                'start_date' => Carbon::createFromFormat( 'd-m-Y h:i A', Carbon::now()->format('d-m-Y') . ' 7:00 AM' ),
-                'end_date' => Carbon::createFromFormat( 'd-m-Y h:i A', Carbon::now()->format('d-m-Y') . ' 9:00 AM' ),
-                'procedimental_section' => $faker->sentence(100),
-                'actitudinal_section' => $faker->sentence(100),
-                'competences' => $faker->sentence(100),
-                'indicators' => $faker->sentence(100),
-                'teaching_strategy' => $faker->sentence(100),
-                'teaching_sequence' => $faker->sentence(100),
-                'period_id' => 1,
-                'created_at' => Carbon::now()
-            ],
-            [
-                'course_id' => 1,
-                'conceptual_section_id' => $faker->numberBetween($min = 56, $max = 110),
-                'start_date' => Carbon::createFromFormat( 'd-m-Y h:i A', Carbon::now()->format('d-m-Y') . ' 9:00 AM' ),
-                'end_date' => Carbon::createFromFormat( 'd-m-Y h:i A', Carbon::now()->format('d-m-Y') . ' 11:00 AM' ),
-                'procedimental_section' => $faker->sentence(100),
-                'actitudinal_section' => $faker->sentence(100),
-                'competences' => $faker->sentence(100),
-                'indicators' => $faker->sentence(100),
-                'teaching_strategy' => $faker->sentence(100),
-                'teaching_sequence' => $faker->sentence(100),
-                'period_id' => 1,
-                'created_at' => Carbon::now()
-            ],
-            [
-                'course_id' => 1,
-                'conceptual_section_id' => $faker->numberBetween($min = 111, $max = 170),
-                'start_date' => Carbon::createFromFormat( 'd-m-Y h:i A', Carbon::now()->format('d-m-Y') . ' 11:00 AM' ),
-                'end_date' => Carbon::createFromFormat( 'd-m-Y h:i A', Carbon::now()->format('d-m-Y') . ' 1:00 PM' ),
-                'procedimental_section' => $faker->sentence(100),
-                'actitudinal_section' => $faker->sentence(100),
-                'competences' => $faker->sentence(100),
-                'indicators' => $faker->sentence(100),
-                'teaching_strategy' => $faker->sentence(100),
-                'teaching_sequence' => $faker->sentence(100),
-                'period_id' => 1,
-                'created_at' => Carbon::now()
-            ],
-            [
-                'course_id' => 2,
-                'conceptual_section_id' => $faker->numberBetween($min = 1, $max = 55),
-                'start_date' => Carbon::createFromFormat( 'd-m-Y h:i A', Carbon::now()->format('d-m-Y') . ' 7:00 AM' ),
-                'end_date' => Carbon::createFromFormat( 'd-m-Y h:i A', Carbon::now()->format('d-m-Y') . ' 9:00 AM' ),
-                'procedimental_section' => $faker->sentence(100),
-                'actitudinal_section' => $faker->sentence(100),
-                'competences' => $faker->sentence(100),
-                'indicators' => $faker->sentence(100),
-                'teaching_strategy' => $faker->sentence(100),
-                'teaching_sequence' => $faker->sentence(100),
-                'period_id' => 1,
-                'created_at' => Carbon::now()
-            ],
-            [
-                'course_id' => 2,
-                'conceptual_section_id' => $faker->numberBetween($min = 56, $max = 110),
-                'start_date' => Carbon::createFromFormat( 'd-m-Y h:i A', Carbon::now()->format('d-m-Y') . ' 9:00 AM' ),
-                'end_date' => Carbon::createFromFormat( 'd-m-Y h:i A', Carbon::now()->format('d-m-Y') . ' 11:00 AM' ),
-                'procedimental_section' => $faker->sentence(100),
-                'actitudinal_section' => $faker->sentence(100),
-                'competences' => $faker->sentence(100),
-                'indicators' => $faker->sentence(100),
-                'teaching_strategy' => $faker->sentence(100),
-                'teaching_sequence' => $faker->sentence(100),
-                'period_id' => 1,
-                'created_at' => Carbon::now()
-            ],
-            [
-                'course_id' => 2,
-                'conceptual_section_id' => $faker->numberBetween($min = 111, $max = 170),
-                'start_date' => Carbon::createFromFormat( 'd-m-Y h:i A', Carbon::now()->format('d-m-Y') . ' 11:00 AM' ),
-                'end_date' => Carbon::createFromFormat( 'd-m-Y h:i A', Carbon::now()->format('d-m-Y') . ' 1:00 PM' ),
-                'procedimental_section' => $faker->sentence(100),
-                'actitudinal_section' => $faker->sentence(100),
-                'competences' => $faker->sentence(100),
-                'indicators' => $faker->sentence(100),
-                'teaching_strategy' => $faker->sentence(100),
-                'teaching_sequence' => $faker->sentence(100),
-                'period_id' => 1,
-                'created_at' => Carbon::now()
-            ],
-            [
-                'course_id' => 3,
-                'conceptual_section_id' => $faker->numberBetween($min = 1, $max = 55),
-                'start_date' => Carbon::createFromFormat( 'd-m-Y h:i A', Carbon::now()->format('d-m-Y') . ' 7:00 AM' ),
-                'end_date' => Carbon::createFromFormat( 'd-m-Y h:i A', Carbon::now()->format('d-m-Y') . ' 9:00 AM' ),
-                'procedimental_section' => $faker->sentence(100),
-                'actitudinal_section' => $faker->sentence(100),
-                'competences' => $faker->sentence(100),
-                'indicators' => $faker->sentence(100),
-                'teaching_strategy' => $faker->sentence(100),
-                'teaching_sequence' => $faker->sentence(100),
-                'period_id' => 1,
-                'created_at' => Carbon::now()
-            ],
-            [
-                'course_id' => 3,
-                'conceptual_section_id' => $faker->numberBetween($min = 56, $max = 110),
-                'start_date' => Carbon::createFromFormat( 'd-m-Y h:i A', Carbon::now()->format('d-m-Y') . ' 9:00 AM' ),
-                'end_date' => Carbon::createFromFormat( 'd-m-Y h:i A', Carbon::now()->format('d-m-Y') . ' 11:00 AM' ),
-                'procedimental_section' => $faker->sentence(100),
-                'actitudinal_section' => $faker->sentence(100),
-                'competences' => $faker->sentence(100),
-                'indicators' => $faker->sentence(100),
-                'teaching_strategy' => $faker->sentence(100),
-                'teaching_sequence' => $faker->sentence(100),
-                'period_id' => 1,
-                'created_at' => Carbon::now()
-            ],
-            [
-                'course_id' => 3,
-                'conceptual_section_id' => $faker->numberBetween($min = 111, $max = 170),
-                'start_date' => Carbon::createFromFormat( 'd-m-Y h:i A', Carbon::now()->format('d-m-Y') . ' 11:00 AM' ),
-                'end_date' => Carbon::createFromFormat( 'd-m-Y h:i A', Carbon::now()->format('d-m-Y') . ' 1:00 PM' ),
-                'procedimental_section' => $faker->sentence(100),
-                'actitudinal_section' => $faker->sentence(100),
-                'competences' => $faker->sentence(100),
-                'indicators' => $faker->sentence(100),
-                'teaching_strategy' => $faker->sentence(100),
-                'teaching_sequence' => $faker->sentence(100),
-                'period_id' => 1,
-                'created_at' => Carbon::now()
-            ],
-        );
+        $inserts = collect();
 
-        DB::table('plans')->insert($inserts);
+        for ($course = 1; $course < 4; $course++) {
+            for ($plan = 0; $plan < 30; $plan ++) {
+
+                $date = Carbon::createFromFormat( 'd-m-Y', $faker->unique()->dateTimeBetween('-30 days', 'now', null)->format('d-m-Y') );
+
+                if ( $date->isWeekend() ) { $date->addDays(2); }
+
+                $inserts->push([
+                    'period_id' => 1,
+                    'course_id' => $course,
+                    'conceptual_section_id' => $faker->unique()->numberBetween($min = 1, $max = 170),
+                    'start_date' => Carbon::createFromFormat( 'd-m-Y h:i', $date->format('d-m-Y') . ' ' . $faker->numberBetween($min = 7, $max = 9) . ':00' ),
+                    'end_date' => Carbon::createFromFormat( 'd-m-Y h:i', $date->format('d-m-Y') . ' ' . $faker->numberBetween($min = 10, $max = 12) . ':00' ),
+                    'procedimental_section' => $faker->sentence(100),
+                    'actitudinal_section' => $faker->sentence(100),
+                    'competences' => $faker->sentence(100),
+                    'indicators' => $faker->sentence(100),
+                    'teaching_strategy' => $faker->sentence(100),
+                    'teaching_sequence' => $faker->sentence(100),
+                    'observations' => $faker->sentence(100),
+                    'score' => $faker->numberBetween($min = 1, $max = 5),
+                    'completion_time' => $faker->numberBetween($min = 1, $max = 3),
+                    'created_at' => Carbon::now()
+                ]);
+
+            }
+        }
+
+        DB::table('plans')->insert($inserts->toArray());
     }
 }
