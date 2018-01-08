@@ -26,6 +26,7 @@ class ComposerServiceProvider extends ServiceProvider
                 'qualifications.index', 'qualifications.edit',
                 'revisions.index', 'revisions.show',
                 'roles.index', 'roles.show',
+                'statistics.index',
                 'users.index', 'users.show', 'users.edit', 'auth.register',
             ],
             'App\Http\ViewComposers\MenuComposer'

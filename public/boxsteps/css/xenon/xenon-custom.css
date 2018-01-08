@@ -166,6 +166,21 @@ blockquote.blockquote.blockquote-default p {
 
 /*
  * ---------------------------------------------------------------------
+ * Highcharts rules for Boxsteps
+ * ---------------------------------------------------------------------
+ */
+
+.highcharts-menu hr {
+    margin-top: 5px;
+    margin-bottom: 5px
+}
+
+.highcharts-contextbutton:hover {
+    fill: #fff !important;
+}
+
+/*
+ * ---------------------------------------------------------------------
  * Media queries rules for Boxsteps
  * ---------------------------------------------------------------------
  */
