@@ -12,6 +12,7 @@
     <script src="{{ asset('boxsteps/js/highcharts/js/highcharts.js') }}"></script>
     <script src="{{ asset('boxsteps/js/highcharts/js/series-label.js') }}"></script>
     <script src="{{ asset('boxsteps/js/highcharts/js/exporting.js') }}"></script>
+    <script src="{{ asset('boxsteps/js/highcharts/js/highcharts-more.js') }}"></script>
     <script src="{{ asset('boxsteps/js/highcharts/js/lang/es.js') }}"></script>
 @endsection
 
@@ -48,8 +49,7 @@
                 xAxis: {
                     categories: [
                         data['xAxis'],
-                    ],
-                    crosshair: true
+                    ]
                 },
                 yAxis: {
                     min: 0,
@@ -59,11 +59,11 @@
                     }
                 },
                 tooltip: {
-                    headerFormat: '<b>{point.key}</b><table>',
-                    pointFormat:  '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                                  '<td style="padding:0"><b>{point.y:.2f} @lang('statistic.index.group-qualifications.points')</b></td></tr>',
-                    footerFormat: '</table>',
-                    useHTML: true
+                    headerFormat: '<span style="font-size: 14px; font-weight: bold">{point.key}</span><br/>',
+                    valueDecimals: 2,
+                    valueSuffix: ' @lang('statistic.index.group-qualifications.points')',
+                    useHTML: true,
+                    shared: true
                 },
                 plotOptions: {
                     column: {

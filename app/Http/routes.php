@@ -59,6 +59,7 @@ Route::put('plans/{id}/evaluation', 'PlanController@updatePlanEvaluation');
 */
 
 Route::get('statistics', 'StatisticController@index');
+Route::get('statistics/groups/{id}', 'StatisticController@groupShow');
 
 /*
 |--------------------------------------------------------------------------
