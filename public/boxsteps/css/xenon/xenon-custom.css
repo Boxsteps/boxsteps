@@ -100,6 +100,18 @@ blockquote.blockquote.blockquote-default p {
     font-size: 0.8em;
 }
 
+.vdivide:after {
+    background: #e0e0e0;
+    width: 1px;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -15px;
+    min-height: 70px;
+}
+
 /*
  * ---------------------------------------------------------------------
  * DatePicker rules for Boxsteps
@@ -192,6 +204,9 @@ blockquote.blockquote.blockquote-default p {
     }
     .page-container .main-content {
         padding-top: 60px;
+    }
+    .vdivide:after {
+        display: none;
     }
 }
 
