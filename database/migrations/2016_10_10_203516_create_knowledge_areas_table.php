@@ -16,9 +16,10 @@ class CreateKnowledgeAreasTable extends Migration
 
             $table->increments('id');
             $table->string('knowledge_area');
+            $table->string('branch');
             $table->timestamps();
             $table->softDeletes();
-            
+
         });
     }
 

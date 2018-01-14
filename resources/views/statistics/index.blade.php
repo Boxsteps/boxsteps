@@ -39,7 +39,7 @@
                                                 <select class="form-control" name="course" id="course">
                                                     <option value="">@lang('globals.value.null')</option>
                                                     @foreach ($courses as $course)
-                                                        <option value="{{ $course->id }}">{{ trans('plan.create.course-format', ['grade' => $course->grade, 'section' => $course->section]) }}</option>
+                                                        <option value="{{ $course->id }}">{{ trans('statistic.course.course-format', ['grade' => $course->grade, 'section' => $course->section]) }}</option>
                                                     @endforeach
                                                     </optgroup>
                                                 </select>
@@ -91,6 +91,101 @@
                                             @if ($errors->has('student'))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first('student') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="pull-right">
+            							<button type="submit" class="btn btn-primary btn-icon btn-icon-standalone">
+            								<i class="fa fa-search"></i>
+            								<span>@lang('statistic.index.search')</span>
+            							</button>
+            						</div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <br>
+
+            <div class="panel panel-default">
+
+                <div class="page-title">
+                    <div class="title-env">
+                		<h1 class="title">@lang('statistic.index.title.area.avg.box')</h1>
+                		<p class="description">@lang('statistic.index.title.area.description.avg.box')</p>
+                	</div>
+                </div>
+
+                <div class="panel-body">
+                    <div class="col-sm-6">
+                        <div class="panel panel-default vdivide">
+                            <div class="panel-heading">@lang('statistic.index.title.for-course')</div>
+                            <div class="panel-body">
+                                <form id="statistic-area-course" class="form-horizontal" role="form" method="POST" action="{{ url('/statistics/areas/courses/') }}">
+                					{{ csrf_field() }}
+                                    <div class="form-group {{ $errors->has('area_course') ? ' has-error' : '' }}">
+                                        <label class="col-sm-4 control-label">@lang('statistic.index.course')</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group col-xs-12 col-sm-12">
+                                                <select class="form-control" name="area_course" id="area-course">
+                                                    <option value="">@lang('globals.value.null')</option>
+                                                    @foreach ($courses as $course)
+                                                        <option value="{{ $course->id }}">{{ trans('statistic.course.course-format', ['grade' => $course->grade, 'section' => $course->section]) }}</option>
+                                                    @endforeach
+                                                    </optgroup>
+                                                </select>
+                                            </div>
+                                            @if ($errors->has('area_course'))
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('area_course') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="pull-right">
+            							<button type="submit" class="btn btn-primary btn-icon btn-icon-standalone">
+            								<i class="fa fa-search"></i>
+            								<span>@lang('statistic.index.search')</span>
+            							</button>
+            						</div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">@lang('statistic.index.title.for-students')</div>
+                            <div class="panel-body">
+                                <form id="statistic-area-student" class="form-horizontal" role="form" method="POST" action="{{ url('/statistics/areas/students/') }}">
+                					{{ csrf_field() }}
+                                    <div class="form-group {{ $errors->has('area_student') ? ' has-error' : '' }}">
+                                        <label class="col-sm-4 control-label">@lang('statistic.index.student')</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group col-xs-12 col-sm-12">
+                                                <select class="form-control" name="area_student" id="area-student">
+                                                    <option value="">@lang('globals.value.null')</option>
+                                                    @foreach ($courses as $course)
+                                                        @foreach ($course->students as $student)
+                                                            <option value="{{ $student->id }}"
+                                                                    data-course="{{ trans('statistic.course.course-format', ['grade' => $course->grade, 'section' => $course->section]) }}"
+                                                                    data-name="{{ $student->name }} {{ $student->second_name }}"
+                                                                    data-dni="{{ $student->dni }}"
+                                                                    data-email="{{ $student->email }}">
+                                                                @lang('statistic.index.student-number') {{ $student->id }}
+                                                            </option>
+                                                        @endforeach
+                                                    @endforeach
+                                                    </optgroup>
+                                                </select>
+                                            </div>
+                                            @if ($errors->has('area_student'))
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('area_student') }}</strong>
                                                 </span>
                                             @endif
                                         </div>
@@ -176,6 +271,40 @@
                 event.preventDefault();
                 var formAction = $(this).attr('action');
                 window.location.href = formAction + '/' + $('#statistic-student #student').val();
+            });
+
+            $('#area-course').select2({
+				placeholder: '@lang('statistic.index.course')',
+				language: "es",
+				allowClear: true
+			}).on('select2-open', function()
+			{
+				$(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+			});
+
+            $('#area-student').select2({
+				placeholder: '@lang('statistic.index.student')',
+				language: "es",
+				allowClear: true,
+                matcher: matchStudentResultContent,
+                formatResult: formatStudentResultContent,
+                formatSelection: formatStudentSelectionContent,
+                escapeMarkup: function(m) { return m; }
+			}).on('select2-open', function()
+			{
+				$(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+			});
+
+            $('#statistic-area-course').submit(function(event) {
+                event.preventDefault();
+                var formAction = $(this).attr('action');
+                window.location.href = formAction + '/' + $('#statistic-area-course #area-course').val();
+            });
+
+            $('#statistic-area-student').submit(function(event) {
+                event.preventDefault();
+                var formAction = $(this).attr('action');
+                window.location.href = formAction + '/' + $('#statistic-area-student #area-student').val();
             });
 
         });

@@ -13,11 +13,11 @@ class KnowledgeAreasTableSeeder extends Seeder
     public function run()
     {
         $inserts = array(
-            [ 'knowledge_area' => 'Lengua y literatura', 'created_at' => Carbon::now() ],
-            [ 'knowledge_area' => 'Matemática', 'created_at' => Carbon::now() ],
-            [ 'knowledge_area' => 'Ciencias de la naturaleza y tecnología', 'created_at' => Carbon::now() ],
-            [ 'knowledge_area' => 'Ciencias sociales', 'created_at' => Carbon::now() ],
-            [ 'knowledge_area' => 'Educación estética', 'created_at' => Carbon::now() ],
+            [ 'knowledge_area' => 'Lengua y literatura', 'branch' => 'Área humanista', 'created_at' => Carbon::now() ],
+            [ 'knowledge_area' => 'Matemática', 'branch' => 'Área científica', 'created_at' => Carbon::now() ],
+            [ 'knowledge_area' => 'Ciencias de la naturaleza y tecnología', 'branch' => 'Área científica', 'created_at' => Carbon::now() ],
+            [ 'knowledge_area' => 'Ciencias sociales', 'branch' => 'Área humanista', 'created_at' => Carbon::now() ],
+            [ 'knowledge_area' => 'Educación estética', 'branch' => 'Área humanista', 'created_at' => Carbon::now() ],
         );
         DB::table('knowledge_areas')->insert($inserts);
     }

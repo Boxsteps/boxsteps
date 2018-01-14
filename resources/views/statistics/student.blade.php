@@ -68,7 +68,7 @@
                 tooltip: {
                     headerFormat: '<span style="font-size: 14px; font-weight: bold">{point.key}</span><br/>',
                     valueDecimals: 2,
-                    valueSuffix: ' @lang('statistic.course.chart.points')',
+                    valueSuffix: ' @lang('statistic.student.chart.points')',
                     useHTML: true,
                     shared: true
                 },
@@ -107,7 +107,7 @@
                 tooltip: {
                     headerFormat: '<span style="font-size: 14px; font-weight: bold">{point.key}</span><br/>',
                     valueDecimals: 2,
-                    valueSuffix: ' @lang('statistic.course.chart.points')',
+                    valueSuffix: ' @lang('statistic.student.chart.points')',
                     useHTML: true
                 },
                 plotOptions: {
