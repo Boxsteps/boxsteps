@@ -56,7 +56,7 @@ class UsersTableSeeder extends Seeder
             [
                 'name' => 'Alejandro',
                 'second_name' => 'Del Mar',
-                'email' => 'alejandro.delmar@gmail.com ',
+                'email' => 'alejandro.delmar@gmail.com',
                 'password' => bcrypt('1234'),
                 'remember_token' => str_random(10),
                 'role_id' => 3,
