@@ -45,9 +45,7 @@
 										</tr>
 									</table>
 									<p>@lang('email.ignore')
-                                        <a href="@lang('email.mailto')">
-											@lang('email.support')
-										</a>.
+                                        <a href="@lang('email.mailto')">@lang('email.support')</a>.
                                     </p>
 									<p>
                                         @lang('email.thanks')<br>
