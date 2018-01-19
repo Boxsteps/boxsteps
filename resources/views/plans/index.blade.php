@@ -40,8 +40,8 @@
                         <thead>
                             <tr>
                                 <th width="70">@lang('plan.index.course')</th>
-                                <th width="200">@lang('plan.index.knowledge')</th>
-                                <th width="200">@lang('plan.index.conceptual')</th>
+                                <th width="150">@lang('plan.index.knowledge')</th>
+                                <th width="150">@lang('plan.index.conceptual')</th>
                                 <th width="70">@lang('plan.index.condition')</th>
                                 <th>@lang('plan.index.date')</th>
                                 <th>@lang('plan.index.time')</th>

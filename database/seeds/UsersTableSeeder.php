@@ -54,9 +54,9 @@ class UsersTableSeeder extends Seeder
                 'created_at' => Carbon::now()
             ],
             [
-                'name' => 'Marcos',
-                'second_name' => 'Sanlo',
-                'email' => 'mdsanlog@gmail.com',
+                'name' => 'Alejandro',
+                'second_name' => 'Del Mar',
+                'email' => 'alejandro.delmar@gmail.com ',
                 'password' => bcrypt('1234'),
                 'remember_token' => str_random(10),
                 'role_id' => 3,

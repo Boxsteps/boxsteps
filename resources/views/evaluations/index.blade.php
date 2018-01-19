@@ -42,7 +42,7 @@
                                 <th width="70">@lang('evaluation.index.course')</th>
                                 <th width="100">@lang('evaluation.index.name')</th>
                                 <th width="80">@lang('evaluation.index.percentage')</th>
-                                <th width="280">@lang('evaluation.index.content')</th>
+                                <th width="200">@lang('evaluation.index.content')</th>
                                 <th>@lang('evaluation.index.date')</th>
                                 <th>@lang('evaluation.index.time')</th>
                                 <th width="121" class="no-sort">@lang('evaluation.index.options')</th>
