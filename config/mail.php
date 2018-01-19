@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'mail'),
+    'driver' => env('MAIL_DRIVER', 'smtp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -81,7 +81,7 @@ return [
     |
     */
 
-    'username' => env('boxsteps@gmail.com'),
+    'username' => env('MAIL_USERNAME', 'boxsteps@gmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -94,7 +94,7 @@ return [
     |
     */
 
-    'password' => env('nhsxrmbdmkhapdtf'),
+    'password' => env('MAIL_PASSWORD', 'zqiuwykpyeicbwys'),
 
     /*
     |--------------------------------------------------------------------------
