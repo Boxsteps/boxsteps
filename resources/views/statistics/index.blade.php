@@ -204,6 +204,101 @@
 
             </div>
 
+            <br>
+
+            <div class="panel panel-default">
+
+                <div class="page-title">
+                    <div class="title-env">
+                		<h1 class="title">@lang('statistic.index.title.progress.box')</h1>
+                		<p class="description">@lang('statistic.index.title.description.progress.box')</p>
+                	</div>
+                </div>
+
+                <div class="panel-body">
+                    <div class="col-sm-6">
+                        <div class="panel panel-default vdivide">
+                            <div class="panel-heading">@lang('statistic.index.title.for-course')</div>
+                            <div class="panel-body">
+                                <form id="statistic-progress-course" class="form-horizontal" role="form" method="POST" action="{{ url('/statistics/progress/courses/') }}">
+                					{{ csrf_field() }}
+                                    <div class="form-group {{ $errors->has('progress_course') ? ' has-error' : '' }}">
+                                        <label class="col-sm-4 control-label">@lang('statistic.index.course')</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group col-xs-12 col-sm-12">
+                                                <select class="form-control" name="progress_course" id="progress-course">
+                                                    <option value="">@lang('globals.value.null')</option>
+                                                    @foreach ($courses as $course)
+                                                        <option value="{{ $course->id }}">{{ trans('statistic.course.course-format', ['grade' => $course->grade, 'section' => $course->section]) }}</option>
+                                                    @endforeach
+                                                    </optgroup>
+                                                </select>
+                                            </div>
+                                            @if ($errors->has('progress_course'))
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('progress_course') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="pull-right">
+            							<button type="submit" class="btn btn-primary btn-icon btn-icon-standalone">
+            								<i class="fa fa-search"></i>
+            								<span>@lang('statistic.index.search')</span>
+            							</button>
+            						</div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">@lang('statistic.index.title.for-students')</div>
+                            <div class="panel-body">
+                                <form id="statistic-progress-student" class="form-horizontal" role="form" method="POST" action="{{ url('/statistics/progress/students/') }}">
+                					{{ csrf_field() }}
+                                    <div class="form-group {{ $errors->has('progress_student') ? ' has-error' : '' }}">
+                                        <label class="col-sm-4 control-label">@lang('statistic.index.student')</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group col-xs-12 col-sm-12">
+                                                <select class="form-control" name="progress_student" id="progress-student">
+                                                    <option value="">@lang('globals.value.null')</option>
+                                                    @foreach ($courses as $course)
+                                                        @foreach ($course->students as $student)
+                                                            <option value="{{ $student->id }}"
+                                                                    data-course="{{ trans('statistic.course.course-format', ['grade' => $course->grade, 'section' => $course->section]) }}"
+                                                                    data-name="{{ $student->name }} {{ $student->second_name }}"
+                                                                    data-dni="{{ $student->dni }}"
+                                                                    data-email="{{ $student->email }}">
+                                                                @lang('statistic.index.student-number') {{ $student->id }}
+                                                            </option>
+                                                        @endforeach
+                                                    @endforeach
+                                                    </optgroup>
+                                                </select>
+                                            </div>
+                                            @if ($errors->has('progress_student'))
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('progress_student') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="pull-right">
+            							<button type="submit" class="btn btn-primary btn-icon btn-icon-standalone">
+            								<i class="fa fa-search"></i>
+            								<span>@lang('statistic.index.search')</span>
+            							</button>
+            						</div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
     </div>
 
@@ -305,6 +400,40 @@
                 event.preventDefault();
                 var formAction = $(this).attr('action');
                 window.location.href = formAction + '/' + $('#statistic-area-student #area-student').val();
+            });
+
+            $('#progress-course').select2({
+				placeholder: '@lang('statistic.index.course')',
+				language: "es",
+				allowClear: true
+			}).on('select2-open', function()
+			{
+				$(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+			});
+
+            $('#progress-student').select2({
+				placeholder: '@lang('statistic.index.student')',
+				language: "es",
+				allowClear: true,
+                matcher: matchStudentResultContent,
+                formatResult: formatStudentResultContent,
+                formatSelection: formatStudentSelectionContent,
+                escapeMarkup: function(m) { return m; }
+			}).on('select2-open', function()
+			{
+				$(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+			});
+
+            $('#statistic-progress-course').submit(function(event) {
+                event.preventDefault();
+                var formAction = $(this).attr('action');
+                window.location.href = formAction + '/' + $('#statistic-progress-course #progress-course').val();
+            });
+
+            $('#statistic-progress-student').submit(function(event) {
+                event.preventDefault();
+                var formAction = $(this).attr('action');
+                window.location.href = formAction + '/' + $('#statistic-progress-student #progress-student').val();
             });
 
         });

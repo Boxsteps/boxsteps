@@ -9,10 +9,15 @@ return [
     */
 
     'index.title' => 'Estadísticas generales',
+
     'index.title.avg.box' => 'Calificaciones generales',
     'index.title.description.avg.box' => 'Promedio y distribución de calificaciones por cursos o estudiantes',
+
     'index.title.area.avg.box' => 'Calificaciones por áreas',
     'index.title.area.description.avg.box' => 'Promedio y distribución de calificaciones para las áreas humanista y científica',
+
+    'index.title.progress.box' => 'Progreso general',
+    'index.title.description.progress.box' => 'Visualización del progreso general a través del tiempo por cursos o estudiantes',
 
     'index.title.for-course' => 'Por cursos',
     'index.title.for-students' => 'Por estudiantes',
@@ -37,6 +42,7 @@ return [
 
     'course.chart.avg.title' => 'Promedio de calificaciones por áreas de conocimiento evaluadas',
     'course.chart.box.title' => 'Distribución de calificaciones por áreas de conocimiento evaluadas',
+    'course.chart.progress.title' => 'Progreso a través del tiempo por áreas de conocimiento evaluadas',
 
     'course.chart.xaxis' => 'Áreas de conocimiento',
     'course.chart.yaxis' => 'Calificación (Puntos)',

@@ -59,10 +59,15 @@ Route::put('plans/{id}/evaluation', 'PlanController@updatePlanEvaluation');
 */
 
 Route::get('statistics', 'StatisticController@index');
+
 Route::get('statistics/students/{id}', 'StatisticController@studentShow');
 Route::get('statistics/courses/{id}', 'StatisticController@courseShow');
+
 Route::get('statistics/areas/students/{id}', 'StatisticController@studentAreaShow');
 Route::get('statistics/areas/courses/{id}', 'StatisticController@courseAreaShow');
+
+Route::get('statistics/progress/students/{id}', 'StatisticController@studentProgressShow');
+Route::get('statistics/progress/courses/{id}', 'StatisticController@courseProgressShow');
 
 /*
 |--------------------------------------------------------------------------
