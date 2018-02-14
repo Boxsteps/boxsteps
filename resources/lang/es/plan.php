@@ -32,6 +32,8 @@ return [
     'show.content' => 'Contenido de la planificación',
     'show.evaluation' => 'Evaluación de la planificación',
 
+    'show.name' => 'Nombre',
+    'show.second-name' => 'Apellido',
     'show.knowledge' => 'Área de conocimiento',
     'show.conceptual' => 'Bloque conceptual',
     'show.procedimental' => 'Bloque procedimental',

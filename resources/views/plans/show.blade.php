@@ -32,6 +32,14 @@
                         <form role="form" class="form-horizontal" role="form">
 
                             <div class="form-group">
+                                <label class="col-sm-4 control-label" for="name">@lang('plan.show.name')</label>
+
+                                <div class="col-sm-8">
+                                    <input type="text" disabled="disabled" class="form-control" id="name" value="{{ $teacher->name }}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class="col-sm-4 control-label" for="course">@lang('plan.show.course')</label>
 
                                 <div class="col-sm-8">
@@ -60,6 +68,14 @@
 
                     <div class="panel-body col-sm-6">
                         <form role="form" class="form-horizontal" role="form">
+
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="second-name">@lang('plan.show.second-name')</label>
+
+                                <div class="col-sm-8">
+                                    <input type="text" disabled="disabled" class="form-control" id="second-name" value="{{ $teacher->second_name }}">
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <label class="col-sm-4 control-label" for="date">@lang('plan.show.date')</label>

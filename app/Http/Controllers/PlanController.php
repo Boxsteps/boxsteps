@@ -23,7 +23,6 @@ class PlanController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware(trans('globals.role.teacher'), ['except' => array('profile')]);
     }
 
     /**
@@ -110,8 +109,12 @@ class PlanController extends Controller
         $plan = Plan::findOrFail($id);
 
         if ( $plan->user->first()->id != Auth::user()->id ) {
-            abort(403);
+            if ( trans('globals.teacher') == Auth::user()->role->id ) {
+                abort(403);
+            }
         }
+
+        $user = $plan->user->first();
 
         $conceptual = ConceptualSection::findOrFail($plan->conceptual_section_id);
 
@@ -132,6 +135,7 @@ class PlanController extends Controller
 
         $data = array(
             'plan' => $plan,
+            'teacher' => $user,
             'conceptual' => $conceptual->conceptual_section,
             'knowledge' => $conceptual->knowledge_area->knowledge_area,
             'completion' => $completion

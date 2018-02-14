@@ -23,7 +23,6 @@ class EvaluationController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware(trans('globals.role.teacher'));
     }
 
     /**
@@ -108,10 +107,14 @@ class EvaluationController extends Controller
         $evaluation = Evaluation::findOrFail($id);
 
         if ( $evaluation->plan->user->first()->id != Auth::user()->id ) {
-            abort(403);
+            if ( trans('globals.teacher') == Auth::user()->role->id ) {
+                abort(403);
+            }
         }
 
         $plan = Plan::findOrFail($evaluation->plan_id);
+
+        $user = $plan->user->first();
 
         $conceptual = ConceptualSection::findOrFail($plan->conceptual_section_id);
 
@@ -119,6 +122,7 @@ class EvaluationController extends Controller
 
         $data = array(
             'evaluation' => $evaluation,
+            'teacher' => $user,
             'conceptual' => $conceptual->conceptual_section,
             'knowledge' => $conceptual->knowledge_area->knowledge_area,
             'evaluation_type' => $evaluation_type

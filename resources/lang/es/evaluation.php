@@ -31,6 +31,8 @@ return [
     'show.title' => 'Detalles de la evaluación',
     'show.content' => 'Contenido de la evaluación',
 
+    'show.name' => 'Nombre',
+    'show.second-name' => 'Apellido',
     'show.course' => 'Curso',
     'show.course-format' => ':gradeº grado, sección ":section"',
     'show.date' => 'Fecha',

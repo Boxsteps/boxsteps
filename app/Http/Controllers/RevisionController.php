@@ -68,6 +68,8 @@ class RevisionController extends Controller
     {
         $plan = Plan::findOrFail($id);
 
+        $user = $plan->user->first();
+
         $conceptual = ConceptualSection::findOrFail($plan->conceptual_section_id);
 
         $completion = $plan->completion_time;
@@ -87,6 +89,7 @@ class RevisionController extends Controller
 
         $data = array(
             'plan' => $plan,
+            'teacher' => $user,
             'conceptual' => $conceptual->conceptual_section,
             'knowledge' => $conceptual->knowledge_area->knowledge_area,
             'completion' => $completion
