@@ -16,9 +16,9 @@ class FeaturesTableSeeder extends Seeder
             ['feature' => 'Planificación', 'url' => 'plans', 'icon' => 'fa-pencil-square-o', 'created_at' => Carbon::now()],
             ['feature' => 'Evaluaciones', 'url' => 'evaluations', 'icon' => 'fa-check-square-o', 'created_at' => Carbon::now()],
             ['feature' => 'Estadísticas', 'url' => 'statistics', 'icon' => 'fa-bar-chart-o', 'created_at' => Carbon::now()],
-            ['feature' => 'Usuario', 'url' => 'users', 'icon' => 'fa-user', 'created_at' => Carbon::now()],
+            ['feature' => 'Usuarios', 'url' => 'users', 'icon' => 'fa-user', 'created_at' => Carbon::now()],
             ['feature' => 'Opciones', 'url' => 'options', 'icon' => 'fa-wrench', 'created_at' => Carbon::now()],
-            ['feature' => 'Planificación', 'url' => 'revisions', 'icon' => 'fa-pencil-square-o', 'created_at' => Carbon::now()]
+            ['feature' => 'Revisión', 'url' => 'revisions', 'icon' => 'fa-pencil-square-o', 'created_at' => Carbon::now()]
         );
         DB::table('features')->insert($inserts);
 

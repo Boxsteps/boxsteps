@@ -34,12 +34,14 @@ return [
     'show.back' => 'Regresar a los mensajes',
     'show.reply' => 'Responder',
     'show.to' => 'para',
-    'show.me' => 'Mí',
+    'show.sender-me' => 'Yo',
+    'show.recipient-me' => 'Mí',
 
     'show.reply-to' => 'Responder a',
     'show.reply-to-all' => 'Responder a todos',
     'show.forward' => 'Reenviar mensaje',
     'show.move-trash' => 'Mover a la papelera',
+    'show.format-header' => '<span>:name :second_name</span> (:email)',
 
     'show.box.reply' => 'Responder',
     'show.box.or' => 'o',

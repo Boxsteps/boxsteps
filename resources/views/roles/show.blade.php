@@ -34,7 +34,7 @@
                     <br>
                     <ul>
                         @foreach ($role->users as $user)
-                            <li>{{ $user->name }}</li>
+                            <li>{{ $user->name }} {{ $user->second_name }}</li>
                         @endforeach
                     </ul>
                 </div>

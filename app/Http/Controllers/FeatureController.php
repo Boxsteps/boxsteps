@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
-
-use App\Feature as Feature;
+use App\Feature;
 
 class FeatureController extends Controller
 {
@@ -28,7 +28,9 @@ class FeatureController extends Controller
      */
     public function index()
     {
-        //
+        $features = Feature::all();
+        $data = array('features' => $features);
+        return view('features.index', $data);
     }
 
     /**

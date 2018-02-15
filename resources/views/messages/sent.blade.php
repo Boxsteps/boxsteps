@@ -77,17 +77,17 @@
 
                             @if ( $messages_count > 0 )
                                 @foreach ( $messages as $message )
-                                    <tr class="{{ $message->pivot->state_id == trans('globals.condition.active') ? 'unread' : '' }}">
+                                    <tr>
                                         <td class="col-cb">
                                             <div class="checkbox checkbox-replace">
                                                 <input type="checkbox" class="cbr" />
                                             </div>
                                         </td>
                                         <td class="col-name">
-                                            <a href="{{ url( 'messages/' . $message->id ) }}" class="col-name">{{ $message->sender->name }} {{ $message->sender->second_name }}</a>
+                                            <a href="{{ url( 'messages/sent/' . $message->id ) }}" class="col-name">{{ $message->recipients->first()->name }} {{ $message->recipients->first()->second_name }}</a>
                                         </td>
                                         <td class="col-subject">
-                                            <a href="{{ url( 'messages/' . $message->id ) }}">
+                                            <a href="{{ url( 'messages/sent/' . $message->id ) }}">
                                                 {{ $message->message }}
                                             </a>
                                         </td>

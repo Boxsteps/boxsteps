@@ -45,6 +45,15 @@ Route::post('users/store', 'Auth\AuthController@register');
 
 /*
 |--------------------------------------------------------------------------
+| Messages routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get('messages/sent', 'MessageController@indexSent');
+Route::get('messages/sent/{id}', 'MessageController@show');
+
+/*
+|--------------------------------------------------------------------------
 | Plan evaluation routes
 |--------------------------------------------------------------------------
 */

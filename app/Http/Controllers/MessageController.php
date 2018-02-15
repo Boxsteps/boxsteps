@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\Message;
-use App;
 
 class MessageController extends Controller
 {
@@ -27,7 +27,53 @@ class MessageController extends Controller
      */
     public function index()
     {
-        return view('messages.index');
+        $messages = Auth::user()->messages_received->sortBy('created_at');
+        $messages_count = $messages->count();
+
+        $messages_received = Auth::user()->messages_received;
+        $messages_received_count = 0;
+
+        foreach ( $messages_received as $message ) {
+            if ( $message->pivot->state_id == trans('globals.condition.active') ) {
+                $messages_received_count++;
+            }
+        }
+
+        $data = array(
+            'messages' => $messages,
+            'messages_count' => $messages_count,
+            'messages_received_count' => $messages_received_count
+        );
+
+        return view('messages.index', $data);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexSent()
+    {
+        $messages = Auth::user()->messages_sent->sortBy('created_at');
+        $messages_count = $messages->count();
+
+        $messages_received = Auth::user()->messages_received;
+        $messages_received_count = 0;
+
+        foreach ( $messages_received as $message ) {
+            if ( $message->pivot->state_id == trans('globals.condition.active') ) {
+                $messages_received_count++;
+            }
+        }
+
+        $data = array(
+            'messages' => $messages,
+            'messages_count' => $messages_count,
+            'messages_received_count' => $messages_received_count
+        );
+
+        return view('messages.sent', $data);
     }
 
     /**
@@ -59,21 +105,67 @@ class MessageController extends Controller
      */
     public function show($id)
     {
+        $user = Auth::user();
         $message = Message::findOrFail($id);
 
-        $data = array('message' => $message);
+        $messages_received = $user->messages_received;
+        $messages_received_count = 0;
 
-        $message = $message->state->where( 'user_id', Auth::id() )->first();
-        
-        if ( is_null($message) )
-        {
-            App::abort(404);
+        foreach ( $messages_received as $received ) {
+            if ( $received->pivot->state_id == trans('globals.condition.active') ) {
+                $messages_received_count++;
+            }
         }
-        else
-        {
-            $message->state_id = trans('globals.condition.off');
-            $message->save();
+
+        $sender = $message->sender;
+        $recipient = $message->recipients->first();
+        $timestamp = $sender->created_at->format('d-m-Y') . ' - ' .
+                     $sender->created_at->timezone('-4')->format('g:i A');
+
+        if ( $sender->id == $user->id ) {
+            $sender = trans('message.show.sender-me');
         }
+        else {
+            $sender = trans('message.show.format-header', [
+                'name' => $sender->name,
+                'second_name' => $sender->second_name,
+                'email' => $sender->email
+            ]);
+        }
+
+        if ( $recipient->id == $user->id ) {
+            $recipient = trans('message.show.recipient-me');
+        }
+        else {
+            $recipient = trans('message.show.format-header', [
+                'name' => $recipient->name,
+                'second_name' => $recipient->second_name,
+                'email' => $recipient->email
+            ]);
+        }
+
+        $data = array(
+            'message' => $message,
+            'messages_received_count' => $messages_received_count,
+            'sender' => $sender,
+            'recipient' => $recipient,
+            'timestamp' => $timestamp
+        );
+
+
+        // $message = $message->state->where( 'user_id', Auth::id() )->first();
+
+        // dd($message);
+
+        // if ( is_null($message) )
+        // {
+        //     abort(404);
+        // }
+        // else
+        // {
+        //     $message->state_id = trans('globals.condition.off');
+        //     $message->save();
+        // }
 
         return view('messages.show', $data);
     }

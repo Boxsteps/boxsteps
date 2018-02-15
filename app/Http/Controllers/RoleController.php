@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
-
-use App\Role as Role;
+use App\Role;
 
 class RoleController extends Controller
 {
@@ -28,7 +28,9 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $roles = Role::all();
+        $data = array('roles' => $roles);
+        return view('roles.index', $data);
     }
 
     /**

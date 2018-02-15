@@ -8,6 +8,10 @@ return [
     |--------------------------------------------------------------------------
     */
 
+    'index.title' => 'Funcionalidades',
+    'index.name' => 'Nombre de funcionalidad',
+    'index.search' => 'Consultar',
+
     /*
     |--------------------------------------------------------------------------
     | Show messages

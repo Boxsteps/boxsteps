@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\KnowledgeArea;
 use App\Student;
 use App\Course;
+use App\Role;
 
 class StatisticController extends Controller
 {
@@ -29,10 +30,34 @@ class StatisticController extends Controller
      */
     public function index()
     {
+        if ( trans('globals.coordinator') == Auth::user()->role->id ) {
+            $courses = collect([]);
+            $teachers = Auth::user()->teachers;
+
+            foreach ($teachers as $teacher) {
+                $courses->push($teacher->courses);
+            }
+
+            $courses = $courses->collapse();
+            $data = array('courses' => $courses);
+            return view('statistics.index', $data);
+        }
+
+        if ( trans('globals.administrator') == Auth::user()->role->id ) {
+            $courses = collect([]);
+            $teachers = Role::find(trans('globals.teacher'))->users;
+
+            foreach ($teachers as $teacher) {
+                $courses->push($teacher->courses);
+            }
+
+            $courses = $courses->collapse();
+            $data = array('courses' => $courses);
+            return view('statistics.index', $data);
+        }
+
         $courses = Auth::user()->courses;
-
         $data = array('courses' => $courses);
-
         return view('statistics.index', $data);
     }
 

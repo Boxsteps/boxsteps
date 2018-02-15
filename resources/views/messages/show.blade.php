@@ -31,10 +31,6 @@
                         </h2>
 
                         <div class="mail-single-header-options">
-                            <a href="{{ url('messages/reply') }}" class="btn btn-gray btn-icon">
-                                <span>@lang('message.show.reply')</span>
-                                <i class="fa-reply-all"></i>
-                            </a>
                             <form style="display: inline-block;" role="form" action="{{ url('/messages/' . $message->id ) }}" method="POST">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="_method" value="DELETE">
@@ -51,27 +47,9 @@
                         <div class="mail-single-info-user dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="{{ asset('boxsteps/images/placeholder/user.png') }}" alt="user-image" width="38" />
-                                <span>{{ $message->sender->name }} {{ $message->sender->second_name }}</span>
-                                ({{ $message->sender->email }}) @lang('message.show.to')
-                                <span>@lang('message.show.me')</span>
-                                <em class="time">{{ $message->sender->created_at->format('d-m-Y') }} - {{ $message->sender->created_at->timezone('-4')->format('g:i A') }}</em>
+                                {!! $sender !!} @lang('message.show.to') {!! $recipient !!}
+                                <em class="time">{{ $timestamp }}</em>
                             </a>
-
-                            <ul class="dropdown-menu dropdown-secondary">
-                                <li><a href="{{ url('messages/reply') }}"><i class="fa-reply"></i>&nbsp; @lang('message.show.reply-to') {{ $message->sender->name }} {{ $message->sender->second_name }}</a></li>
-                                <li><a href="{{ url('messages/reply') }}"><i class="fa-reply-all"></i>&nbsp; @lang('message.show.reply-to-all')</a></li>
-                                <li><a href="{{ url('messages/forward') }}"><i class="fa-forward"></i>&nbsp; @lang('message.show.forward')</a></li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="javascript:void(0);" onclick="$(this).find('form').submit();">
-                                        <form role="form" action="{{ url( 'messages/' . $message->id ) }}" method="POST">
-                                            {{ csrf_field() }}
-                                            <input type="hidden" name="_method" value="DELETE">
-                                        </form>
-                                        <i class="fa-trash"></i>&nbsp; @lang('message.show.move-trash')
-                                    </a>
-                                </li>
-                            </ul>
                         </div>
 
                     </div>
@@ -79,17 +57,6 @@
                     <!-- Email body -->
                     <div class="mail-single-body">
                         <p>{{ $message->message }}</p>
-                    </div>
-
-                    <div class="mail-single-reply">
-
-                        <div class="fake-form">
-                            <div>
-                                <a href="{{ url('messages/reply') }}">@lang('message.show.box.reply')</a>
-                                @lang('message.show.box.this-message')
-                            </div>
-                        </div>
-
                     </div>
 
                 </div>
@@ -111,14 +78,8 @@
                     <ul class="list-unstyled mailbox-list">
                         <li class="active">
                             <a href="{{ url('messages') }}">@lang('message.index.inbox')
-                                @php $count = 0; @endphp
-                                @foreach ( $auth_user->messages_received as $message )
-                                    @if ( $message->pivot->state_id == trans('globals.condition.active') )
-                                        @php $count++ @endphp
-                                    @endif
-                                @endforeach
-                                @if ( $count > 0 )
-                                    <span class="badge badge-success pull-right">{{ $count }}</span>
+                                @if ( $messages_received_count > 0 )
+                                    <span class="badge badge-success pull-right">{{ $messages_received_count }}</span>
                                 @endif
                             </a>
                         </li>
