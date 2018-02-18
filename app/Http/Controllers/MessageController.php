@@ -108,6 +108,15 @@ class MessageController extends Controller
         $user = Auth::user();
         $message = Message::findOrFail($id);
 
+        if ( is_null($message) ) {
+            abort(404);
+        }
+        else {
+            $state = $message->state->first();
+            $state->state_id = trans('globals.condition.off');
+            $state->save();
+        }
+
         $messages_received = $user->messages_received;
         $messages_received_count = 0;
 
@@ -123,7 +132,7 @@ class MessageController extends Controller
                      $sender->created_at->timezone('-4')->format('g:i A');
 
         if ( $sender->id == $user->id ) {
-            $sender = trans('message.show.sender-me');
+            $sender = trans('message.show.me');
         }
         else {
             $sender = trans('message.show.format-header', [
@@ -134,7 +143,7 @@ class MessageController extends Controller
         }
 
         if ( $recipient->id == $user->id ) {
-            $recipient = trans('message.show.recipient-me');
+            $recipient = trans('message.show.me');
         }
         else {
             $recipient = trans('message.show.format-header', [
@@ -151,21 +160,6 @@ class MessageController extends Controller
             'recipient' => $recipient,
             'timestamp' => $timestamp
         );
-
-
-        // $message = $message->state->where( 'user_id', Auth::id() )->first();
-
-        // dd($message);
-
-        // if ( is_null($message) )
-        // {
-        //     abort(404);
-        // }
-        // else
-        // {
-        //     $message->state_id = trans('globals.condition.off');
-        //     $message->save();
-        // }
 
         return view('messages.show', $data);
     }

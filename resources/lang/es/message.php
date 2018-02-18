@@ -33,9 +33,9 @@ return [
     'show.title' => 'Mensaje de :user',
     'show.back' => 'Regresar a los mensajes',
     'show.reply' => 'Responder',
+    'show.from' => 'De',
     'show.to' => 'para',
-    'show.sender-me' => 'Yo',
-    'show.recipient-me' => 'Mí',
+    'show.me' => 'Mí',
 
     'show.reply-to' => 'Responder a',
     'show.reply-to-all' => 'Responder a todos',

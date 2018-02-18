@@ -1,6 +1,7 @@
 <?php
 
 use Carbon\Carbon;
+use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 use App\Message;
 use App\User;
@@ -16,31 +17,39 @@ class ConditionsTableSeeder extends Seeder
     {
         // Messages condition
 
-        $message = Message::findOrFail(1);
+        $faker = Faker::create();
 
-        for ($user = 1; $user < 7 ; $user++) {
-            $message->recipients()->syncWithoutDetaching([$user => ['state_id' => 4]]);
+        foreach (range(1,6) as $index) {
+            DB::table('conditions')->insert([
+                'state_id' => 4,
+                'created_at' => Carbon::now(),
+                'user_id' => $index,
+                'message_id' => $index
+            ]);
         }
 
-        factory(App\Condition::class, 9)->create();
+        foreach (range(1,9) as $index) {
+            DB::table('conditions')->insert([
+                'state_id' => 4,
+                'user_id' => $faker->numberBetween($min = 1, $max = 6),
+                'message_id' => $index + 6
+            ]);
+        }
 
         // Plans condition
 
         $user = User::findOrFail(3);
-
-        for ($plan = 1; $plan < 31 ; $plan++) {
+        foreach (range(1,30) as $plan) {
             $user->plans()->syncWithoutDetaching([$plan => ['state_id' => 3]]);
         }
 
         $user = User::findOrFail(5);
-
-        for ($plan = 31; $plan < 61 ; $plan++) {
+        foreach (range(31,60) as $plan) {
             $user->plans()->syncWithoutDetaching([$plan => ['state_id' => 3]]);
         }
 
         $user = User::findOrFail(6);
-
-        for ($plan = 61; $plan < 91 ; $plan++) {
+        foreach (range(61,90) as $plan) {
             $user->plans()->syncWithoutDetaching([$plan => ['state_id' => 3]]);
         }
     }

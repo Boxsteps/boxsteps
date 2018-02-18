@@ -14,21 +14,18 @@ class GroupsTableSeeder extends Seeder
     public function run()
     {
         $course = Course::findOrFail(1);
-
-        for ($students = 1; $students < 41 ; $students++) {
-            $course->students()->syncWithoutDetaching([$students]);
+        foreach (range(1,40) as $student) {
+            $course->students()->syncWithoutDetaching([$student]);
         }
 
         $course = Course::findOrFail(2);
-
-        for ($students = 41; $students < 81 ; $students++) {
-            $course->students()->syncWithoutDetaching([$students]);
+        foreach (range(41,80) as $student) {
+            $course->students()->syncWithoutDetaching([$student]);
         }
 
         $course = Course::findOrFail(3);
-
-        for ($students = 81; $students < 121 ; $students++) {
-            $course->students()->syncWithoutDetaching([$students]);
+        foreach (range(81,120) as $student) {
+            $course->students()->syncWithoutDetaching([$student]);
         }
     }
 }

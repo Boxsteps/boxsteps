@@ -24,10 +24,17 @@
                     <!-- Email title and button options -->
                     <div class="mail-single-header">
                         <h2>
-                            <a href="{{ url('messages') }}" class="go-back">
-                                <i class="fa-angle-left"></i>
-                                @lang('message.show.back')
-                            </a>
+                            @if ( Request::is('messages/sent/*') )
+                                <a href="{{ url('messages/sent') }}" class="go-back">
+                                    <i class="fa-angle-left"></i>
+                                    @lang('message.show.back')
+                                </a>
+                            @else
+                                <a href="{{ url('messages') }}" class="go-back">
+                                    <i class="fa-angle-left"></i>
+                                    @lang('message.show.back')
+                                </a>
+                            @endif
                         </h2>
 
                         <div class="mail-single-header-options">
@@ -44,10 +51,10 @@
                     <!-- Email info from/reply -->
                     <div class="mail-single-info">
 
-                        <div class="mail-single-info-user dropdown">
+                        <div style="width: 100%;" class="mail-single-info-user dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="{{ asset('boxsteps/images/placeholder/user.png') }}" alt="user-image" width="38" />
-                                {!! $sender !!} @lang('message.show.to') {!! $recipient !!}
+                                @lang('message.show.from') {!! $sender !!} @lang('message.show.to') {!! $recipient !!}
                                 <em class="time">{{ $timestamp }}</em>
                             </a>
                         </div>

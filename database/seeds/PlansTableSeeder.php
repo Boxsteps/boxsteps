@@ -17,8 +17,8 @@ class PlansTableSeeder extends Seeder
 
         $inserts = collect();
 
-        for ($course = 1; $course < 4; $course++) {
-            for ($plan = 0; $plan < 30; $plan ++) {
+        foreach (range(1,3) as $course) {
+            foreach (range(1,30) as $plan) {
 
                 $date = Carbon::createFromFormat( 'd-m-Y', $faker->unique()->dateTimeBetween('-30 days', 'now', null)->format('d-m-Y') );
 
