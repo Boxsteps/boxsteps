@@ -51,11 +51,10 @@
                         <tbody>
                             @foreach ( $courses as $course )
                                 @foreach ( $course->plans as $plan )
-                                    {{ dd($plan) }}
                                     <tr>
                                         <td>{{ trans('plan.index.course-format', ['grade' => $course->grade, 'section' => $course->section]) }}</td>
-                                        <td>{{ $plan->conceptual_section->knowledge_area->knowledge_area or 'Error' }}</td>
-                                        <td>{{ $plan->conceptual_section->conceptual_section or 'Error' }}</td>
+                                        <td>{{ $plan->conceptual_section->knowledge_area->knowledge_area }}</td>
+                                        <td>{{ $plan->conceptual_section->conceptual_section }}</td>
                                         <td>{{ $plan->state->first()->state }}</td>
                                         <td>{{ $plan->start_date->format('d-m-Y') }}</td>
                                         <td>{{ $plan->start_date->format('h:i A') }} - {{ $plan->end_date->format('h:i A') }}</td>
