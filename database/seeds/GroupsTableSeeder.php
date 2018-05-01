@@ -27,5 +27,10 @@ class GroupsTableSeeder extends Seeder
         foreach (range(81,120) as $student) {
             $course->students()->syncWithoutDetaching([$student]);
         }
+
+        $course = Course::findOrFail(4);
+        foreach (range(121,171) as $student) {
+            $course->students()->syncWithoutDetaching([$student]);
+        }
     }
 }

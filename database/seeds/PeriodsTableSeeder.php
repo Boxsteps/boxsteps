@@ -14,7 +14,7 @@ class PeriodsTableSeeder extends Seeder
     {
         $inserts = array(
             [
-                'period' => '2017-2018',
+                'period' => '2018-02',
                 'created_at' => Carbon::now()
             ]
         );

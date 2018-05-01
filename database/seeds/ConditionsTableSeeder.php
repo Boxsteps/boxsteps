@@ -52,5 +52,10 @@ class ConditionsTableSeeder extends Seeder
         foreach (range(61,90) as $plan) {
             $user->plans()->syncWithoutDetaching([$plan => ['state_id' => 3]]);
         }
+
+        $user = User::findOrFail(7);
+        foreach (range(91,96) as $plan) {
+            $user->plans()->syncWithoutDetaching([$plan => ['state_id' => 3]]);
+        }
     }
 }
