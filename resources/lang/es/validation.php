@@ -145,6 +145,9 @@ return [
         'percentage' => 'porcentaje representativo',
         'evaluation_date' => 'fecha de evaluación',
 
+        'destiny' => 'usuario destinatario',
+        'message' => 'mensaje',
+
         'null' => 'Ninguno'
     ],
 

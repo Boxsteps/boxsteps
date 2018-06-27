@@ -27,7 +27,6 @@
                                         @foreach ($features as $feature)
                                             <option value="{{ $feature->id }}">{{ $feature->feature }}</option>
                                         @endforeach
-                                        </optgroup>
                                     </select>
                                 </div>
                                 @if ($errors->has('feature'))

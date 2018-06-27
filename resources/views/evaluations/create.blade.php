@@ -146,7 +146,6 @@
                                                     </option>
                                                 @endif
 											@endforeach
-											</optgroup>
 										</select>
 									</div>
 									@if ($errors->has('evaluation_content'))
@@ -174,7 +173,6 @@
                                                     {{ $type->name }}
                                                 </option>
 											@endforeach
-											</optgroup>
 										</select>
 									</div>
 									@if ($errors->has('evaluation_type'))
@@ -207,7 +205,7 @@
 
 @section('custom-js-footer')
     <script type="text/javascript">
-		$(document).ready(function(){
+		$(document).ready(function() {
 
 			$('.datepicker').datepicker({
 				format: 'dd-mm-yyyy',

@@ -163,7 +163,6 @@
                                                     @lang('evaluation.edit.plan'){{ $plan->id }}
                                                 </option>
 											@endforeach
-											</optgroup>
 										</select>
 									</div>
 									@if ($errors->has('evaluation_content'))
@@ -192,7 +191,6 @@
                                                     {{ $type->name }}
                                                 </option>
 											@endforeach
-											</optgroup>
 										</select>
 									</div>
 									@if ($errors->has('evaluation_type'))

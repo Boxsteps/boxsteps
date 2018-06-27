@@ -51,7 +51,7 @@
                         <tbody>
                             @foreach ( $teachers as $teacher )
                                 @foreach ( $teacher->courses as $course )
-                                    @foreach ( $course->plans as $plan )
+                                    @foreach ( $course->plans->sortByDesc('created_at') as $plan )
                                         <tr>
                                             <td>{{ trans('revision.index.course-format', ['grade' => $course->grade, 'section' => $course->section]) }}</td>
                                             <td>{{ $teacher->name }} {{ $teacher->second_name }}</td>

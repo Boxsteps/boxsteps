@@ -10,6 +10,15 @@ class Message extends Model
     use SoftDeletes;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'message', 'user_id'
+    ];
+
+    /**
      * Message relationship for Sender (User)
      */
     public function sender()

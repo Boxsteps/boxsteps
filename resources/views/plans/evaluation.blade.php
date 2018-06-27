@@ -43,7 +43,6 @@
                                             <option value="@lang('globals.evaluation.early.completion')">@lang('plan.evaluation.early.completion')</option>
                                             <option value="@lang('globals.evaluation.expected.completion')">@lang('plan.evaluation.expected.completion')</option>
                                             <option value="@lang('globals.evaluation.delayed.completion')">@lang('plan.evaluation.delayed.completion')</option>
-                                            </optgroup>
                                         </select>
                                     </div>
                                     @if ($errors->has('completion'))

@@ -50,7 +50,7 @@
                         </thead>
                         <tbody>
                             @foreach ( $courses as $course )
-                                @foreach ( $course->plans as $plan )
+                                @foreach ( $course->plans->sortByDesc('created_at') as $plan )
                                     <tr>
                                         <td>{{ trans('plan.index.course-format', ['grade' => $course->grade, 'section' => $course->section]) }}</td>
                                         <td>{{ $plan->conceptual_section->knowledge_area->knowledge_area }}</td>

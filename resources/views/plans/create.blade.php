@@ -34,7 +34,6 @@
 											@foreach ($courses as $course)
 												<option value="{{ $course->id }}">{{ trans('plan.create.course-format', ['grade' => $course->grade, 'section' => $course->section]) }}</option>
 											@endforeach
-											</optgroup>
 										</select>
 									</div>
 									@if ($errors->has('course'))
@@ -54,7 +53,6 @@
 											@foreach ($knowledge_areas as $area)
 												<option value="{{ $area->id }}">{{ $area->knowledge_area }}</option>
 											@endforeach
-											</optgroup>
 										</select>
 									</div>
 									@if ($errors->has('knowledge'))

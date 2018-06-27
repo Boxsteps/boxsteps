@@ -80,7 +80,7 @@
 
                     <!-- Email body -->
                     <div class="mail-single-body">
-                        <p>{{ $message->message }}</p>
+                        <p>{!! $message->message !!}</p>
                     </div>
 
                 </div>

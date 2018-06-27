@@ -55,7 +55,6 @@
 											@foreach ($courses as $course)
 												<option {{ ( $plan->course_id == $course->id ? 'selected="selected"' : '' ) }} value="{{ $course->id }}">{{ trans('plan.edit.course-format', ['grade' => $course->grade, 'section' => $course->section]) }}</option>
 											@endforeach
-											</optgroup>
 										</select>
 									</div>
 									@if ($errors->has('course'))
@@ -75,7 +74,6 @@
 											@foreach ($knowledge_areas as $area)
 												<option {{ ( $plan_knowledge->id == $area->id ? 'selected="selected"' : '' ) }} value="{{ $area->id }}">{{ $area->knowledge_area }}</option>
 											@endforeach
-											</optgroup>
 										</select>
 									</div>
 									@if ($errors->has('knowledge'))

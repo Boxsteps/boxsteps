@@ -51,6 +51,7 @@ Route::post('users/store', 'Auth\AuthController@register');
 
 Route::get('messages/sent', 'MessageController@indexSent');
 Route::get('messages/sent/{id}', 'MessageController@show');
+Route::get('messages/compose', 'MessageController@create');
 
 /*
 |--------------------------------------------------------------------------
@@ -110,7 +111,7 @@ Route::resource('courses', 'CourseController', ['except' => ['create', 'store', 
 Route::resource('evaluations', 'EvaluationController');
 Route::resource('evaluations.qualifications', 'QualificationController', ['except' => ['create', 'store', 'show', 'destroy']]);
 Route::resource('features', 'FeatureController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
-Route::resource('messages', 'MessageController');
+Route::resource('messages', 'MessageController', ['except' => ['create', 'edit', 'update']]);
 Route::resource('plans', 'PlanController');
 Route::resource('revisions', 'RevisionController', ['except' => ['create', 'store', 'edit', 'destroy']]);
 Route::resource('roles', 'RoleController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);

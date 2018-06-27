@@ -6,7 +6,10 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
+use App\Condition;
 use App\Message;
+use App\User;
+use Validator;
 
 class MessageController extends Controller
 {
@@ -83,7 +86,27 @@ class MessageController extends Controller
      */
     public function create()
     {
-        //
+        $user = User::all();
+        $messages = Auth::user()->messages_received->sortBy('created_at');
+        $messages_count = $messages->count();
+
+        $messages_received = Auth::user()->messages_received;
+        $messages_received_count = 0;
+
+        foreach ( $messages_received as $message ) {
+            if ( $message->pivot->state_id == trans('globals.condition.active') ) {
+                $messages_received_count++;
+            }
+        }
+
+        $data = array(
+            'users' => $user,
+            'messages' => $messages,
+            'messages_count' => $messages_count,
+            'messages_received_count' => $messages_received_count
+        );
+
+        return view('messages.create', $data);
     }
 
     /**
@@ -94,7 +117,30 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        $message = new Message([
+            'message' => $request->get('message'),
+            'user_id' => Auth::user()->id
+        ]);
+
+        $message->save();
+
+        $condition = new Condition([
+            'state_id' => trans('globals.condition.active'),
+            'message_id' => Message::all()->last()->id,
+            'user_id' => $request->get('destiny')
+        ]);
+
+        $condition->save();
+
+        return self::redirection('messages', trans('message.create.success'), null, null);
     }
 
     /**
@@ -125,7 +171,6 @@ class MessageController extends Controller
                 $messages_received_count++;
             }
         }
-
         $sender = $message->sender;
         $recipient = $message->recipients->first();
         $timestamp = $sender->created_at->format('d-m-Y') . ' - ' .
@@ -200,5 +245,19 @@ class MessageController extends Controller
         $message->delete();
 
         return redirect('messages');
+    }
+
+    /**
+     * Get a validator for an incoming store/update request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'destiny' => 'required',
+            'message' => 'required'
+        ]);
     }
 }

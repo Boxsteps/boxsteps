@@ -41,7 +41,6 @@
                                                     @foreach ($courses as $course)
                                                         <option value="{{ $course->id }}">{{ trans('statistic.course.course-format', ['grade' => $course->grade, 'section' => $course->section]) }}</option>
                                                     @endforeach
-                                                    </optgroup>
                                                 </select>
                                             </div>
                                             @if ($errors->has('course'))
@@ -85,7 +84,6 @@
                                                             </option>
                                                         @endforeach
                                                     @endforeach
-                                                    </optgroup>
                                                 </select>
                                             </div>
                                             @if ($errors->has('student'))
@@ -136,7 +134,6 @@
                                                     @foreach ($courses as $course)
                                                         <option value="{{ $course->id }}">{{ trans('statistic.course.course-format', ['grade' => $course->grade, 'section' => $course->section]) }}</option>
                                                     @endforeach
-                                                    </optgroup>
                                                 </select>
                                             </div>
                                             @if ($errors->has('area_course'))
@@ -180,7 +177,6 @@
                                                             </option>
                                                         @endforeach
                                                     @endforeach
-                                                    </optgroup>
                                                 </select>
                                             </div>
                                             @if ($errors->has('area_student'))
@@ -231,7 +227,6 @@
                                                     @foreach ($courses as $course)
                                                         <option value="{{ $course->id }}">{{ trans('statistic.course.course-format', ['grade' => $course->grade, 'section' => $course->section]) }}</option>
                                                     @endforeach
-                                                    </optgroup>
                                                 </select>
                                             </div>
                                             @if ($errors->has('progress_course'))
@@ -275,7 +270,6 @@
                                                             </option>
                                                         @endforeach
                                                     @endforeach
-                                                    </optgroup>
                                                 </select>
                                             </div>
                                             @if ($errors->has('progress_student'))

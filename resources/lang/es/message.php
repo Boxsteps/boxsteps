@@ -54,6 +54,12 @@ return [
     |--------------------------------------------------------------------------
     */
 
+    'create.title' => 'Nuevo mensaje',
+    'create.users' => 'Usuarios',
+    'create.destiny' => 'Usuario destinatario',
+    'create.send' => 'Enviar mensaje',
+    'create.success' => '¡El mensaje fue enviado de forma satisfactoria!',
+
     /*
     |--------------------------------------------------------------------------
     | Edit messages

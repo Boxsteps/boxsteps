@@ -76,7 +76,7 @@
                         <tbody>
 
                             @if ( $messages_count > 0 )
-                                @foreach ( $messages as $message )
+                                @foreach ( $messages->sortByDesc('created_at') as $message )
                                     <tr class="{{ $message->pivot->state_id == trans('globals.condition.active') ? 'unread' : '' }}">
                                         <td class="col-cb">
                                             <div class="checkbox checkbox-replace">
@@ -88,7 +88,7 @@
                                         </td>
                                         <td class="col-subject">
                                             <a href="{{ url( 'messages/' . $message->id ) }}">
-                                                {{ $message->message }}
+                                                {!! $message->message !!}
                                             </a>
                                         </td>
                                         <td class="col-options hidden-sm hidden-xs"></td>

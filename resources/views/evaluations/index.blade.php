@@ -50,7 +50,7 @@
                         </thead>
                         <tbody>
                             @foreach ( $courses as $course )
-                                @foreach ( $course->evaluations as $evaluation )
+                                @foreach ( $course->evaluations->sortByDesc('created_at') as $evaluation )
                                     <tr>
                                         <td>{{ trans('evaluation.index.course-format', ['grade' => $course->grade, 'section' => $course->section]) }}</td>
                                         <td>{{ $evaluation->name }}</td>

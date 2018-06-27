@@ -27,7 +27,6 @@
                                         @foreach ($roles as $role)
                                             <option value="{{ $role->id }}">{{ $role->role }}</option>
                                         @endforeach
-                                        </optgroup>
                                     </select>
                                 </div>
                                 @if ($errors->has('role'))
