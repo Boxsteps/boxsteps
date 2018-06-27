@@ -21,6 +21,8 @@ return [
     'create-evaluation' => 'Crear evaluación',
     'statistics' => 'Estadísticas generales',
 
+    'points' => 'puntos',
+
     /*
     |--------------------------------------------------------------------------
     | Dashboard colors

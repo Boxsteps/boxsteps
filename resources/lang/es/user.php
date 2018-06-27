@@ -70,6 +70,8 @@ return [
     |--------------------------------------------------------------------------
     */
 
+    'destroy.question' => '¿Desea eliminar realmente el usuario seleccionado?',
+    'destroy.question.close' => 'Cerrar',
     'destroy.success' => '¡El usuario fue eliminado de forma satisfactoria!',
 
 ];

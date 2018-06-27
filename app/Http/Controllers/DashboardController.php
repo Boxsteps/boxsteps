@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\KnowledgeArea;
 use App\Role;
 
 class DashboardController extends Controller
@@ -58,6 +59,7 @@ class DashboardController extends Controller
             'courses_count' => null,
             'plans_count' => null,
             'evaluations_count' => null,
+            'qualifications' => null,
             'events' => collect([])->toJson(),
             'tiny' => true
         );
@@ -88,6 +90,42 @@ class DashboardController extends Controller
                 $messages_count++;
             }
         }
+
+        // Qualifications collection
+
+        $qualifications = collect([]);
+        $qualifications_list = collect([]);
+
+        foreach ($courses->first()->evaluations as $evaluation) {
+
+            $qualifications = collect([]);
+            $knowledge_area = $evaluation->plan->conceptual_section->knowledge_area->id;
+            foreach ($evaluation->students as $student) {
+                $qualifications->push([
+                    'qualification' => $student->pivot->qualification
+                ]);
+            }
+
+            $avg = $qualifications->avg('qualification');
+
+            if ( $avg ) {
+                $qualifications_list->push([
+                    'knowledge_area' => $knowledge_area,
+                    'avg' => $avg
+                ]);
+            }
+
+        }
+
+        $qualifications = collect([]);
+        $qualifications_list = $qualifications_list->groupBy('knowledge_area');
+
+        $qualifications_list->each(function ($item, $key) use ($qualifications) {
+            $qualifications->push([
+                'name' => KnowledgeArea::findOrFail($key)->knowledge_area,
+                'qualification' => number_format(round($item->avg('avg'), 2), 2)
+            ]);
+        });
 
         // Plans collection
 
@@ -135,6 +173,7 @@ class DashboardController extends Controller
             'courses_count' => $courses->count(),
             'plans_count' => $plans->count(),
             'evaluations_count' => $evaluations_count,
+            'qualifications' => $qualifications,
             'events' => $events_json->toJson(),
             'tiny' => false
         );

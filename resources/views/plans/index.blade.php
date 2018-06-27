@@ -86,9 +86,31 @@
                                                 <form role="form" action="{{ url('/plans/' . $plan->id ) }}" method="POST">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="_method" value="DELETE">
-                                                    <button class="btn btn-icon btn-red" title="@lang('plan.index.title.delete')">
+                                                    <button type="button" class="btn btn-icon btn-red" role="button" title="@lang('plan.index.title.delete')" data-toggle="modal" data-target="#plan-delete-{{ $plan->id }}">
                                                         <i class="fa-remove"></i>
                                                     </button>
+                                                    <div class="modal fade" id="plan-delete-{{ $plan->id }}" tabindex="-1" role="dialog" aria-labelledby="plan-delete-label-{{ $plan->id }}">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="@lang('plan.destroy.question.close')"><span aria-hidden="true">&times;</span></button>
+                                                                    <h4 class="modal-title" id="plan-delete-label-{{ $plan->id }}">@lang('plan.destroy.question')</h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    @lang('plan.index.course'): <b>{{ trans('plan.index.course-format', ['grade' => $course->grade, 'section' => $course->section]) }}</b><br>
+                                                                    @lang('plan.index.knowledge'): <b>{{ $plan->conceptual_section->knowledge_area->knowledge_area }}</b><br>
+                                                                    @lang('plan.index.conceptual'): <b>{{ $plan->conceptual_section->conceptual_section }}</b><br>
+                                                                    @lang('plan.index.condition'): <b>{{ $plan->state->first()->state }}</b><br>
+                                                                    @lang('plan.index.date'): <b>{{ $plan->start_date->format('d-m-Y') }}</b><br>
+                                                                    @lang('plan.index.time'): <b>{{ $plan->start_date->format('h:i A') }} - {{ $plan->end_date->format('h:i A') }}</b><br>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-white" data-dismiss="modal">@lang('plan.destroy.question.close')</button>
+                                                                    <button type="submit" class="btn btn-danger">@lang('plan.index.title.delete')</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </form>
                                             @endif
                                         </td>

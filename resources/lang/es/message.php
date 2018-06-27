@@ -66,6 +66,9 @@ return [
     |--------------------------------------------------------------------------
     */
 
+    'destroy.delete' => 'Eliminar mensaje',
+    'destroy.question' => '¿Desea eliminar realmente el mensaje seleccionado?',
+    'destroy.question.close' => 'Cerrar',
     'destroy.success' => '¡El mensaje fue eliminado de forma satisfactoria!',
 
 ];

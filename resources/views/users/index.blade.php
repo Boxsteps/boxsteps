@@ -70,9 +70,27 @@
                                         <form role="form" action="{{ url('/users/' . $user->id ) }}" method="POST">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="_method" value="DELETE">
-                                            <button class="btn btn-icon btn-red" title="@lang('user.index.title.delete')">
+                                            <button type="button" class="btn btn-icon btn-red" role="button" title="@lang('user.index.title.delete')" data-toggle="modal" data-target="#user-delete-{{ $user->id }}">
                                                 <i class="fa-remove"></i>
                                             </button>
+                                            <div class="modal fade" id="user-delete-{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="user-delete-label-{{ $user->id }}">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="@lang('user.destroy.question.close')"><span aria-hidden="true">&times;</span></button>
+                                                            <h4 class="modal-title" id="user-delete-label-{{ $user->id }}">@lang('user.destroy.question')</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            @lang('user.index.name.rol'): <b>{{ $user->name }} {{ $user->second_name }} - {{ $user->role->role }}</b><br>
+                                                            @lang('user.index.email'): <b>{{ $user->email }}</b><br>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-white" data-dismiss="modal">@lang('user.destroy.question.close')</button>
+                                                            <button type="submit" class="btn btn-danger">@lang('user.index.title.delete')</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </form>
                                     </td>
                                 </tr>

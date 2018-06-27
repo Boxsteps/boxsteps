@@ -117,6 +117,8 @@ return [
     |--------------------------------------------------------------------------
     */
 
+    'destroy.question' => '¿Desea eliminar realmente la planificación seleccionada?',
+    'destroy.question.close' => 'Cerrar',
     'destroy.success' => '¡La planificación fue eliminada de forma satisfactoria!',
 
     /*

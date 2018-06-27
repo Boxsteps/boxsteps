@@ -41,9 +41,26 @@
                             <form style="display: inline-block;" role="form" action="{{ url('/messages/' . $message->id ) }}" method="POST">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="_method" value="DELETE">
-                                <button class="btn btn-gray btn-icon">
+                                <button type="button" class="btn btn-gray btn-icon" role="button" title="@lang('message.destroy.delete')" data-toggle="modal" data-target="#message-delete">
                                     <i class="fa-trash"></i>
                                 </button>
+                                <div class="modal fade" id="message-delete" tabindex="-1" role="dialog" aria-labelledby="message-delete-label">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="@lang('message.destroy.question.close')"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="message-delete-label">@lang('message.destroy.delete')</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                @lang('message.destroy.question')
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-white" data-dismiss="modal">@lang('message.destroy.question.close')</button>
+                                                <button type="submit" class="btn btn-danger">@lang('message.destroy.delete')</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>

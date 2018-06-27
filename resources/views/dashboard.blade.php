@@ -121,7 +121,12 @@
                     <div class="panel panel-default">
         				<div class="panel-heading">@lang('dashboard.title.qualifications')</div>
                         <div class="panel-body">
-                            <div id="califications" style="height: 155px;"></div>
+                            <div id="califications" style="height: 155px;">
+                                @foreach ( $qualifications as $qualification )
+                                    {{ $qualification['name'] }}<br>
+                                    <b>{{ $qualification['qualification'] }} @lang('dashboard.points')</b><br>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>

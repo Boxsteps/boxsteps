@@ -74,12 +74,34 @@
                                                         <i class="fa-pencil"></i>
                                                     </button>
                                                 </form>
-                                                <form role="form" action="{{ url('/evaluations/' . $evaluation->id ) }}" method="POST">
+                                                <form class="form-inline" action="{{ url('/evaluations/' . $evaluation->id ) }}" method="POST">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="_method" value="DELETE">
-                                                    <button class="btn btn-icon btn-red" title="@lang('evaluation.index.title.delete')">
+                                                    <button type="button" class="btn btn-icon btn-red" role="button" title="@lang('evaluation.index.title.delete')" data-toggle="modal" data-target="#evaluation-delete-{{ $evaluation->id }}">
                                                         <i class="fa-remove"></i>
                                                     </button>
+                                                    <div class="modal fade" id="evaluation-delete-{{ $evaluation->id }}" tabindex="-1" role="dialog" aria-labelledby="evaluation-delete-label-{{ $evaluation->id }}">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="@lang('evaluation.destroy.question.close')"><span aria-hidden="true">&times;</span></button>
+                                                                    <h4 class="modal-title" id="evaluation-delete-label-{{ $evaluation->id }}">@lang('evaluation.destroy.question')</h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    @lang('evaluation.index.name'): <b>{{ $evaluation->name }}</b><br>
+                                                                    @lang('evaluation.index.course'): <b>{{ trans('evaluation.index.course-format', ['grade' => $course->grade, 'section' => $course->section]) }}</b><br>
+                                                                    @lang('evaluation.index.content'): <b>{{ $evaluation->plan->conceptual_section->knowledge_area->knowledge_area }} - {{ $evaluation->plan->conceptual_section->conceptual_section }}</b><br>
+                                                                    @lang('evaluation.index.percentage'): <b>{{ $evaluation->representative_percentage }}%</b><br>
+                                                                    @lang('evaluation.index.date'): <b>{{ $evaluation->start_date->format('d-m-Y') }}</b><br>
+                                                                    @lang('evaluation.index.time'): <b>{{ $evaluation->start_date->format('h:i A') }} - {{ $evaluation->end_date->format('h:i A') }}</b><br>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-white" data-dismiss="modal">@lang('evaluation.destroy.question.close')</button>
+                                                                    <button type="submit" class="btn btn-danger">@lang('evaluation.index.title.delete')</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </form>
                                             @else
                                                 <form role="form" action="{{ url( '/evaluations/' . $evaluation->id . '/qualifications' ) }}" method="POST">

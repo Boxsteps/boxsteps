@@ -105,6 +105,8 @@ return [
     |--------------------------------------------------------------------------
     */
 
+    'destroy.question' => '¿Desea eliminar realmente la evaluación seleccionada?',
+    'destroy.question.close' => 'Cerrar',
     'destroy.success' => '¡La evaluación fue eliminada de forma satisfactoria!',
 
 ];

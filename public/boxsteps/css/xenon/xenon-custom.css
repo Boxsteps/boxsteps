@@ -156,6 +156,10 @@ blockquote.blockquote.blockquote-default p {
     width: 37px;
 }
 
+.action-links form .modal button {
+    width: auto;
+}
+
 /*
  * ---------------------------------------------------------------------
  * FontAwesome correction rules for Boxsteps
@@ -196,6 +200,12 @@ blockquote.blockquote.blockquote-default p {
  * Media queries rules for Boxsteps
  * ---------------------------------------------------------------------
  */
+
+@media screen and (min-width:768px) {
+    .modal-dialog {
+        margin-top: 150px;
+    }
+}
 
 @media screen and (max-width:769px) {
     .navbar.horizontal-menu .navbar-inner > .nav.navbar-mobile {
