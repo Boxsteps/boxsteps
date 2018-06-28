@@ -17,7 +17,7 @@
         <li>
             <ul class="dropdown-menu-list list-unstyled ps-scrollbar">
                 @if ( $count > 0 )
-                    @foreach ( $auth_user->messages_received as $message )
+                    @foreach ( $auth_user->messages_received->sortByDesc('created_at') as $message )
                         @if ( $message->pivot->state_id == trans('globals.condition.active') )
                             <li class="active">
                                 <a href="{{ url( 'messages/' . $message->id ) }}">
@@ -27,10 +27,10 @@
                                     </span>
 
                                     <span class="line desc small">
-                                        {{ $message->message }}
+                                        {!! $message->message !!}
                                     </span>
                                 </a>
-                            </li>                            
+                            </li>
                         @endif
                     @endforeach
                 @else
